@@ -126,8 +126,8 @@ export function Hero() {
                 pointer-events-none absolute -inset-7.5
                 bg-(image:--img) bg-cover bg-center
                 filter-[blur(10px)]
-                [-webkit-mask-image:linear-gradient(to_bottom,rgba(0,0,0,0)_35%,rgba(0,0,0,1)_90%)]
-                mask-[linear-gradient(to_bottom,rgba(0,0,0,0)_35%,rgba(0,0,0,1)_90%)]
+                [-webkit-mask-image:linear-gradient(to_bottom,rgba(0,0,0,0)_70%,rgba(0,0,0,1)_80%)]
+                mask-[linear-gradient(to_bottom,rgba(0,0,0,0)_70%,rgba(0,0,0,1)_80%)]
               "
             />
           </div>
