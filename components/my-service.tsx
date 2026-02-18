@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { Instrument_Sans } from 'next/font/google';
 import { ArrowRight } from 'lucide-react';
+import { CirclePlay } from 'lucide-react';
 import { useState } from 'react';
 
 const instrumentSans = Instrument_Sans({
@@ -49,10 +50,10 @@ export function MyService() {
   return (
     <section className="px-3 py-16 md:px-8">
       <div
-        className={`${instrumentSans.variable} mx-auto w-full max-w-[1440px] font-[var(--font-instrument-sans)] text-[#262626]`}
+        className={`${instrumentSans.variable} mx-auto w-full max-w-360 font-(--font-instrument-sans) text-[#262626]`}
       >
         <div className="space-y-16">
-          <div className="max-w-[846px] space-y-8">
+          <div className="max-w-211.5 space-y-8">
             <div className="space-y-4">
               <div className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 bg-[#525252]" />
@@ -61,7 +62,7 @@ export function MyService() {
               <h2 className="text-[40px] font-medium leading-[1.3] tracking-[-0.05em]">
                 Professional Service Solutions
               </h2>
-              <p className="max-w-[560px] text-base leading-[1.6] text-[#525252]">
+              <p className="max-w-140 text-base leading-[1.6] text-[#525252]">
                 Tailored digital solutions designed to elevate your business performance, growth, and long-term success.
               </p>
             </div>
@@ -73,12 +74,12 @@ export function MyService() {
               </a>
               <a href="#" className={secondaryButtonClasses}>
                 Watch Video
-                <ArrowRight className="h-5 w-5" strokeWidth={1.5} />
+                <CirclePlay className="h-5 w-5" strokeWidth={1.5} />
               </a>
             </div>
           </div>
 
-          <div className="grid items-start gap-10 lg:min-h-[527px] lg:grid-cols-2 lg:gap-10">
+          <div className="grid items-start gap-10 lg:min-h-131.75 lg:grid-cols-2 lg:gap-10">
             <div className="space-y-4" role="tablist" aria-label="Service categories">
               {serviceTabs.map((tab) => {
                 const isActive = tab.id === activeTabId;
@@ -101,7 +102,7 @@ export function MyService() {
                     </span>
                     <span className="flex h-12 w-12 items-center justify-center rounded-full border border-[#e5e5e5]">
                       <ArrowRight
-                        className={`h-[22px] w-[22px] transition-transform ${isActive ? '-rotate-45' : ''}`}
+                        className={`h-5.5 w-5.5 transition-transform ${isActive ? '-rotate-45' : ''}`}
                         strokeWidth={1.6}
                       />
                     </span>
@@ -114,7 +115,7 @@ export function MyService() {
               id="service-tabpanel"
               role="tabpanel"
               aria-labelledby={`${activeTab.id}-tab`}
-              className="relative min-h-[360px] overflow-hidden rounded-2xl md:min-h-[440px] lg:min-h-[527px]"
+              className="relative min-h-90 overflow-hidden rounded-2xl md:min-h-110 lg:min-h-131.75"
             >
               <Image
                 src={activeTab.imageSrc}

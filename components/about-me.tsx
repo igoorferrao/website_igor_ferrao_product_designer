@@ -28,7 +28,7 @@ export function AboutMe() {
   return (
     <section className="px-3 py-16 md:px-8">
       <div
-        className={`${instrumentSans.variable} mx-auto w-full max-w-[1440px] rounded-[20px] bg-[#262626] p-6 font-[var(--font-instrument-sans)] text-white md:p-10`}
+        className={`${instrumentSans.variable} mx-auto w-full max-w-360 rounded-4xl bg-[#262626] p-6 font-(--font-instrument-sans) text-white md:p-10`}
       >
         <div className="space-y-4">
           <div className="flex items-center gap-2">
@@ -37,7 +37,7 @@ export function AboutMe() {
           </div>
 
           <div className="grid items-end gap-6 lg:grid-cols-[1fr_215px] lg:pr-20">
-            <h2 className="max-w-[690px] text-[28px] font-medium leading-9 tracking-[-0.02em]">
+            <h2 className="max-w-172.5 text-[28px] font-medium leading-9 tracking-[-0.02em]">
               <span className="box-decoration-clone bg-white/12 px-1">
                 I&apos;m Ethan Riley, your creative partner in design.
               </span>
@@ -53,7 +53,7 @@ export function AboutMe() {
               href="https://www.youtube.com/"
               target="_blank"
               rel="noreferrer"
-              className="group relative flex h-[116px] w-full items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-[#1f1f1f] md:w-[215px]"
+              className="group relative flex h-29 w-full items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-[#1f1f1f] md:w-53.75"
               aria-label="Open video placeholder"
             >
               <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.01))]" />
@@ -71,8 +71,8 @@ export function AboutMe() {
                 {item.label}
               </p>
               <div className="flex items-center gap-4">
-                <p className="text-[52px] font-medium leading-[64px]">{item.value}</p>
-                <p className="max-w-[184px] text-base leading-6 text-[#fafafa]">{item.description}</p>
+                <p className="text-[52px] font-medium leading-16">{item.value}</p>
+                <p className="max-w-46 text-base leading-6 text-[#fafafa]">{item.description}</p>
               </div>
             </article>
           ))}

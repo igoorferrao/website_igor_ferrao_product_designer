@@ -33,16 +33,16 @@ export function PatternsCarousel() {
 
   return (
     <section className="px-3 py-10 md:px-8">
-      <div className="mx-auto max-w-[1440px] overflow-hidden">
+      <div className="mx-auto max-w-360 overflow-hidden">
         <div className="patterns-track flex w-max items-center gap-32">
           {duplicated.map((logo, index) => (
-            <div key={`${logo.src}-${index}`} className="flex h-[35px] min-h-[35px] items-center opacity-70">
+            <div key={`${logo.src}-${index}`} className="flex h-8.75 min-h-8.75 items-center opacity-70">
               <Image
                 src={logo.src}
                 alt={logo.alt}
                 width={logo.width}
                 height={35}
-                className="h-[35px] w-auto object-contain"
+                className="h-8.75 w-auto object-contain"
               />
             </div>
           ))}
