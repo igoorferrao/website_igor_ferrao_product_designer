@@ -19,15 +19,15 @@ export function Hero() {
   return (
     <section className={`${instrumentSans.variable} py-8 px-4 lg:py-16 lg:px-16`}>
       <div className="mx-auto grid w-full max-w-360 items-start gap-10 font-(--font-instrument-sans) text-[#262626] lg:grid-cols-[1fr_minmax(360px,512px)]">
-        <div className="flex flex-col gap-28 lg:pt-6">
+        <div className="flex flex-col gap-16 md:gap-28 lg:pt-6">
           <div className="max-w-140 space-y-8">
             <div className="flex items-center gap-2 text-base leading-6">
               <Image src="/f243317de99897beefb6ff9f79d4e6be02ea48c0.svg" alt="" width={20} height={20} aria-hidden />
               <span>Hello Folk</span>
             </div>
 
-            <div className="w-full min-w-100 space-y-5">
-              <h1 className="text-[42px] font-medium leading-[1.16] tracking-[-0.04em] md:text-[48px] md:leading-14">
+            <div className="w-full md:min-w-100 space-y-5">
+              <h1 className="text-[40px] leading-[1.16] font-medium tracking-[-0.04em] md:text-[48px] md:leading-14">
                 Freelance Web Designer
                 <br />
                 from Brazil
