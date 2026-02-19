@@ -109,10 +109,10 @@ export function Hero() {
         </div> */}
         {/* Abaixo é gpt */}
         <div
-          className="relative overflow-hidden rounded-4xl"
+          className="relative rounded-4xl"
           style={{ '--img': "url('/d64a1b54febb0531bbb407786294d0ffac43e298.png')" } as React.CSSProperties}
         >
-          <div className="relative aspect-512/640 w-full">
+          <div className="relative rounded-4xl overflow-hidden aspect-512/640 w-full">
             <Image
               src="/d64a1b54febb0531bbb407786294d0ffac43e298.png"
               alt="Igor Ferrão de Souza"
@@ -144,6 +144,10 @@ export function Hero() {
                 user experiences.
               </p>
             </div>
+          </div>
+          <div className="absolute left-1/2 top-[37%] z-10 flex max-h-11 -translate-x-1/2 items-center justify-center gap-1 rounded-lg bg-white p-4 text-base leading-6 text-[#525252] shadow-[0_20px_34px_rgba(192,192,192,0.25)] lg:left-[calc(50%-264.5px)]">
+            <span className="h-2 w-2 rounded-full bg-[#4bdd5c]" />
+            Available for new projects
           </div>
         </div>
       </div>
