@@ -32,7 +32,7 @@ export function PatternsCarousel() {
   const duplicated = [...logos, ...logos];
 
   return (
-    <section className="px-3 py-10 md:px-8">
+    <section className="py-8 px-0 lg:py-16">
       <div className="mx-auto max-w-360 overflow-hidden">
         <div className="patterns-track flex w-max items-center gap-32">
           {duplicated.map((logo, index) => (

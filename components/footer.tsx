@@ -22,8 +22,8 @@ const footerColumns = [
 
 export function Footer() {
   return (
-    <footer className="overflow-hidden bg-white px-3 pb-0 pt-10 md:px-8 md:pt-16">
-      <div className={`${instrumentSans.variable} mx-auto w-full max-w-360 font-var(--font-instrument-sans)`}>
+    <footer className="overflow-hidden bg-white py-8 px-4 lg:py-16 lg:px-16">
+      <div className={`${instrumentSans.variable} mx-auto w-full max-w-360 font-(--font-instrument-sans)`}>
         <div className="mx-auto w-full rounded-[32px] border border-[#e5e5e5] bg-white p-8 shadow-[0_8px_16px_rgba(0,0,0,0.05)] md:p-14">
           <div className="flex flex-col gap-10">
             <div className="flex flex-col justify-between gap-10 lg:flex-row">
@@ -56,7 +56,7 @@ export function Footer() {
           </div>
         </div>
 
-        <p className="mt-8 bg-linear-to-b from-[#525252] to-white bg-clip-text text-center text-[clamp(120px,23vw,360px)] leading-[0.95] font-bold text-transparent opacity-20">
+        <p className="mt-8 bg-linear-to-b from-[#525252] to-white bg-clip-text text-center text-[clamp(64px,23vw,64px)] md:text-[clamp(160px,23vw,160px)] lg:text-[clamp(200px,23vw,200px)] xl:text-[clamp(320px,23vw,320px)] leading-[0.95] font-bold text-transparent opacity-20">
           Rm 10:9
         </p>
       </div>

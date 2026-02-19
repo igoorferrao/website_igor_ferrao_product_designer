@@ -35,7 +35,7 @@ const cards = [
 
 export function CaseStudy() {
   return (
-    <section className="px-3 py-16 md:px-8">
+    <section className="py-8 px-4 lg:py-16 lg:px-16">
       <div
         className={`${instrumentSans.variable} mx-auto w-full max-w-[1440px] space-y-16 font-[var(--font-instrument-sans)] text-[#262626]`}
       >

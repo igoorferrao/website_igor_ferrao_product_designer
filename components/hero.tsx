@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import { Instrument_Sans } from 'next/font/google';
+import { FileDown } from 'lucide-react';
+import { MoveRight } from 'lucide-react';
 
 const instrumentSans = Instrument_Sans({
   subsets: ['latin'],
@@ -15,7 +17,7 @@ const avatars = [
 
 export function Hero() {
   return (
-    <section className={`${instrumentSans.variable} px-3 py-16 md:px-8`}>
+    <section className={`${instrumentSans.variable} py-8 px-4 lg:py-16 lg:px-16`}>
       <div className="mx-auto grid w-full max-w-360 items-start gap-10 font-(--font-instrument-sans) text-[#262626] lg:grid-cols-[1fr_minmax(360px,512px)]">
         <div className="flex flex-col gap-28 lg:pt-6">
           <div className="max-w-140 space-y-8">
@@ -41,14 +43,14 @@ export function Hero() {
                 className="inline-flex items-center gap-2 rounded-lg bg-[#ff9d00] px-4 py-3 text-base font-medium leading-6 text-[#fafafa]"
               >
                 Let&apos;s Talk
-                <Image src="/0a115bf487f63ec7ca631bf20b03560c51251c64.svg" alt="" width={20} height={20} aria-hidden />
+                <MoveRight className="h-5 w-5" strokeWidth={2} />
               </a>
               <a
                 href="#"
                 className="inline-flex items-center gap-2 rounded-lg bg-[#f5f5f5] px-4 py-3 text-base font-medium leading-6 text-[#525252]"
               >
                 Download CV
-                <Image src="/d9e91bd19526663738187d57d8d14e7a8041e05d.svg" alt="" width={20} height={20} aria-hidden />
+                <FileDown className="h-5 w-5" strokeWidth={2} />
               </a>
             </div>
           </div>

@@ -48,7 +48,7 @@ export function MyService() {
   const activeTab = serviceTabs.find((tab) => tab.id === activeTabId) ?? serviceTabs[0];
 
   return (
-    <section className="px-3 py-16 md:px-8">
+    <section className="py-8 px-4 lg:py-16 lg:px-16">
       <div
         className={`${instrumentSans.variable} mx-auto w-full max-w-360 font-(--font-instrument-sans) text-[#262626]`}
       >
