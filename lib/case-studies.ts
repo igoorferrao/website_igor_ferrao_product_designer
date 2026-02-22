@@ -23,7 +23,7 @@ export type CaseStudyDetail = {
   subtitle: string;
   heroImageSrc: string;
   heroImageAlt: string;
-  overview: Array<{ label: string; value: string }>;
+  overview: Array<{ label: string; value: string | string[] }>;
   introduction: string;
   coreProblems: string[];
   discoveryResearch: string[];
@@ -68,7 +68,7 @@ export const caseStudies: CaseStudy[] = [
         { label: 'Client', value: 'Fintech startup' },
         { label: 'Role', value: 'Lead Product Designer' },
         { label: 'Timeline', value: '8 weeks' },
-        { label: 'Services', value: 'UX strategy' },
+        { label: 'Services', value: ['UX Research'] },
         { label: 'Deliverables', value: 'UI kit + prototype' },
         { label: 'Tools', value: 'Figma + Notion' },
       ],
@@ -151,7 +151,16 @@ export const caseStudies: CaseStudy[] = [
         { label: 'Client', value: 'Growth agency' },
         { label: 'Role', value: 'Product Designer' },
         { label: 'Timeline', value: '6 weeks' },
-        { label: 'Services', value: 'Web redesign' },
+        {
+          label: 'Services',
+          value: [
+            'UX Research',
+            'Web Design',
+            'Information Architecture',
+            'Conversion Optimization',
+            'Component Library',
+          ],
+        },
         { label: 'Deliverables', value: 'Component library' },
         { label: 'Tools', value: 'Figma + GA4' },
       ],
@@ -234,7 +243,7 @@ export const caseStudies: CaseStudy[] = [
         { label: 'Client', value: 'EdTech platform' },
         { label: 'Role', value: 'Product Designer' },
         { label: 'Timeline', value: '10 weeks' },
-        { label: 'Services', value: 'UX + UI design' },
+        { label: 'Services', value: ['UX Research', 'UX/UI Design', 'Onboarding', 'User Flows', 'Prototyping'] },
         { label: 'Deliverables', value: 'Flows + prototypes' },
         { label: 'Tools', value: 'Figma + Hotjar' },
       ],
