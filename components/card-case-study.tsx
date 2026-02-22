@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 type Stat = {
@@ -15,6 +16,7 @@ type CardCaseStudyProps = {
   rightStat: Stat;
   imageSrc: string;
   imageAlt: string;
+  href: string;
   variant?: 'light' | 'dark';
   imagePosition?: 'left' | 'right';
 };
@@ -28,6 +30,7 @@ export function Card_Case_Study({
   rightStat,
   imageSrc,
   imageAlt,
+  href,
   variant = 'light',
   imagePosition = 'left',
 }: CardCaseStudyProps) {
@@ -51,6 +54,7 @@ export function Card_Case_Study({
               leftStat={leftStat}
               rightStat={rightStat}
               isDark={isDark}
+              href={href}
             />
             <CardImage imageSrc={imageSrc} imageAlt={imageAlt} />
           </>
@@ -65,6 +69,7 @@ export function Card_Case_Study({
               leftStat={leftStat}
               rightStat={rightStat}
               isDark={isDark}
+              href={href}
             />
           </>
         )}
@@ -89,6 +94,7 @@ function CardContent({
   leftStat,
   rightStat,
   isDark,
+  href,
 }: {
   title: string;
   description: string;
@@ -97,6 +103,7 @@ function CardContent({
   leftStat: Stat;
   rightStat: Stat;
   isDark: boolean;
+  href: string;
 }) {
   const bodyTone = isDark ? 'text-[#fafafa]' : 'text-[#525252]';
   const borderTone = isDark ? 'border-[#fafafa]' : 'border-[#525252]';
@@ -133,13 +140,13 @@ function CardContent({
       </div>
 
       <div>
-        <a
-          href="#"
+        <Link
+          href={href}
           className="inline-flex items-center gap-2 rounded-lg bg-[#ff9d00] px-4 py-3 text-base font-medium leading-6 text-[#fafafa]"
         >
           View case study
           <ArrowRight className="h-4 w-4" strokeWidth={1.8} />
-        </a>
+        </Link>
       </div>
     </div>
   );

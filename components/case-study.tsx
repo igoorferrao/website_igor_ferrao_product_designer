@@ -1,41 +1,15 @@
 import { Instrument_Sans } from 'next/font/google';
 import { Card_Case_Study } from '@/components/card-case-study';
+import { caseStudyCards } from '@/lib/case-studies';
 
 const instrumentSans = Instrument_Sans({
   subsets: ['latin'],
   variable: '--font-instrument-sans',
 });
 
-const cards = [
-  {
-    title: 'Smarter Flight Booking UX',
-    description: 'Led design for SaaS dashboards, landing pages, and mobile apps',
-    imageSrc: '/figma-33-220/45760701929f8dee9336d8d798e21c8be31e46d7.png',
-    imageAlt: 'Laptop mockup case study preview',
-    variant: 'light' as const,
-    imagePosition: 'left' as const,
-  },
-  {
-    title: 'Driving Digital Growth',
-    description: 'Driving Digital Growth leverages technology, innovation.',
-    imageSrc: '/figma-33-220/902ef81d2ecf99bd662113cf090f39326690b610.png',
-    imageAlt: 'Tablet mockup case study preview',
-    variant: 'dark' as const,
-    imagePosition: 'right' as const,
-  },
-  {
-    title: 'Designing Future Success',
-    description: 'Led design for SaaS dashboards, landing pages, and mobile apps',
-    imageSrc: '/figma-33-220/e6d534a3f6d9b26f956c874e277db8f92f8c25d0.png',
-    imageAlt: 'Tablet product case study preview',
-    variant: 'light' as const,
-    imagePosition: 'left' as const,
-  },
-];
-
 export function CaseStudy() {
   return (
-    <section className="py-8 px-4 lg:py-16 lg:px-16">
+    <section className="px-4 py-8 lg:px-16 lg:py-16">
       <div
         className={`${instrumentSans.variable} mx-auto w-full max-w-[1440px] space-y-16 font-[var(--font-instrument-sans)] text-[#262626]`}
       >
@@ -51,17 +25,18 @@ export function CaseStudy() {
         </div>
 
         <div className="space-y-[60px]">
-          {cards.map((card) => (
+          {caseStudyCards.map((card) => (
             <Card_Case_Study
-              key={card.title}
+              key={card.slug}
               title={card.title}
               description={card.description}
-              challenge="Led design for SaaS dashboards, landing pages, mobile apps"
-              solution="Led design for SaaS dashboards, landing pages, mobile apps"
-              leftStat={{ value: '60%', label: 'Increase subscriber' }}
-              rightStat={{ value: '40%', label: 'Grow new user to Contest Us' }}
+              challenge={card.challenge}
+              solution={card.solution}
+              leftStat={card.leftStat}
+              rightStat={card.rightStat}
               imageSrc={card.imageSrc}
               imageAlt={card.imageAlt}
+              href={card.href}
               variant={card.variant}
               imagePosition={card.imagePosition}
             />
