@@ -39,9 +39,9 @@ const serviceTabs = [
 ] as const;
 
 const primaryButtonClasses =
-  'inline-flex items-center gap-2 rounded-lg bg-[#ff9d00] px-4 py-3 text-base font-medium leading-6 text-[#fafafa]';
+  'inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-3 text-base font-medium leading-6 text-primary-foreground';
 const secondaryButtonClasses =
-  'inline-flex items-center gap-2 rounded-lg bg-[#f5f5f5] px-4 py-3 text-base font-medium leading-6 text-[#525252]';
+  'inline-flex items-center gap-2 rounded-lg bg-secondary px-4 py-3 text-base font-medium leading-6 text-secondary-foreground';
 
 export function MyService() {
   const [activeTabId, setActiveTabId] = useState<(typeof serviceTabs)[number]['id']>(serviceTabs[0].id);
@@ -50,19 +50,19 @@ export function MyService() {
   return (
     <section className="py-8 px-4 lg:py-16 lg:px-16">
       <div
-        className={`${instrumentSans.variable} mx-auto w-full max-w-360 font-(--font-instrument-sans) text-[#262626]`}
+        className={`${instrumentSans.variable} mx-auto w-full max-w-360 font-(--font-instrument-sans) text-foreground`}
       >
         <div className="space-y-16">
           <div className="max-w-211.5 space-y-8">
             <div className="space-y-4">
               <div className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 bg-[#525252]" />
+                <span className="h-1.5 w-1.5 bg-muted-foreground" />
                 <p className="text-base font-medium leading-6">MY SERVICE</p>
               </div>
               <h2 className="text-[40px] font-medium leading-[1.3] tracking-[-0.05em]">
                 Professional Service Solutions
               </h2>
-              <p className="max-w-140 text-base leading-[1.6] text-[#525252]">
+              <p className="max-w-140 text-base leading-[1.6] text-muted-foreground">
                 Tailored digital solutions designed to elevate your business performance, growth, and long-term success.
               </p>
             </div>
@@ -94,13 +94,13 @@ export function MyService() {
                     tabIndex={isActive ? 0 : -1}
                     onClick={() => setActiveTabId(tab.id)}
                     className={`flex w-full items-center justify-between rounded-xl px-5 py-4 text-left transition-colors ${
-                      isActive ? 'bg-white' : 'bg-[#f5f5f5]'
+                      isActive ? 'bg-background' : 'bg-secondary'
                     }`}
                   >
-                    <span className="text-[24px] font-medium leading-[1.35] tracking-[-0.02em] text-[#262626]">
+                    <span className="text-[24px] font-medium leading-[1.35] tracking-[-0.02em]">
                       {tab.label}
                     </span>
-                    <span className="flex h-12 w-12 items-center justify-center rounded-full border border-[#e5e5e5]">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-full border border-border">
                       <ArrowRight
                         className={`h-5.5 w-5.5 transition-transform ${isActive ? '-rotate-45' : ''}`}
                         strokeWidth={1.6}

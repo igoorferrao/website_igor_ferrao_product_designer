@@ -19,7 +19,7 @@ const avatars = [
 export function Hero() {
   return (
     <section className={`${instrumentSans.variable} py-8 px-4 md:py-16 md:px-16`}>
-      <div className="mx-auto grid w-full max-w-360 items-start gap-10 font-(--font-instrument-sans) text-[#262626] lg:grid-cols-[1fr_minmax(360px,512px)]">
+      <div className="mx-auto grid w-full max-w-360 items-start gap-10 font-(--font-instrument-sans) text-foreground lg:grid-cols-[1fr_minmax(360px,512px)]">
         <div className="flex flex-col gap-16 md:gap-28 lg:pt-6">
           <div className="max-w-140 space-y-8">
             <div className="flex items-center gap-2 text-base leading-6">
@@ -33,7 +33,7 @@ export function Hero() {
                 <br />
                 from Brazil
               </h1>
-              <p className="max-w-117.5 text-base leading-6 text-[#525252]">
+              <p className="max-w-117.5 text-base leading-6 text-muted-foreground">
                 I specialize in delivering designs that are not only visually striking but also impactful.
               </p>
             </div>
@@ -41,14 +41,14 @@ export function Hero() {
             <div className="flex flex-wrap items-center gap-2">
               <a
                 href="#"
-                className="inline-flex items-center gap-2 rounded-lg bg-[#ff9d00] px-4 py-3 text-base font-medium leading-6 text-[#fafafa]"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-3 text-base font-medium leading-6 text-primary-foreground"
               >
                 Let&apos;s Talk
                 <MoveRight className="h-5 w-5" strokeWidth={2} />
               </a>
               <a
                 href="#"
-                className="inline-flex items-center gap-2 rounded-lg bg-[#f5f5f5] px-4 py-3 text-base font-medium leading-6 text-[#525252]"
+                className="inline-flex items-center gap-2 rounded-lg bg-secondary px-4 py-3 text-base font-medium leading-6 text-secondary-foreground"
               >
                 Download CV
                 <FileDown className="h-5 w-5" strokeWidth={2} />
@@ -61,19 +61,19 @@ export function Hero() {
               {avatars.map((avatar, index) => (
                 <div
                   key={avatar}
-                  className={`relative h-12 w-12 overflow-hidden rounded-full border border-[#e5e5e5] ${index > 0 ? '-ml-4' : ''}`}
+                  className={`relative h-12 w-12 overflow-hidden rounded-full border border-border ${index > 0 ? '-ml-4' : ''}`}
                 >
                   <Image src={avatar} alt="" fill sizes="48px" className="object-cover" />
                 </div>
               ))}
-              <div className="-ml-4 grid h-12 w-12 place-items-center rounded-full border border-[#e5e5e5] bg-[#ff9d00] text-base leading-6 text-[#fafafa]">
+              <div className="-ml-4 grid h-12 w-12 place-items-center rounded-full border border-border bg-primary text-base leading-6 text-primary-foreground">
                 98%
               </div>
             </div>
 
             <div className="space-y-1">
               <p className="text-[18px] font-medium leading-7">Loved by founders globally</p>
-              <p className="text-base leading-6 text-[#525252]">5K Clients Word-Wide</p>
+              <p className="text-base leading-6 text-muted-foreground">5K Clients Word-Wide</p>
             </div>
           </div>
         </div>

@@ -29,7 +29,7 @@ export function CardOverlay() {
       </div>
 
       {/* Overlay do texto por cima */}
-      <div className="absolute inset-x-0 bottom-0 overflow-hidden rounded-b-4xl bg-linear-to-t from-black/90 to-transparent px-5 pb-5 pt-10 text-[#fafafa]">
+      <div className="absolute inset-x-0 bottom-0 overflow-hidden rounded-b-4xl bg-linear-to-t from-overlay-scrim to-transparent px-5 pb-5 pt-10 text-surface-inverse-foreground">
         <div className="space-y-2">
           <h2 className="text-[28px] font-medium leading-9">Igor Ferrão de Souza</h2>
           <p className="text-[18px] leading-7">
@@ -39,8 +39,8 @@ export function CardOverlay() {
           </p>
         </div>
       </div>
-      <div className="absolute left-5 top-[57%] z-10 flex max-h-11 translate-x-0 items-center justify-center gap-1 rounded-lg bg-white p-4 text-base leading-6 text-[#525252] shadow-[0_20px_34px_rgba(192,192,192,0.25)] lg:left-[calc(50%-264.5px)] lg:top-[37%] lg:-translate-x-1/2">
-        <span className="h-2 w-2 rounded-full bg-[#4bdd5c]" />
+      <div className="absolute left-5 top-[57%] z-10 flex max-h-11 translate-x-0 items-center justify-center gap-1 rounded-lg bg-card p-4 text-base leading-6 text-muted-foreground shadow-[0_20px_34px_rgba(192,192,192,0.25)] lg:left-[calc(50%-264.5px)] lg:top-[37%] lg:-translate-x-1/2">
+        <span className="h-2 w-2 rounded-full bg-status-available" />
         Available for new projects
       </div>
     </div>

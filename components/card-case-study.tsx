@@ -40,7 +40,7 @@ export function Card_Case_Study({
   return (
     <article
       className={`rounded-2xl p-6 ${
-        isDark ? 'bg-[#262626] text-[#fafafa]' : 'bg-[#f5f5f5] text-[#262626]'
+        isDark ? 'bg-surface-inverse text-surface-inverse-foreground' : 'bg-secondary text-foreground'
       }`}
     >
       <div className="grid min-h-[354px] gap-8 lg:grid-cols-2">
@@ -105,8 +105,8 @@ function CardContent({
   isDark: boolean;
   href: string;
 }) {
-  const bodyTone = isDark ? 'text-[#fafafa]' : 'text-[#525252]';
-  const borderTone = isDark ? 'border-[#fafafa]' : 'border-[#525252]';
+  const bodyTone = isDark ? 'text-surface-inverse-foreground' : 'text-muted-foreground';
+  const borderTone = isDark ? 'border-surface-inverse-foreground' : 'border-muted-foreground';
 
   return (
     <div className="flex h-full flex-col gap-12">
@@ -142,7 +142,7 @@ function CardContent({
       <div>
         <Link
           href={href}
-          className="inline-flex items-center gap-2 rounded-lg bg-[#ff9d00] px-4 py-3 text-base font-medium leading-6 text-[#fafafa]"
+          className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-3 text-base font-medium leading-6 text-primary-foreground"
         >
           View case study
           <ArrowRight className="h-4 w-4" strokeWidth={1.8} />
