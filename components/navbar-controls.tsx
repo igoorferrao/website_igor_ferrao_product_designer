@@ -76,8 +76,8 @@ export function NavbarControls({ content, currentLocale }: { content: SiteConten
   }
 
   return (
-    <div className="flex items-center gap-3">
-      <form ref={formRef} action={setLocale} className="hidden sm:block">
+    <div className="flex items-center gap-2 sm:gap-3 ">
+      <form ref={formRef} action={setLocale}>
         <input type="hidden" name="redirectTo" value={pathname} />
         <input ref={localeInputRef} type="hidden" name="locale" defaultValue={currentLocale} />
 
@@ -85,7 +85,7 @@ export function NavbarControls({ content, currentLocale }: { content: SiteConten
           <SelectTrigger
             aria-label={content.languageSelectAriaLabel}
             size="sm"
-            className="h-9 gap-2 rounded-xl border-transparent px-3 text-sm text-muted-foreground hover:bg-muted"
+            className="h-9 gap-1.5 rounded-xl border-border/60 px-2.5 text-sm text-muted-foreground hover:bg-muted sm:gap-2 sm:px-3"
           >
             <SelectValue placeholder={currentLabel} />
           </SelectTrigger>
@@ -99,9 +99,9 @@ export function NavbarControls({ content, currentLocale }: { content: SiteConten
         </Select>
       </form>
 
-      <Separator orientation="vertical" className="hidden h-6 sm:block" />
+      <Separator orientation="vertical" className="h-9" />
 
-      <div ref={menuRef} className="relative hidden sm:block">
+      <div ref={menuRef} className="relative">
         <ButtonGroup>
           <Button
             type="button"
