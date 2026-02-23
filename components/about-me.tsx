@@ -1,52 +1,35 @@
 import { Play } from 'lucide-react';
 import { Instrument_Sans } from 'next/font/google';
+import type { SiteContent } from '@/content/types';
 
 const instrumentSans = Instrument_Sans({
   subsets: ['latin'],
   variable: '--font-instrument-sans',
 });
 
-const stats = [
-  {
-    label: 'Client satisfaction rate',
-    value: '98%',
-    description: 'Delivering measurable financial impact.',
-  },
-  {
-    label: 'Business transformed',
-    value: '99+',
-    description: 'Helping companies grow, perform better.',
-  },
-  {
-    label: 'Experience and Expertise',
-    value: '14+',
-    description: 'Trusted and recommended by clients.',
-  },
-];
-
-export function AboutMe() {
+export function AboutMe({ content }: { content: SiteContent['about'] }) {
   return (
-    <section className="py-8 px-4 lg:py-16 lg:px-16">
+    <section id="about" className="py-8 px-4 lg:py-16 lg:px-16">
       <div
         className={`${instrumentSans.variable} mx-auto w-full max-w-360 rounded-4xl bg-surface-inverse p-6 font-(--font-instrument-sans) text-surface-inverse-foreground md:p-10`}
       >
         <div className="space-y-4">
           <div className="flex items-center gap-2">
             <span className="h-1.5 w-1.5 bg-surface-inverse-foreground" />
-            <p className="text-base font-medium leading-6">ABOUT ME</p>
+            <p className="text-base font-medium leading-6">{content.label}</p>
           </div>
 
           <div className="grid items-end gap-6 lg:grid-cols-[1fr_215px] lg:pr-20">
             <h2 className="max-w-172.5 text-[28px] font-medium leading-9 tracking-[-0.02em]">
               <span className="box-decoration-clone bg-surface-inverse-foreground/12 px-1">
-                I&apos;m Ethan Riley, your creative partner in design.
+                {content.headlineLines[0]}
               </span>
               <br />
               <span className="box-decoration-clone bg-surface-inverse-foreground/12 px-1">
-                For me, design is all about creating experiences that
+                {content.headlineLines[1]}
               </span>
               <br />
-              <span>really connect with people. It&apos;s not just looking good</span>
+              <span>{content.headlineLines[2]}</span>
             </h2>
 
             <a
@@ -54,7 +37,7 @@ export function AboutMe() {
               target="_blank"
               rel="noreferrer"
               className="group relative flex h-29 w-full items-center justify-center overflow-hidden rounded-2xl border border-surface-inverse-foreground/10 bg-surface-inverse-card md:w-53.75"
-              aria-label="Open video placeholder"
+              aria-label={content.videoAriaLabel}
             >
               <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.01))]" />
               <div className="relative flex h-11 w-11 items-center justify-center rounded-full bg-surface-inverse-foreground/90 text-surface-inverse transition-transform group-hover:scale-105">
@@ -65,7 +48,7 @@ export function AboutMe() {
         </div>
 
         <div className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-          {stats.map((item) => (
+          {content.stats.map((item) => (
             <article key={item.label} className="space-y-4">
               <p className="inline-flex rounded-lg bg-surface-inverse-pill px-3 py-2 text-base leading-6 text-surface-inverse-foreground">
                 {item.label}

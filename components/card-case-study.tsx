@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 type Stat = {
   value: string;
@@ -140,13 +141,12 @@ function CardContent({
       </div>
 
       <div>
-        <Link
-          href={href}
-          className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-3 text-base font-medium leading-6 text-primary-foreground"
-        >
-          View case study
-          <ArrowRight className="h-4 w-4" strokeWidth={1.8} />
-        </Link>
+        <Button asChild size="xl">
+          <Link href={href}>
+            View case study
+            <ArrowRight className="h-4 w-4" strokeWidth={1.8} />
+          </Link>
+        </Button>
       </div>
     </div>
   );

@@ -1,26 +1,27 @@
 import { Instrument_Sans } from 'next/font/google';
 import { Card_Case_Study } from '@/components/card-case-study';
 import { caseStudyCards } from '@/lib/case-studies';
+import type { SiteContent } from '@/content/types';
 
 const instrumentSans = Instrument_Sans({
   subsets: ['latin'],
   variable: '--font-instrument-sans',
 });
 
-export function CaseStudy() {
+export function CaseStudy({ content }: { content: SiteContent['caseStudy'] }) {
   return (
-    <section className="px-4 py-8 lg:px-16 lg:py-16">
+    <section id="cases" className="px-4 py-8 lg:px-16 lg:py-16">
       <div
         className={`${instrumentSans.variable} mx-auto w-full max-w-[1440px] space-y-16 font-[var(--font-instrument-sans)] text-foreground`}
       >
         <div className="max-w-[500px] space-y-4">
           <div className="flex items-center gap-2">
             <span className="h-1.5 w-1.5 bg-muted-foreground" />
-            <p className="text-base font-medium leading-6">CASE STUDY</p>
+            <p className="text-base font-medium leading-6">{content.label}</p>
           </div>
-          <h2 className="text-[40px] font-medium leading-[1.2] tracking-[-0.05em]">Real Results Showcase</h2>
+          <h2 className="text-[40px] font-medium leading-[1.2] tracking-[-0.05em]">{content.title}</h2>
           <p className="text-base leading-6 text-muted-foreground">
-            Delivering standout experiences that are both visually striking and user-focused.
+            {content.description}
           </p>
         </div>
 

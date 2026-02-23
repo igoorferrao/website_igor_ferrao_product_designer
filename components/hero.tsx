@@ -3,6 +3,8 @@ import { CardOverlay } from './ui/card-overlay';
 import { Instrument_Sans } from 'next/font/google';
 import { FileDown } from 'lucide-react';
 import { MoveRight } from 'lucide-react';
+import type { SiteContent } from '@/content/types';
+import { Button } from '@/components/ui/button';
 
 const instrumentSans = Instrument_Sans({
   subsets: ['latin'],
@@ -16,7 +18,7 @@ const avatars = [
   '/c38e479d74e602ba43fa0b0d95cd4db2017eb762.png',
 ];
 
-export function Hero() {
+export function Hero({ content }: { content: SiteContent['hero'] }) {
   return (
     <section className={`${instrumentSans.variable} py-8 px-4 md:py-16 md:px-16`}>
       <div className="mx-auto grid w-full max-w-360 items-start gap-10 font-(--font-instrument-sans) text-foreground lg:grid-cols-[1fr_minmax(360px,512px)]">
@@ -24,30 +26,28 @@ export function Hero() {
           <div className="max-w-140 space-y-8">
             <div className="w-full md:min-w-100 space-y-5">
               <h1 className="text-[40px] leading-[1.16] font-medium tracking-[-0.04em] md:text-[48px] md:leading-14">
-                Freelance Web Designer
+                {content.title.line1}
                 <br />
-                from Brazil
+                {content.title.line2}
               </h1>
               <p className="max-w-117.5 text-base leading-6 text-muted-foreground">
-                I specialize in delivering designs that are not only visually striking but also impactful.
+                {content.subtitle}
               </p>
             </div>
 
             <div className="flex flex-wrap items-center gap-2">
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-3 text-base font-medium leading-6 text-primary-foreground"
-              >
-                Let&apos;s Talk
-                <MoveRight className="h-5 w-5" strokeWidth={2} />
-              </a>
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 rounded-lg bg-secondary px-4 py-3 text-base font-medium leading-6 text-secondary-foreground"
-              >
-                Download CV
-                <FileDown className="h-5 w-5" strokeWidth={2} />
-              </a>
+              <Button asChild size="xl">
+                <a href="#">
+                  {content.ctas.primary}
+                  <MoveRight className="h-5 w-5" strokeWidth={2} />
+                </a>
+              </Button>
+              <Button asChild variant="secondary" size="xl">
+                <a href="#">
+                  {content.ctas.secondary}
+                  <FileDown className="h-5 w-5" strokeWidth={2} />
+                </a>
+              </Button>
             </div>
           </div>
 
@@ -67,8 +67,8 @@ export function Hero() {
             </div>
 
             <div className="space-y-1">
-              <p className="text-[18px] font-medium leading-7">Loved by founders globally</p>
-              <p className="text-base leading-6 text-muted-foreground">5K Clients Word-Wide</p>
+              <p className="text-[18px] font-medium leading-7">{content.socialProof.title}</p>
+              <p className="text-base leading-6 text-muted-foreground">{content.socialProof.subtitle}</p>
             </div>
           </div>
         </div>

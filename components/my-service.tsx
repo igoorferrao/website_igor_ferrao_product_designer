@@ -5,6 +5,8 @@ import { Instrument_Sans } from 'next/font/google';
 import { ArrowRight } from 'lucide-react';
 import { CirclePlay } from 'lucide-react';
 import { useState } from 'react';
+import type { SiteContent } from '@/content/types';
+import { Button } from '@/components/ui/button';
 
 const instrumentSans = Instrument_Sans({
   subsets: ['latin'],
@@ -14,41 +16,30 @@ const instrumentSans = Instrument_Sans({
 const serviceTabs = [
   {
     id: 'branding',
-    label: 'Branding',
     imageSrc: '/figma-assets/6212514260f27e0b62ccc7b0d6f5537f64fa68f5.png',
-    imageAlt: 'Branding service preview',
   },
   {
     id: 'web-development',
-    label: 'Web Development',
     imageSrc: '/figma-assets/webdevelopment_exemple.jpg',
-    imageAlt: 'Web development service preview',
   },
   {
     id: 'web-design',
-    label: 'Web Design',
     imageSrc: '/figma-assets/6212514260f27e0b62ccc7b0d6f5537f64fa68f5.png',
-    imageAlt: 'Web design service preview',
   },
   {
     id: 'marketing',
-    label: 'Marketing',
     imageSrc: '/figma-assets/6212514260f27e0b62ccc7b0d6f5537f64fa68f5.png',
-    imageAlt: 'Marketing service preview',
   },
 ] as const;
 
-const primaryButtonClasses =
-  'inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-3 text-base font-medium leading-6 text-primary-foreground';
-const secondaryButtonClasses =
-  'inline-flex items-center gap-2 rounded-lg bg-secondary px-4 py-3 text-base font-medium leading-6 text-secondary-foreground';
-
-export function MyService() {
+export function MyService({ content }: { content: SiteContent['myService'] }) {
   const [activeTabId, setActiveTabId] = useState<(typeof serviceTabs)[number]['id']>(serviceTabs[0].id);
   const activeTab = serviceTabs.find((tab) => tab.id === activeTabId) ?? serviceTabs[0];
+  const tabsById = new Map(content.tabs.map((tab) => [tab.id, tab] as const));
+  const activeTabCopy = tabsById.get(activeTab.id);
 
   return (
-    <section className="py-8 px-4 lg:py-16 lg:px-16">
+    <section id="services" className="py-8 px-4 lg:py-16 lg:px-16">
       <div
         className={`${instrumentSans.variable} mx-auto w-full max-w-360 font-(--font-instrument-sans) text-foreground`}
       >
@@ -57,34 +48,39 @@ export function MyService() {
             <div className="space-y-4">
               <div className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 bg-muted-foreground" />
-                <p className="text-base font-medium leading-6">MY SERVICE</p>
+                <p className="text-base font-medium leading-6">{content.label}</p>
               </div>
               <h2 className="text-[40px] font-medium leading-[1.3] tracking-[-0.05em]">
-                Professional Service Solutions
+                {content.title}
               </h2>
               <p className="max-w-140 text-base leading-[1.6] text-muted-foreground">
-                Tailored digital solutions designed to elevate your business performance, growth, and long-term success.
+                {content.description}
               </p>
             </div>
 
             <div className="flex items-center gap-2">
-              <a href="#" className={primaryButtonClasses}>
-                Hire Me
-                <ArrowRight className="h-5 w-5" strokeWidth={1.5} />
-              </a>
-              <a href="#" className={secondaryButtonClasses}>
-                Watch Video
-                <CirclePlay className="h-5 w-5" strokeWidth={1.5} />
-              </a>
+              <Button asChild size="xl">
+                <a href="#">
+                  {content.ctas.primary}
+                  <ArrowRight className="h-5 w-5" strokeWidth={1.5} />
+                </a>
+              </Button>
+              <Button asChild variant="secondary" size="xl">
+                <a href="#">
+                  {content.ctas.secondary}
+                  <CirclePlay className="h-5 w-5" strokeWidth={1.5} />
+                </a>
+              </Button>
             </div>
           </div>
 
           <div className="grid items-start gap-10 lg:min-h-131.75 lg:grid-cols-2 lg:gap-10">
-            <div className="space-y-4" role="tablist" aria-label="Service categories">
+            <div className="space-y-4" role="tablist" aria-label={content.tabsAriaLabel}>
               {serviceTabs.map((tab) => {
                 const isActive = tab.id === activeTabId;
+                const tabCopy = tabsById.get(tab.id);
                 return (
-                  <button
+                  <Button
                     key={tab.id}
                     type="button"
                     role="tab"
@@ -93,12 +89,13 @@ export function MyService() {
                     id={`${tab.id}-tab`}
                     tabIndex={isActive ? 0 : -1}
                     onClick={() => setActiveTabId(tab.id)}
-                    className={`flex w-full items-center justify-between rounded-xl px-5 py-4 text-left transition-colors ${
-                      isActive ? 'bg-background' : 'bg-secondary'
+                    variant="ghost"
+                    className={`h-auto w-full justify-between rounded-xl px-5 py-4 text-left transition-colors ${
+                      isActive ? 'bg-background hover:bg-background' : 'bg-secondary hover:bg-secondary/80'
                     }`}
                   >
                     <span className="text-[24px] font-medium leading-[1.35] tracking-[-0.02em]">
-                      {tab.label}
+                      {tabCopy?.label ?? tab.id}
                     </span>
                     <span className="flex h-12 w-12 items-center justify-center rounded-full border border-border">
                       <ArrowRight
@@ -106,7 +103,7 @@ export function MyService() {
                         strokeWidth={1.6}
                       />
                     </span>
-                  </button>
+                  </Button>
                 );
               })}
             </div>
@@ -119,7 +116,7 @@ export function MyService() {
             >
               <Image
                 src={activeTab.imageSrc}
-                alt={activeTab.imageAlt}
+                alt={activeTabCopy?.imageAlt ?? ''}
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"

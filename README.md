@@ -22,6 +22,19 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## i18n (pt-BR / en-US / es-ES)
+
+- All copy is centralized in `content/locales/` (one file per locale).
+- Locale detection is cookie-based (`site_locale`) with `Accept-Language` fallback.
+- Helpers:
+  - `lib/i18n/get-locale.ts` for resolving/storing the locale
+  - `content/get-content.ts` for loading the localized content object
+
+Optional locale switcher:
+
+- UI component: `components/locale-switcher.tsx`
+- Server action: `app/actions/set-locale.ts`
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
