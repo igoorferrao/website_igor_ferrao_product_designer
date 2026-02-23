@@ -12,12 +12,9 @@ import { ButtonGroup } from '@/components/ui/button-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { runRadialRootTransition } from '@/lib/radial-root-transition';
 
 type ColorTheme = 'default' | 'nature' | 'summer' | 'claude';
-
-function shouldReduceMotion() {
-  return window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false;
-}
 
 function getStoredColorTheme(): ColorTheme {
   const value = window.localStorage.getItem('site_color_theme');
@@ -81,29 +78,7 @@ export function NavbarControls({
     setColorTheme(theme);
 
     const run = () => applyColorTheme(theme);
-
-    const x = event.clientX || window.innerWidth / 2;
-    const y = event.clientY || window.innerHeight / 2;
-    const endRadius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
-
-    if (!('startViewTransition' in document) || shouldReduceMotion()) {
-      run();
-      return;
-    }
-
-    const transition = document.startViewTransition(run);
-    transition.ready.then(() => {
-      document.documentElement.animate(
-        {
-          clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${endRadius}px at ${x}px ${y}px)`],
-        },
-        {
-          duration: 520,
-          easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
-          pseudoElement: '::view-transition-new(root)',
-        }
-      );
-    });
+    runRadialRootTransition(run, { x: event.clientX, y: event.clientY });
   }
 
   return (
