@@ -39,7 +39,7 @@ export function CardOverlay() {
           </p>
         </div>
       </div>
-      <div className="absolute left-5 top-[57%] z-10 flex max-h-11 translate-x-0 items-center justify-center gap-1 rounded-lg bg-card p-4 text-base leading-6 text-muted-foreground shadow-[0_20px_34px_rgba(192,192,192,0.25)] lg:left-[calc(50%-264.5px)] lg:top-[37%] lg:-translate-x-1/2">
+      <div className="absolute left-5 top-[57%] z-10 flex max-h-11 translate-x-0 items-center justify-center gap-1 rounded-lg bg-secondary p-4 text-base leading-6 text-secondary-foreground shadow-[0px_16px_23px_rgba(192,192,192,0.10)] lg:left-[calc(50%-264.5px)] lg:top-[37%] lg:-translate-x-1/2">
         <span className="h-2 w-2 rounded-full bg-status-available" />
         Available for new projects
       </div>

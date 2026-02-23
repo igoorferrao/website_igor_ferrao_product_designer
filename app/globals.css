@@ -497,8 +497,25 @@ html {
   .patterns-track {
     animation: none;
   }
+
+  .partners-track {
+    animation: none;
+  }
 }
 
 .patterns-track {
   animation: patterns-marquee 18s linear infinite;
+}
+
+@keyframes partners-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.partners-track {
+  animation: partners-marquee 24s linear infinite;
 }
