@@ -130,7 +130,9 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                 </div>
 
                 <section className="space-y-3">
-                  <h2 className="text-[22px] font-medium leading-8 text-foreground">{sectionTitles.redesignStrategy}</h2>
+                  <h2 className="text-[22px] font-medium leading-8 text-foreground">
+                    {sectionTitles.redesignStrategy}
+                  </h2>
                   <ul className="space-y-2">
                     {detail.redesignStrategy.map((item) => (
                       <li key={item} className="flex gap-2">

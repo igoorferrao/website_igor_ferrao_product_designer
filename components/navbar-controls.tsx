@@ -14,11 +14,11 @@ import { Separator } from '@/components/ui/separator';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { runRadialRootTransition } from '@/lib/radial-root-transition';
 
-type ColorTheme = 'default' | 'nature' | 'summer' | 'claude';
+type ColorTheme = 'default' | 'nature' | 'modern' | 'claude';
 
 function getStoredColorTheme(): ColorTheme {
   const value = window.localStorage.getItem('site_color_theme');
-  return value === 'nature' || value === 'summer' || value === 'claude' ? value : 'default';
+  return value === 'nature' || value === 'modern' || value === 'claude' ? value : 'default';
 }
 
 function applyColorTheme(theme: ColorTheme) {
@@ -32,13 +32,7 @@ function applyColorTheme(theme: ColorTheme) {
   if (theme === 'default') window.localStorage.removeItem('site_color_theme');
 }
 
-export function NavbarControls({
-  content,
-  currentLocale,
-}: {
-  content: SiteContent['navbar'];
-  currentLocale: Locale;
-}) {
+export function NavbarControls({ content, currentLocale }: { content: SiteContent['navbar']; currentLocale: Locale }) {
   const pathname = usePathname();
   const formRef = React.useRef<HTMLFormElement>(null);
   const localeInputRef = React.useRef<HTMLInputElement>(null);
@@ -145,7 +139,7 @@ export function NavbarControls({
               [
                 { value: 'default', label: 'Ferrão Design' },
                 { value: 'nature', label: 'Nature' },
-                { value: 'summer', label: 'Summer' },
+                { value: 'modern', label: 'Modern' },
                 { value: 'claude', label: 'Claude' },
               ] as const
             ).map((item) => (

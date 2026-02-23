@@ -10,7 +10,7 @@ export function ThemeInitScript() {
     root.classList.toggle('dark', mode === 'dark');
 
     const storedColorTheme = localStorage.getItem('site_color_theme');
-    const allowed = new Set(['nature', 'summer', 'claude']);
+    const allowed = new Set(['nature', 'modern', 'claude']);
     if (storedColorTheme && allowed.has(storedColorTheme)) {
       root.dataset.theme = storedColorTheme;
     } else {
@@ -22,4 +22,3 @@ export function ThemeInitScript() {
 
   return <script dangerouslySetInnerHTML={{ __html: script }} />;
 }
-
