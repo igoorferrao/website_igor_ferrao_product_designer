@@ -16,6 +16,10 @@ function getStoredTheme(): Theme | null {
   return value === 'dark' || value === 'light' ? value : null;
 }
 
+function shouldReduceMotion() {
+  return window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false;
+}
+
 export function ThemeToggle({ ariaLabel }: { ariaLabel: string }) {
   const [theme, setTheme] = React.useState<Theme>('light');
 
@@ -33,11 +37,44 @@ export function ThemeToggle({ ariaLabel }: { ariaLabel: string }) {
     applyTheme(initial);
   }, []);
 
-  function toggleTheme() {
+  function toggleTheme(event: React.MouseEvent<HTMLButtonElement>) {
     const next: Theme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(next);
-    window.localStorage.setItem('site_theme', next);
-    applyTheme(next);
+
+    const x = event.clientX || window.innerWidth / 2;
+    const y = event.clientY || window.innerHeight / 2;
+    const endRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    );
+
+    const runToggle = () => {
+      setTheme(next);
+      window.localStorage.setItem('site_theme', next);
+      applyTheme(next);
+    };
+
+    if (!('startViewTransition' in document) || shouldReduceMotion()) {
+      runToggle();
+      return;
+    }
+
+    const transition = document.startViewTransition(runToggle);
+
+    transition.ready.then(() => {
+      const keyframes = [
+        `circle(0px at ${x}px ${y}px)`,
+        `circle(${endRadius}px at ${x}px ${y}px)`,
+      ];
+
+      document.documentElement.animate(
+        { clipPath: keyframes },
+        {
+          duration: 520,
+          easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
+          pseudoElement: '::view-transition-new(root)',
+        }
+      );
+    });
   }
 
   const Icon = theme === 'dark' ? MoonIcon : SunIcon;
@@ -55,4 +92,3 @@ export function ThemeToggle({ ariaLabel }: { ariaLabel: string }) {
     </Button>
   );
 }
-

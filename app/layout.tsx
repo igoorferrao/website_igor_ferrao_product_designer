@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Noto_Serif } from 'next/font/google';
 import './globals.css';
 import { getLocale } from '@/lib/i18n/get-locale';
+import { ThemeInitScript } from '@/components/theme-init-script';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -20,7 +21,10 @@ export default async function RootLayout({
   const locale = await getLocale();
 
   return (
-    <html lang={locale} className={`${inter.variable} ${notoSerif.variable}`}>
+    <html lang={locale} className={`${inter.variable} ${notoSerif.variable}`} suppressHydrationWarning>
+      <head>
+        <ThemeInitScript />
+      </head>
       <body className="antialiased">{children}</body>
     </html>
   );
