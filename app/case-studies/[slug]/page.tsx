@@ -57,7 +57,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   return (
     <div className="flex justify-center bg-[radial-gradient(at_-50%_0%,var(--page-gradient-accent)_0%,var(--page-gradient-fade-light)_50%),radial-gradient(at_160%_0%,var(--page-gradient-accent)_0%,var(--page-gradient-fade-light)_50%),radial-gradient(at_180%_120%,var(--page-gradient-accent)_0%,var(--page-gradient-fade-dark)_50%)] p-4 selection:bg-primary/40 selection:text-primary-foreground md:p-16">
       <main
-        className={`${instrumentSans.variable} w-full max-w-360 bg-background font-(--font-instrument-sans) shadow-2xl`}
+        className={`${instrumentSans.variable} w-full max-w-360 bg-background font-(--font-instrument-sans) shadow-2xl rounded-4xl`}
       >
         <Navbar content={content.navbar} currentLocale={locale} />
         <section className="py-8 px-4 md:py-16 md:px-16 text-foreground">
