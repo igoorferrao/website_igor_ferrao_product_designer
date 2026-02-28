@@ -11,16 +11,13 @@ import { Button } from '@/components/ui/button';
 import { ButtonGroup } from '@/components/ui/button-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { runRadialRootTransition } from '@/lib/radial-root-transition';
 
-type ColorTheme = 'default' | 'nature' | 'summer' | 'claude';
-
-function shouldReduceMotion() {
-  return window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false;
-}
+type ColorTheme = 'default' | 'nature' | 'modern' | 'claude';
 
 function getStoredColorTheme(): ColorTheme {
   const value = window.localStorage.getItem('site_color_theme');
-  return value === 'nature' || value === 'summer' || value === 'claude' ? value : 'default';
+  return value === 'nature' || value === 'modern' || value === 'claude' ? value : 'default';
 }
 
 function applyColorTheme(theme: ColorTheme) {
@@ -34,13 +31,7 @@ function applyColorTheme(theme: ColorTheme) {
   if (theme === 'default') window.localStorage.removeItem('site_color_theme');
 }
 
-export function NavbarControls({
-  content,
-  currentLocale,
-}: {
-  content: SiteContent['navbar'];
-  currentLocale: Locale;
-}) {
+export function NavbarControls({ content, currentLocale }: { content: SiteContent['navbar']; currentLocale: Locale }) {
   const pathname = usePathname();
   const formRef = React.useRef<HTMLFormElement>(null);
   const localeInputRef = React.useRef<HTMLInputElement>(null);
@@ -80,33 +71,11 @@ export function NavbarControls({
     setColorTheme(theme);
 
     const run = () => applyColorTheme(theme);
-
-    const x = event.clientX || window.innerWidth / 2;
-    const y = event.clientY || window.innerHeight / 2;
-    const endRadius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
-
-    if (!('startViewTransition' in document) || shouldReduceMotion()) {
-      run();
-      return;
-    }
-
-    const transition = document.startViewTransition(run);
-    transition.ready.then(() => {
-      document.documentElement.animate(
-        {
-          clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${endRadius}px at ${x}px ${y}px)`],
-        },
-        {
-          duration: 520,
-          easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
-          pseudoElement: '::view-transition-new(root)',
-        }
-      );
-    });
+    runRadialRootTransition(run, { x: event.clientX, y: event.clientY });
   }
 
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-2 sm:gap-3 ">
       <form ref={formRef} action={setLocale}>
         <input type="hidden" name="redirectTo" value={pathname} />
         <input ref={localeInputRef} type="hidden" name="locale" defaultValue={currentLocale} />
@@ -115,7 +84,7 @@ export function NavbarControls({
           <SelectTrigger
             aria-label={content.languageSelectAriaLabel}
             size="sm"
-            className="h-9 gap-2 rounded-xl border-transparent px-3 text-sm text-muted-foreground hover:bg-muted"
+            className="h-9 gap-1.5 rounded-xl border-border/60 px-2.5 text-sm text-muted-foreground hover:bg-muted sm:gap-2 sm:px-3"
           >
             <SelectValue placeholder={currentLabel} />
           </SelectTrigger>
@@ -129,48 +98,35 @@ export function NavbarControls({
         </Select>
       </form>
 
-      <div ref={menuRef} className="relative">
-        <Button
-          type="button"
-          variant="outline"
-          size="icon-lg"
-          className="rounded-xl sm:hidden"
-          aria-label={content.paletteAriaLabel}
-          aria-haspopup="menu"
-          aria-expanded={isThemeMenuOpen}
-          onClick={() => setIsThemeMenuOpen((open) => !open)}
-        >
-          <PaletteIcon className="size-5 text-primary" />
-        </Button>
+      <Separator orientation="vertical" className="h-9" />
 
-        <div className="hidden sm:block">
-          <ButtonGroup>
-            <Button
-              type="button"
-              variant="outline"
-              size="icon-lg"
-              className="rounded-xl"
-              aria-label={content.paletteAriaLabel}
-              aria-haspopup="menu"
-              aria-expanded={isThemeMenuOpen}
-              onClick={() => setIsThemeMenuOpen((open) => !open)}
-            >
-              <PaletteIcon className="size-5 text-primary" />
-            </Button>
-            <Button
-              type="button"
-              variant="outline"
-              size="icon-lg"
-              className="rounded-xl"
-              aria-label={content.paletteMenuAriaLabel}
-              aria-haspopup="menu"
-              aria-expanded={isThemeMenuOpen}
-              onClick={() => setIsThemeMenuOpen((open) => !open)}
-            >
-              <ChevronDownIcon className="size-5 text-muted-foreground" />
-            </Button>
-          </ButtonGroup>
-        </div>
+      <div ref={menuRef} className="relative">
+        <ButtonGroup>
+          <Button
+            type="button"
+            variant="outline"
+            size="icon-lg"
+            className="rounded-xl"
+            aria-label={content.paletteAriaLabel}
+            aria-haspopup="menu"
+            aria-expanded={isThemeMenuOpen}
+            onClick={() => setIsThemeMenuOpen((open) => !open)}
+          >
+            <PaletteIcon className="size-5 text-primary" />
+          </Button>
+          <Button
+            type="button"
+            variant="outline"
+            size="icon-lg"
+            className="rounded-xl"
+            aria-label={content.paletteMenuAriaLabel}
+            aria-haspopup="menu"
+            aria-expanded={isThemeMenuOpen}
+            onClick={() => setIsThemeMenuOpen((open) => !open)}
+          >
+            <ChevronDownIcon className="size-5 text-muted-foreground" />
+          </Button>
+        </ButtonGroup>
 
         {isThemeMenuOpen ? (
           <div
@@ -182,7 +138,7 @@ export function NavbarControls({
               [
                 { value: 'default', label: 'Ferrão Design' },
                 { value: 'nature', label: 'Nature' },
-                { value: 'summer', label: 'Summer' },
+                { value: 'modern', label: 'Modern' },
                 { value: 'claude', label: 'Claude' },
               ] as const
             ).map((item) => (

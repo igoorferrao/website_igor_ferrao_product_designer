@@ -4,6 +4,7 @@ import * as React from 'react';
 import { MoonIcon, SunIcon } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
+import { runRadialRootTransition } from '@/lib/radial-root-transition';
 
 type Theme = 'light' | 'dark';
 
@@ -14,10 +15,6 @@ function applyTheme(theme: Theme) {
 function getStoredTheme(): Theme | null {
   const value = window.localStorage.getItem('site_theme');
   return value === 'dark' || value === 'light' ? value : null;
-}
-
-function shouldReduceMotion() {
-  return window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false;
 }
 
 export function ThemeToggle({ ariaLabel }: { ariaLabel: string }) {
@@ -40,41 +37,13 @@ export function ThemeToggle({ ariaLabel }: { ariaLabel: string }) {
   function toggleTheme(event: React.MouseEvent<HTMLButtonElement>) {
     const next: Theme = theme === 'dark' ? 'light' : 'dark';
 
-    const x = event.clientX || window.innerWidth / 2;
-    const y = event.clientY || window.innerHeight / 2;
-    const endRadius = Math.hypot(
-      Math.max(x, window.innerWidth - x),
-      Math.max(y, window.innerHeight - y)
-    );
-
     const runToggle = () => {
       setTheme(next);
       window.localStorage.setItem('site_theme', next);
       applyTheme(next);
     };
 
-    if (!('startViewTransition' in document) || shouldReduceMotion()) {
-      runToggle();
-      return;
-    }
-
-    const transition = document.startViewTransition(runToggle);
-
-    transition.ready.then(() => {
-      const keyframes = [
-        `circle(0px at ${x}px ${y}px)`,
-        `circle(${endRadius}px at ${x}px ${y}px)`,
-      ];
-
-      document.documentElement.animate(
-        { clipPath: keyframes },
-        {
-          duration: 520,
-          easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
-          pseudoElement: '::view-transition-new(root)',
-        }
-      );
-    });
+    runRadialRootTransition(runToggle, { x: event.clientX, y: event.clientY });
   }
 
   const Icon = theme === 'dark' ? MoonIcon : SunIcon;

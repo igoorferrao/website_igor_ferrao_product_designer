@@ -57,7 +57,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   return (
     <div className="flex justify-center bg-[radial-gradient(at_-50%_0%,var(--page-gradient-accent)_0%,var(--page-gradient-fade-light)_50%),radial-gradient(at_160%_0%,var(--page-gradient-accent)_0%,var(--page-gradient-fade-light)_50%),radial-gradient(at_180%_120%,var(--page-gradient-accent)_0%,var(--page-gradient-fade-dark)_50%)] p-4 selection:bg-primary/40 selection:text-primary-foreground md:p-16">
       <main
-        className={`${instrumentSans.variable} w-full max-w-360 rounded-4xl bg-background font-(--font-instrument-sans) shadow-2xl`}
+        className={`${instrumentSans.variable} w-full max-w-360 bg-background font-(--font-instrument-sans) shadow-2xl rounded-4xl`}
       >
         <Navbar content={content.navbar} currentLocale={locale} />
         <section className="py-8 px-4 md:py-16 md:px-16 text-foreground">
@@ -130,7 +130,9 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                 </div>
 
                 <section className="space-y-3">
-                  <h2 className="text-[22px] font-medium leading-8 text-foreground">{sectionTitles.redesignStrategy}</h2>
+                  <h2 className="text-[22px] font-medium leading-8 text-foreground">
+                    {sectionTitles.redesignStrategy}
+                  </h2>
                   <ul className="space-y-2">
                     {detail.redesignStrategy.map((item) => (
                       <li key={item} className="flex gap-2">
@@ -206,10 +208,10 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                   {detail.impactMetrics.map((metric) => (
                     <div
                       key={metric.label}
-                      className="rounded-xl border border-metric-card-border bg-metric-card-bg px-4 py-3 text-foreground"
+                      className="rounded-xl border border-accent-foreground bg-accent px-4 py-3 text-accent-foreground"
                     >
                       <p className="text-[26px] font-medium leading-8">{metric.value}</p>
-                      <p className="text-sm leading-5 text-metric-card-label">{metric.label}</p>
+                      <p className="text-sm leading-5 text-accent-foreground">{metric.label}</p>
                     </div>
                   ))}
                 </div>
@@ -220,7 +222,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                 </section>
               </div>
 
-              <aside className="h-fit rounded-2xl border border-border bg-card p-5 shadow-[0_4px_12px_rgba(0,0,0,0.04)] lg:sticky lg:top-8 lg:self-start">
+              <aside className="h-fit rounded-2xl border border-border bg-card p-5 shadow-[0_4px_12px_rgba(0,0,0,0.04)] lg:sticky lg:top-32 lg:self-start">
                 <dl className="space-y-4">
                   {detail.overview.map((item) => (
                     <div
@@ -236,7 +238,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                             {item.value.map((service) => (
                               <li
                                 key={service}
-                                className="inline-flex items-center justify-center rounded-full border border-border px-4 py-2 text-sm font-normal leading-4 text-secondary-foreground"
+                                className="inline-flex items-center justify-center rounded-full border border-border px-4 py-2 text-sm font-normal leading-4 bg-card text-card-foreground"
                               >
                                 {service}
                               </li>
