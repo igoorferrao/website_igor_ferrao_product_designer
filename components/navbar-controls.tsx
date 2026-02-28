@@ -10,7 +10,6 @@ import type { SiteContent } from '@/content/types';
 import { Button } from '@/components/ui/button';
 import { ButtonGroup } from '@/components/ui/button-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Separator } from '@/components/ui/separator';
 import { ThemeToggle } from '@/components/theme-toggle';
 
 type ColorTheme = 'default' | 'nature' | 'summer' | 'claude';
@@ -108,7 +107,7 @@ export function NavbarControls({
 
   return (
     <div className="flex items-center gap-3">
-      <form ref={formRef} action={setLocale} className="hidden sm:block">
+      <form ref={formRef} action={setLocale}>
         <input type="hidden" name="redirectTo" value={pathname} />
         <input ref={localeInputRef} type="hidden" name="locale" defaultValue={currentLocale} />
 
@@ -130,35 +129,48 @@ export function NavbarControls({
         </Select>
       </form>
 
-      <Separator orientation="vertical" className="hidden h-6 sm:block" />
+      <div ref={menuRef} className="relative">
+        <Button
+          type="button"
+          variant="outline"
+          size="icon-lg"
+          className="rounded-xl sm:hidden"
+          aria-label={content.paletteAriaLabel}
+          aria-haspopup="menu"
+          aria-expanded={isThemeMenuOpen}
+          onClick={() => setIsThemeMenuOpen((open) => !open)}
+        >
+          <PaletteIcon className="size-5 text-primary" />
+        </Button>
 
-      <div ref={menuRef} className="relative hidden sm:block">
-        <ButtonGroup>
-          <Button
-            type="button"
-            variant="outline"
-            size="icon-lg"
-            className="rounded-xl"
-            aria-label={content.paletteAriaLabel}
-            aria-haspopup="menu"
-            aria-expanded={isThemeMenuOpen}
-            onClick={() => setIsThemeMenuOpen((open) => !open)}
-          >
-            <PaletteIcon className="size-5 text-primary" />
-          </Button>
-          <Button
-            type="button"
-            variant="outline"
-            size="icon-lg"
-            className="rounded-xl"
-            aria-label={content.paletteMenuAriaLabel}
-            aria-haspopup="menu"
-            aria-expanded={isThemeMenuOpen}
-            onClick={() => setIsThemeMenuOpen((open) => !open)}
-          >
-            <ChevronDownIcon className="size-5 text-muted-foreground" />
-          </Button>
-        </ButtonGroup>
+        <div className="hidden sm:block">
+          <ButtonGroup>
+            <Button
+              type="button"
+              variant="outline"
+              size="icon-lg"
+              className="rounded-xl"
+              aria-label={content.paletteAriaLabel}
+              aria-haspopup="menu"
+              aria-expanded={isThemeMenuOpen}
+              onClick={() => setIsThemeMenuOpen((open) => !open)}
+            >
+              <PaletteIcon className="size-5 text-primary" />
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              size="icon-lg"
+              className="rounded-xl"
+              aria-label={content.paletteMenuAriaLabel}
+              aria-haspopup="menu"
+              aria-expanded={isThemeMenuOpen}
+              onClick={() => setIsThemeMenuOpen((open) => !open)}
+            >
+              <ChevronDownIcon className="size-5 text-muted-foreground" />
+            </Button>
+          </ButtonGroup>
+        </div>
 
         {isThemeMenuOpen ? (
           <div
