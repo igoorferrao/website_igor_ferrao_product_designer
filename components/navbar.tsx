@@ -3,6 +3,7 @@ import { Instrument_Sans } from 'next/font/google';
 import type { SiteContent } from '@/content/types';
 import type { Locale } from '@/lib/i18n/locales';
 import { NavbarControls } from '@/components/navbar-controls';
+import { NavbarMenu } from '@/components/navbar-menu';
 
 const instrumentSans = Instrument_Sans({
   subsets: ['latin'],
@@ -32,12 +33,15 @@ export function Navbar({ content, currentLocale }: { content: SiteContent['navba
             {content.links.services}
           </Link>
           <Link
-            href="/#cases"
-            className="px-8 py-2 text-base leading-6 text-muted-foreground transition-colors hover:text-foreground"
+            href="/"
+            className="flex items-center gap-1 text-base leading-6 md:text-xl md:leading-8 lg:gap-2 lg:text-[32px] lg:leading-10"
           >
-            {content.links.cases}
+            <span className="hidden font-normal text-muted-foreground min-[360px]:inline">
+              {content.logo.firstName}
+            </span>
+            <span className="font-medium text-foreground">{content.logo.lastName}</span>
           </Link>
-        </nav>
+        </div>
 
         <NavbarControls content={content} currentLocale={currentLocale} />
       </div>
