@@ -1,7 +1,6 @@
 import Image from 'next/image';
-import { CardOverlay } from './ui/card-overlay';
 import { Instrument_Sans } from 'next/font/google';
-import { FileDown } from 'lucide-react';
+import { Poppins } from 'next/font/google';
 import { MoveRight } from 'lucide-react';
 import type { SiteContent } from '@/content/types';
 import { Button } from '@/components/ui/button';
@@ -11,68 +10,109 @@ const instrumentSans = Instrument_Sans({
   variable: '--font-instrument-sans',
 });
 
-const avatars = [
-  '/cff39ec81b8a1702e402b41f10141f572da014c4.png',
-  '/77db192d800061495856e96ac0b646003f04c608.png',
-  '/df44e1b9d7695860942db40238141b5fd2df46dd.png',
-  '/c38e479d74e602ba43fa0b0d95cd4db2017eb762.png',
-];
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-poppins',
+});
+
+const portraitImage = '/d64a1b54febb0531bbb407786294d0ffac43e298.png';
 
 export function Hero({ content }: { content: SiteContent['hero'] }) {
+  const eyebrow = content.eyebrow ?? content.title?.line1 ?? '';
+  const headline =
+    content.headline ?? [content.title?.line1, content.title?.line2].filter(Boolean).join(' ') ?? '';
+
   return (
-    <section className={`${instrumentSans.variable} py-8 px-4 md:py-16 md:px-16`}>
-      <div className="mx-auto grid w-full max-w-360 items-start gap-10 font-(--font-instrument-sans) text-foreground lg:grid-cols-[1fr_minmax(360px,512px)]">
-        <div className="flex flex-col gap-16 md:gap-28 lg:pt-6">
-          <div className="max-w-140 space-y-8">
-            <div className="w-full md:min-w-100 space-y-5">
-              <h1 className="text-[40px] leading-[1.16] font-medium tracking-[-0.04em] md:text-[48px] md:leading-14">
-                {content.title.line1}
-                <br />
-                {content.title.line2}
-              </h1>
-              <p className="max-w-117.5 text-base leading-6 text-muted-foreground">
-                {content.subtitle}
-              </p>
+    <section className={`${instrumentSans.variable} ${poppins.variable} px-3 py-10 sm:px-4 sm:py-16 lg:p-16`}>
+      <div className="mx-auto flex w-full max-w-360 flex-col items-start justify-center gap-5 font-(--font-instrument-sans) text-foreground md:flex-row md:justify-between md:gap-10">
+        <div className="w-full md:flex-1 lg:flex-none lg:max-w-[640px] lg:min-h-[640px] lg:justify-center">
+          <div className="flex flex-col gap-8 md:gap-8 lg:justify-center lg:min-h-[640px]">
+            <div className="md:hidden">
+              <div className="relative size-20 overflow-hidden rounded-lg">
+                <Image
+                  src={portraitImage}
+                  alt=""
+                  fill
+                  sizes="80px"
+                  className="object-cover"
+                  priority
+                />
+              </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2">
-              <Button asChild size="xl">
-                <a href="#">
+            <div className="space-y-5">
+              <p className="font-(--font-poppins) text-[18px] leading-7 text-foreground">{eyebrow}</p>
+              <h1 className="max-w-[640px] text-[40px] font-medium leading-12 tracking-[-2px] lg:text-[48px] lg:leading-14">
+                {headline}
+              </h1>
+              <p className="text-base leading-6 text-secondary-foreground">{content.subtitle}</p>
+            </div>
+
+            <div className="flex w-full items-center gap-4 sm:gap-10">
+              <Button asChild size="xl" className="flex-1 sm:flex-none sm:w-[175px]">
+                <a href="#" className="flex items-center justify-center gap-2">
                   {content.ctas.primary}
                   <MoveRight className="h-5 w-5" strokeWidth={2} />
                 </a>
               </Button>
-              <Button asChild variant="secondary" size="xl">
-                <a href="#">
+              <Button asChild variant="secondary" size="xl" className="flex-1 sm:flex-none sm:w-[175px]">
+                <a href="#" className="flex items-center justify-center gap-2">
                   {content.ctas.secondary}
-                  <FileDown className="h-5 w-5" strokeWidth={2} />
+                  <MoveRight className="h-5 w-5" strokeWidth={2} />
                 </a>
               </Button>
             </div>
           </div>
+        </div>
 
-          <div className="space-y-5">
-            <div className="flex items-center">
-              {avatars.map((avatar, index) => (
-                <div
-                  key={avatar}
-                  className={`relative h-12 w-12 overflow-hidden rounded-full border border-border ${index > 0 ? '-ml-4' : ''}`}
-                >
-                  <Image src={avatar} alt="" fill sizes="48px" className="object-cover" />
-                </div>
-              ))}
-              <div className="-ml-4 grid h-12 w-12 place-items-center rounded-full border border-border bg-primary text-base leading-6 text-primary-foreground">
-                98%
+        {/* Tablet card (221x276) */}
+        <div className="hidden md:block lg:hidden">
+          <div className="relative h-[276px] w-[221px] overflow-hidden rounded-[20px]">
+            <Image
+              src={portraitImage}
+              alt="Igor Ferrão de Souza"
+              fill
+              sizes="221px"
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-overlay-scrim to-transparent px-3 pb-3 pt-5 backdrop-blur-[10px]">
+              <div className="space-y-2 text-primary-foreground">
+                <p className="text-[20px] font-medium leading-8">Igor Ferrão de Souza</p>
+                <p className="text-base leading-6">
+                  A Product Designer focused on intuitive
+                  <br />
+                  user experiences.
+                </p>
               </div>
-            </div>
-
-            <div className="space-y-1">
-              <p className="text-[18px] font-medium leading-7">{content.socialProof.title}</p>
-              <p className="text-base leading-6 text-muted-foreground">{content.socialProof.subtitle}</p>
             </div>
           </div>
         </div>
-        <CardOverlay />
+
+        {/* Desktop card (512x640) */}
+        <div className="hidden lg:block">
+          <div className="relative h-[640px] w-[512px] overflow-hidden rounded-[20px]">
+            <Image
+              src={portraitImage}
+              alt="Igor Ferrão de Souza"
+              fill
+              sizes="512px"
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-overlay-scrim to-transparent px-5 pb-5 pt-10 backdrop-blur-[10px]">
+              <div className="space-y-2 text-primary-foreground">
+                <p className="text-[28px] font-medium leading-9">Igor Ferrão de Souza</p>
+                <p className="text-[18px] leading-7">
+                  A Product Designer focused on intuitive
+                  <br />
+                  user experiences.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

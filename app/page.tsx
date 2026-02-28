@@ -1,5 +1,4 @@
 import { Hero } from '@/components/hero';
-import { AboutMe } from '@/components/about-me';
 import Partners from '@/components/partners';
 import { MyService } from '@/components/my-service';
 import { CaseStudy } from '@/components/case-study';
@@ -18,9 +17,8 @@ export default async function Page() {
         <Navbar content={content.navbar} currentLocale={locale} />
         <Hero content={content.hero} />
         <Partners />
-        <AboutMe content={content.about} />
-        <MyService content={content.myService} />
         <CaseStudy content={content.caseStudy} />
+        <MyService content={content.myService} />
         <Footer content={content.footer} />
       </main>
     </div>

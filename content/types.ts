@@ -19,7 +19,9 @@ export type SiteContent = {
     }>;
   };
   hero: {
-    title: {
+    eyebrow: string;
+    headline: string;
+    title?: {
       line1: string;
       line2: string;
     };
@@ -28,7 +30,7 @@ export type SiteContent = {
       primary: string;
       secondary: string;
     };
-    socialProof: {
+    socialProof?: {
       title: string;
       subtitle: string;
     };

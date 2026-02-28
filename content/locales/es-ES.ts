@@ -15,10 +15,11 @@ export const content: SiteContent = {
     ],
   },
   hero: {
-    title: { line1: 'Diseñador Web Freelance', line2: 'de Brasil' },
-    subtitle: 'Me especializo en crear diseños que no solo se ven increíbles, sino que también generan impacto.',
+    eyebrow: '¡Hola! Soy Igor Ferrão.',
+    headline: 'Product Designer, Creador de Contenido y apasionado por soluciones creativas.',
+    subtitle:
+      'Creo experiencias digitales combinando estrategia, UX y diseño. Diseño productos que equilibran la velocidad de las startups con la escala corporativa; actualmente dando forma a la hospitalidad digital en Hyatt.',
     ctas: { primary: 'Hablemos', secondary: 'Descargar CV' },
-    socialProof: { title: 'Elegido por founders en todo el mundo', subtitle: '5K clientes en el mundo' },
   },
   about: {
     label: 'SOBRE MÍ',

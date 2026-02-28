@@ -15,10 +15,11 @@ export const content: SiteContent = {
     ],
   },
   hero: {
-    title: { line1: 'Freelance Web Designer', line2: 'from Brazil' },
-    subtitle: 'I specialize in delivering designs that are not only visually striking but also impactful.',
+    eyebrow: "Hey! I'm Igor Ferrão.",
+    headline: 'Product Designer, Content Creator, and passionate about creative solutions.',
+    subtitle:
+      'I craft digital experiences blending strategy, UX, and design. I design products that balance startup speed with corporate scale, currently shaping digital hospitality at Hyatt.',
     ctas: { primary: "Let's Talk", secondary: 'Download CV' },
-    socialProof: { title: 'Loved by founders globally', subtitle: '5K Clients Word-Wide' },
   },
   about: {
     label: 'ABOUT ME',

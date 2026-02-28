@@ -15,10 +15,11 @@ export const content: SiteContent = {
     ],
   },
   hero: {
-    title: { line1: 'Web Designer Freelancer', line2: 'do Brasil' },
-    subtitle: 'Eu crio designs que não só são visualmente fortes, mas também geram resultado.',
+    eyebrow: 'Oi! Eu sou Igor Ferrão.',
+    headline: 'Product Designer, Criador de Conteúdo e apaixonado por soluções criativas.',
+    subtitle:
+      'Eu crio experiências digitais unindo estratégia, UX e design. Eu desenho produtos que equilibram a velocidade de startups com a escala corporativa — atualmente criando experiências digitais de hospitalidade na Hyatt.',
     ctas: { primary: 'Vamos conversar', secondary: 'Baixar CV' },
-    socialProof: { title: 'Aprovado por founders no mundo todo', subtitle: '5K clientes no mundo' },
   },
   about: {
     label: 'SOBRE MIM',
