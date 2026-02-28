@@ -10,6 +10,7 @@ import type { SiteContent } from '@/content/types';
 import { Button } from '@/components/ui/button';
 import { ButtonGroup } from '@/components/ui/button-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Separator } from '@/components/ui/separator';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { runRadialRootTransition } from '@/lib/radial-root-transition';
 
@@ -75,7 +76,7 @@ export function NavbarControls({ content, currentLocale }: { content: SiteConten
   }
 
   return (
-    <div className="flex items-center gap-2 sm:gap-3 ">
+    <div className="flex items-center gap-2 sm:gap-3">
       <form ref={formRef} action={setLocale}>
         <input type="hidden" name="redirectTo" value={pathname} />
         <input ref={localeInputRef} type="hidden" name="locale" defaultValue={currentLocale} />
@@ -84,7 +85,7 @@ export function NavbarControls({ content, currentLocale }: { content: SiteConten
           <SelectTrigger
             aria-label={content.languageSelectAriaLabel}
             size="sm"
-            className="h-9 gap-1.5 rounded-xl border-border/60 px-2.5 text-sm text-muted-foreground hover:bg-muted sm:gap-2 sm:px-3"
+            className="h-9 gap-1.5 rounded-xl border-transparent px-2.5 text-sm text-muted-foreground hover:bg-muted sm:gap-2 sm:border-border/60 sm:px-3"
           >
             <SelectValue placeholder={currentLabel} />
           </SelectTrigger>
@@ -98,35 +99,50 @@ export function NavbarControls({ content, currentLocale }: { content: SiteConten
         </Select>
       </form>
 
-      <Separator orientation="vertical" className="h-9" />
+      <Separator orientation="vertical" className="hidden h-9 sm:block" />
 
       <div ref={menuRef} className="relative">
-        <ButtonGroup>
-          <Button
-            type="button"
-            variant="outline"
-            size="icon-lg"
-            className="rounded-xl"
-            aria-label={content.paletteAriaLabel}
-            aria-haspopup="menu"
-            aria-expanded={isThemeMenuOpen}
-            onClick={() => setIsThemeMenuOpen((open) => !open)}
-          >
-            <PaletteIcon className="size-5 text-primary" />
-          </Button>
-          <Button
-            type="button"
-            variant="outline"
-            size="icon-lg"
-            className="rounded-xl"
-            aria-label={content.paletteMenuAriaLabel}
-            aria-haspopup="menu"
-            aria-expanded={isThemeMenuOpen}
-            onClick={() => setIsThemeMenuOpen((open) => !open)}
-          >
-            <ChevronDownIcon className="size-5 text-muted-foreground" />
-          </Button>
-        </ButtonGroup>
+        <Button
+          type="button"
+          variant="outline"
+          size="icon-lg"
+          className="rounded-xl sm:hidden"
+          aria-label={content.paletteAriaLabel}
+          aria-haspopup="menu"
+          aria-expanded={isThemeMenuOpen}
+          onClick={() => setIsThemeMenuOpen((open) => !open)}
+        >
+          <PaletteIcon className="size-5 text-primary" />
+        </Button>
+
+        <div className="hidden sm:block">
+          <ButtonGroup>
+            <Button
+              type="button"
+              variant="outline"
+              size="icon-lg"
+              className="rounded-xl"
+              aria-label={content.paletteAriaLabel}
+              aria-haspopup="menu"
+              aria-expanded={isThemeMenuOpen}
+              onClick={() => setIsThemeMenuOpen((open) => !open)}
+            >
+              <PaletteIcon className="size-5 text-primary" />
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              size="icon-lg"
+              className="rounded-xl"
+              aria-label={content.paletteMenuAriaLabel}
+              aria-haspopup="menu"
+              aria-expanded={isThemeMenuOpen}
+              onClick={() => setIsThemeMenuOpen((open) => !open)}
+            >
+              <ChevronDownIcon className="size-5 text-muted-foreground" />
+            </Button>
+          </ButtonGroup>
+        </div>
 
         {isThemeMenuOpen ? (
           <div
