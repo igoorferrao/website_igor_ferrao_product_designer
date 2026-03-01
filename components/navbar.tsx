@@ -27,10 +27,7 @@ export function Navbar({ content, currentLocale }: { content: SiteContent['navba
           </Link>
         </div>
 
-        <nav
-          aria-label="Primary"
-          className="absolute left-1/2 hidden -translate-x-1/2 items-center lg:flex"
-        >
+        <nav aria-label="Primary" className="absolute left-1/2 hidden -translate-x-1/2 items-center lg:flex">
           <Link
             href="/#about"
             className="px-8 py-2 text-base leading-6 text-muted-foreground transition-colors hover:text-foreground"
