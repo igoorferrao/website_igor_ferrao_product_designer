@@ -42,10 +42,34 @@ export const content: SiteContent = {
     ctas: { primary: 'Me contrate', secondary: 'Assistir vídeo' },
     tabsAriaLabel: 'Categorias de serviço',
     tabs: [
-      { id: 'branding', label: 'Branding', imageAlt: 'Prévia do serviço de branding' },
-      { id: 'web-development', label: 'Desenvolvimento Web', imageAlt: 'Prévia do serviço de desenvolvimento web' },
-      { id: 'web-design', label: 'Web Design', imageAlt: 'Prévia do serviço de web design' },
-      { id: 'marketing', label: 'Marketing', imageAlt: 'Prévia do serviço de marketing' },
+      {
+        id: 'branding',
+        label: 'Branding',
+        description:
+          'Crie um sistema de marca consistente que comunique valor com clareza e gere reconhecimento em cada ponto de contato.',
+        imageAlt: 'Prévia do serviço de branding',
+      },
+      {
+        id: 'web-development',
+        label: 'Desenvolvimento Web',
+        description:
+          'Construa sites rápidos e responsivos com código limpo, arquitetura escalável e entrega focada em performance.',
+        imageAlt: 'Prévia do serviço de desenvolvimento web',
+      },
+      {
+        id: 'web-design',
+        label: 'Web Design',
+        description:
+          'Desenhe interfaces centradas no usuário: bonitas, intuitivas e que convertem — no mobile e no desktop.',
+        imageAlt: 'Prévia do serviço de web design',
+      },
+      {
+        id: 'marketing',
+        label: 'Marketing',
+        description:
+          'Crie campanhas e peças alinhadas à marca para alcançar o público certo com mensagem clara e consistente.',
+        imageAlt: 'Prévia do serviço de marketing',
+      },
     ],
   },
   caseStudy: {

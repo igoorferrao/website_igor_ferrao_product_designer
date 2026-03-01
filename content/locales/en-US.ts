@@ -42,10 +42,34 @@ export const content: SiteContent = {
     ctas: { primary: 'Hire Me', secondary: 'Watch Video' },
     tabsAriaLabel: 'Service categories',
     tabs: [
-      { id: 'branding', label: 'Branding', imageAlt: 'Branding service preview' },
-      { id: 'web-development', label: 'Web Development', imageAlt: 'Web development service preview' },
-      { id: 'web-design', label: 'Web Design', imageAlt: 'Web design service preview' },
-      { id: 'marketing', label: 'Marketing', imageAlt: 'Marketing service preview' },
+      {
+        id: 'branding',
+        label: 'Branding',
+        description:
+          'Craft a consistent brand system that communicates value clearly and builds recognition across every touchpoint.',
+        imageAlt: 'Branding service preview',
+      },
+      {
+        id: 'web-development',
+        label: 'Web Development',
+        description:
+          'Build fast, responsive websites with clean code, scalable architecture, and performance-focused delivery.',
+        imageAlt: 'Web development service preview',
+      },
+      {
+        id: 'web-design',
+        label: 'Web Design',
+        description:
+          'Design user-centered interfaces that look great, feel intuitive, and convert—across mobile and desktop.',
+        imageAlt: 'Web design service preview',
+      },
+      {
+        id: 'marketing',
+        label: 'Marketing',
+        description:
+          'Create campaigns and assets that align with your brand and help you reach the right audience with clarity.',
+        imageAlt: 'Marketing service preview',
+      },
     ],
   },
   caseStudy: {

@@ -3,84 +3,81 @@
 import Image from 'next/image';
 import { Instrument_Sans } from 'next/font/google';
 import { ArrowRight } from 'lucide-react';
-import { CirclePlay } from 'lucide-react';
-import { useState } from 'react';
+import { useState, type KeyboardEvent } from 'react';
 import type { SiteContent } from '@/content/types';
-import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 const instrumentSans = Instrument_Sans({
   subsets: ['latin'],
   variable: '--font-instrument-sans',
 });
 
-const serviceTabs = [
-  {
-    id: 'branding',
-    imageSrc: '/figma-assets/6212514260f27e0b62ccc7b0d6f5537f64fa68f5.png',
-  },
-  {
-    id: 'web-development',
-    imageSrc: '/figma-assets/webdevelopment_exemple.jpg',
-  },
-  {
-    id: 'web-design',
-    imageSrc: '/figma-assets/6212514260f27e0b62ccc7b0d6f5537f64fa68f5.png',
-  },
-  {
-    id: 'marketing',
-    imageSrc: '/figma-assets/6212514260f27e0b62ccc7b0d6f5537f64fa68f5.png',
-  },
-] as const;
+const fallbackImageSrc = '/figma-assets/6212514260f27e0b62ccc7b0d6f5537f64fa68f5.png';
+const imageSrcByTabId: Record<string, string> = {
+  branding: fallbackImageSrc,
+  'web-development': '/figma-assets/webdevelopment_exemple.jpg',
+  'web-design': fallbackImageSrc,
+  marketing: fallbackImageSrc,
+};
+
+function getTabImageSrc(id: string) {
+  return imageSrcByTabId[id] ?? fallbackImageSrc;
+}
 
 export function MyService({ content }: { content: SiteContent['myService'] }) {
-  const [activeTabId, setActiveTabId] = useState<(typeof serviceTabs)[number]['id']>(serviceTabs[0].id);
-  const activeTab = serviceTabs.find((tab) => tab.id === activeTabId) ?? serviceTabs[0];
-  const tabsById = new Map(content.tabs.map((tab) => [tab.id, tab] as const));
-  const activeTabCopy = tabsById.get(activeTab.id);
+  const initialTabId = content.tabs[0]?.id ?? 'branding';
+  const [activeTabId, setActiveTabId] = useState(initialTabId);
+  const activeTabCopy = content.tabs.find((tab) => tab.id === activeTabId) ?? content.tabs[0];
+  const activeImageSrc = getTabImageSrc(activeTabCopy?.id ?? initialTabId);
+
+  function selectTab(nextTabId: string) {
+    setActiveTabId(nextTabId);
+  }
+
+  function onTabKeyDown(event: KeyboardEvent<HTMLButtonElement>, currentIndex: number) {
+    const key = event.key;
+    if (key !== 'ArrowDown' && key !== 'ArrowUp' && key !== 'Home' && key !== 'End') return;
+
+    event.preventDefault();
+    const ids = content.tabs.map((tab) => tab.id);
+    if (ids.length === 0) return;
+
+    const nextIndex =
+      key === 'Home'
+        ? 0
+        : key === 'End'
+          ? ids.length - 1
+          : key === 'ArrowDown'
+            ? (currentIndex + 1) % ids.length
+            : (currentIndex - 1 + ids.length) % ids.length;
+    const nextId = ids[nextIndex];
+    selectTab(nextId);
+    requestAnimationFrame(() => {
+      document.getElementById(`${nextId}-tab`)?.focus();
+    });
+  }
 
   return (
-    <section id="services" className="py-8 px-4 lg:py-16 lg:px-16">
+    <section id="services" className="px-4 py-12 lg:px-16 lg:py-16">
       <div
         className={`${instrumentSans.variable} mx-auto w-full max-w-360 font-(--font-instrument-sans) text-foreground`}
       >
-        <div className="space-y-16">
-          <div className="max-w-211.5 space-y-8">
-            <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 bg-muted-foreground" />
-                <p className="text-base font-medium leading-6">{content.label}</p>
-              </div>
-              <h2 className="text-[40px] font-medium leading-[1.3] tracking-[-0.05em]">
-                {content.title}
-              </h2>
-              <p className="max-w-140 text-base leading-[1.6] text-muted-foreground">
-                {content.description}
-              </p>
-            </div>
-
+        <div className="flex flex-col gap-12 lg:gap-16">
+          <header className="space-y-4">
             <div className="flex items-center gap-2">
-              <Button asChild size="xl">
-                <a href="#">
-                  {content.ctas.primary}
-                  <ArrowRight className="h-5 w-5" strokeWidth={1.5} />
-                </a>
-              </Button>
-              <Button asChild variant="secondary" size="xl">
-                <a href="#">
-                  {content.ctas.secondary}
-                  <CirclePlay className="h-5 w-5" strokeWidth={1.5} />
-                </a>
-              </Button>
+              <span className="h-1.5 w-1.5 rounded-sm bg-muted-foreground" />
+              <p className="text-base font-medium leading-6">{content.label}</p>
             </div>
-          </div>
+            <h2 className="text-[40px] font-medium leading-[48px] tracking-[-0.05em]">{content.title}</h2>
+            <p className="max-w-[500px] text-base leading-6 text-muted-foreground">{content.description}</p>
+          </header>
 
-          <div className="grid items-start gap-10 lg:min-h-131.75 lg:grid-cols-2 lg:gap-10">
-            <div className="space-y-4" role="tablist" aria-label={content.tabsAriaLabel}>
-              {serviceTabs.map((tab) => {
+          <div className="flex flex-col gap-10 lg:h-[527px] lg:flex-row lg:items-stretch">
+            <div className="flex flex-col gap-4 lg:w-[434px]" role="tablist" aria-label={content.tabsAriaLabel}>
+              {content.tabs.map((tab, index) => {
                 const isActive = tab.id === activeTabId;
-                const tabCopy = tabsById.get(tab.id);
                 return (
-                  <Button
+                  <button
                     key={tab.id}
                     type="button"
                     role="tab"
@@ -88,22 +85,32 @@ export function MyService({ content }: { content: SiteContent['myService'] }) {
                     aria-controls="service-tabpanel"
                     id={`${tab.id}-tab`}
                     tabIndex={isActive ? 0 : -1}
-                    onClick={() => setActiveTabId(tab.id)}
-                    variant="ghost"
-                    className={`h-auto w-full justify-between rounded-xl px-5 py-4 text-left transition-colors ${
-                      isActive ? 'bg-background hover:bg-background' : 'bg-secondary hover:bg-secondary/80'
-                    }`}
+                    onClick={() => selectTab(tab.id)}
+                    onKeyDown={(event) => onTabKeyDown(event, index)}
+                    className={cn(
+                      'w-full text-left outline-none transition-colors',
+                      'rounded-[20px] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+                      isActive ? 'border border-secondary bg-background' : 'bg-secondary hover:bg-secondary/80'
+                    )}
                   >
-                    <span className="text-[24px] font-medium leading-[1.35] tracking-[-0.02em]">
-                      {tabCopy?.label ?? tab.id}
-                    </span>
-                    <span className="flex h-12 w-12 items-center justify-center rounded-full border border-border">
-                      <ArrowRight
-                        className={`h-5.5 w-5.5 transition-transform ${isActive ? '-rotate-45' : ''}`}
-                        strokeWidth={1.6}
-                      />
-                    </span>
-                  </Button>
+                    <div className="flex items-center justify-between gap-3 rounded-xl px-5 py-4">
+                      <span className="text-[20px] font-medium leading-8 tracking-[-0.02em] text-foreground md:text-[24px]">
+                        {tab.label}
+                      </span>
+                      <span className="flex h-12 w-12 items-center justify-center rounded-full border border-border text-foreground">
+                        <ArrowRight
+                          className={cn('h-5 w-5 transition-transform', isActive && '-rotate-45')}
+                          strokeWidth={1.6}
+                        />
+                      </span>
+                    </div>
+
+                    {isActive && tab.description ? (
+                      <div className="px-5 pb-4">
+                        <p className="text-base leading-6 text-muted-foreground">{tab.description}</p>
+                      </div>
+                    ) : null}
+                  </button>
                 );
               })}
             </div>
@@ -111,15 +118,16 @@ export function MyService({ content }: { content: SiteContent['myService'] }) {
             <div
               id="service-tabpanel"
               role="tabpanel"
-              aria-labelledby={`${activeTab.id}-tab`}
-              className="relative min-h-90 overflow-hidden rounded-2xl md:min-h-110 lg:min-h-131.75"
+              aria-labelledby={`${activeTabCopy?.id ?? initialTabId}-tab`}
+              className="relative h-[384px] overflow-hidden rounded-2xl bg-secondary lg:h-full lg:flex-1"
             >
               <Image
-                src={activeTab.imageSrc}
+                src={activeImageSrc}
                 alt={activeTabCopy?.imageAlt ?? ''}
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
+                priority={false}
               />
             </div>
           </div>

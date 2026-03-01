@@ -42,10 +42,34 @@ export const content: SiteContent = {
     ctas: { primary: 'Contrátame', secondary: 'Ver video' },
     tabsAriaLabel: 'Categorías de servicio',
     tabs: [
-      { id: 'branding', label: 'Branding', imageAlt: 'Vista previa de branding' },
-      { id: 'web-development', label: 'Desarrollo Web', imageAlt: 'Vista previa de desarrollo web' },
-      { id: 'web-design', label: 'Diseño Web', imageAlt: 'Vista previa de diseño web' },
-      { id: 'marketing', label: 'Marketing', imageAlt: 'Vista previa de marketing' },
+      {
+        id: 'branding',
+        label: 'Branding',
+        description:
+          'Crea un sistema de marca consistente que comunique valor con claridad y genere reconocimiento en cada punto de contacto.',
+        imageAlt: 'Vista previa de branding',
+      },
+      {
+        id: 'web-development',
+        label: 'Desarrollo Web',
+        description:
+          'Construye sitios rápidos y responsivos con código limpio, arquitectura escalable y entrega enfocada en rendimiento.',
+        imageAlt: 'Vista previa de desarrollo web',
+      },
+      {
+        id: 'web-design',
+        label: 'Diseño Web',
+        description:
+          'Diseña interfaces centradas en el usuario: atractivas, intuitivas y que convierten — en móvil y escritorio.',
+        imageAlt: 'Vista previa de diseño web',
+      },
+      {
+        id: 'marketing',
+        label: 'Marketing',
+        description:
+          'Crea campañas y recursos alineados con la marca para llegar a la audiencia correcta con un mensaje claro.',
+        imageAlt: 'Vista previa de marketing',
+      },
     ],
   },
   caseStudy: {

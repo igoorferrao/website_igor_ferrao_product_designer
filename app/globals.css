@@ -312,7 +312,7 @@ html[data-theme='modern'].dark {
   --primary: oklch(0.7 0.17 28.12);
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.81 0.15 71.81);
-  --secondary-foreground: oklch(0.26 0.02 63.41);
+  --secondary-foreground: oklch(1 0 0);
   --muted: oklch(0.38 0.03 60.76);
   --muted-foreground: oklch(0.79 0.06 71.87);
   --accent: oklch(0.45 0.03 54.7);

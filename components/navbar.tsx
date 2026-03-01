@@ -12,8 +12,8 @@ const instrumentSans = Instrument_Sans({
 
 export function Navbar({ content, currentLocale }: { content: SiteContent['navbar']; currentLocale: Locale }) {
   return (
-    <header className={`${instrumentSans.variable} sticky top-0 z-40 font-(--font-instrument-sans)`}>
-      <div className="relative flex items-center justify-between bg-background/95 px-3 py-3 backdrop-blur supports-[backdrop-filter]:bg-background/70 md:px-4 md:py-8 lg:px-16">
+    <header className={`${instrumentSans.variable} font-(--font-instrument-sans)`}>
+      <div className="relative flex items-center justify-between bg-background px-3 py-3 md:px-4 md:py-8 lg:px-16 lg:py-8">
         <div className="flex items-center gap-2 sm:gap-3 md:gap-5">
           <NavbarMenu links={content.links} />
           <Link
@@ -26,27 +26,6 @@ export function Navbar({ content, currentLocale }: { content: SiteContent['navba
             <span className="font-medium text-foreground">{content.logo.lastName}</span>
           </Link>
         </div>
-
-        <nav aria-label="Primary" className="absolute left-1/2 hidden -translate-x-1/2 items-center lg:flex">
-          <Link
-            href="/#about"
-            className="px-8 py-2 text-base leading-6 text-muted-foreground transition-colors hover:text-foreground"
-          >
-            {content.links.about}
-          </Link>
-          <Link
-            href="/#services"
-            className="px-8 py-2 text-base leading-6 text-muted-foreground transition-colors hover:text-foreground"
-          >
-            {content.links.services}
-          </Link>
-          <Link
-            href="/#cases"
-            className="px-8 py-2 text-base leading-6 text-muted-foreground transition-colors hover:text-foreground"
-          >
-            {content.links.cases}
-          </Link>
-        </nav>
 
         <NavbarControls content={content} currentLocale={currentLocale} />
       </div>

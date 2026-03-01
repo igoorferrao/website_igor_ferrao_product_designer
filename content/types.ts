@@ -57,6 +57,7 @@ export type SiteContent = {
     tabs: Array<{
       id: string;
       label: string;
+      description: string;
       imageAlt: string;
     }>;
   };
