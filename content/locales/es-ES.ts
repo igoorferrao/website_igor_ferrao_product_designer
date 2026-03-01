@@ -1,13 +1,30 @@
 import type { SiteContent } from '../types';
 
 export const content: SiteContent = {
+  meta: {
+    title: 'Igor Ferrão — Diseñador de Producto',
+    description: 'Diseñador de Producto enfocado en experiencias digitales intuitivas.',
+  },
   navbar: {
     logo: { firstName: 'Igor', lastName: 'Ferrão' },
     links: { about: 'Sobre mí', services: 'Servicios', cases: 'Casos' },
+    menu: {
+      openAriaLabel: 'Abrir menú de navegación',
+      closeAriaLabel: 'Cerrar menú de navegación',
+      dialogAriaLabel: 'Menú de navegación',
+      title: 'Menú',
+      navAriaLabel: 'Navegación principal',
+    },
     languageSelectAriaLabel: 'Seleccionar idioma',
     themeToggleAriaLabel: 'Cambiar tema',
     paletteAriaLabel: 'Tema',
     paletteMenuAriaLabel: 'Abrir menú de tema',
+    themeOptions: [
+      { value: 'default', label: 'Ferrão Design' },
+      { value: 'nature', label: 'Naturaleza' },
+      { value: 'modern', label: 'Moderno' },
+      { value: 'claude', label: 'Claude' },
+    ],
     languages: [
       { value: 'pt-BR', label: 'Português' },
       { value: 'en-US', label: 'English' },
@@ -16,15 +33,21 @@ export const content: SiteContent = {
   },
   hero: {
     eyebrow: '¡Hola! Soy Igor Ferrão.',
-    headline: 'Product Designer, Creador de Contenido y apasionado por soluciones creativas.',
+    headline: 'Diseñador de Producto, Creador de Contenido y apasionado por soluciones creativas.',
     subtitle:
       'Creo experiencias digitales combinando estrategia, UX y diseño. Diseño productos que equilibran la velocidad de las startups con la escala corporativa; actualmente dando forma a la hospitalidad digital en Hyatt.',
     ctas: { primary: 'Hablemos', secondary: 'Descargar CV' },
+    portraitCard: {
+      name: 'Igor Ferrão de Souza',
+      descriptionLine1: 'Diseñador de Producto enfocado en experiencias',
+      descriptionLine2: 'intuitivas.',
+      imageAlt: 'Retrato de Igor Ferrão de Souza',
+    },
   },
   about: {
     label: 'SOBRE MÍ',
     headlineLines: [
-      'Soy Ethan Riley, tu socio creativo en diseño.',
+      'Soy Igor Ferrão, tu socio creativo en diseño.',
       'Para mí, el diseño se trata de crear experiencias que',
       'conecten de verdad con las personas. No es solo verse bien',
     ],
@@ -76,6 +99,11 @@ export const content: SiteContent = {
     label: 'CASO DE ESTUDIO',
     title: 'Resultados Reales',
     description: 'Experiencias destacadas: visualmente fuertes y centradas en el usuario.',
+    cardLabels: {
+      challenge: 'Desafío',
+      solution: 'Solución',
+      cta: 'Ver caso',
+    },
   },
   caseStudyDetail: {
     sectionTitles: {
@@ -89,22 +117,29 @@ export const content: SiteContent = {
       outcomesImpact: 'Resultados e Impacto',
       closingThoughts: 'Reflexiones Finales',
     },
+    lightbox: {
+      openImageAriaLabel: 'Abrir imagen',
+      closeImageAriaLabel: 'Cerrar vista de imagen',
+      dialogAriaLabel: 'Vista de imagen',
+    },
     overviewLabels: {
       client: 'Cliente',
+      category: 'Categoría',
       role: 'Rol',
       timeline: 'Cronograma',
       services: 'Servicios',
       deliverables: 'Entregables',
       tools: 'Herramientas',
+      myRole: 'Mi rol',
     },
   },
   footer: {
     brandName: 'Igor Ferrão',
-    tagline: 'Product Designer enfocado en experiencias intuitivas.',
+    tagline: 'Diseñador de Producto enfocado en experiencias intuitivas.',
     columns: [
       { title: 'Producto', links: ['Funcionalidades', 'Precios', 'Integraciones', 'Actualizaciones'] },
       { title: 'Recursos', links: ['Documentación', 'Guías', 'Blog', 'Soporte'] },
-      { title: 'Empresa', links: ['Sobre', 'Carreras', 'Contacto', 'Partners'] },
+      { title: 'Empresa', links: ['Acerca de', 'Carreras', 'Contacto', 'Socios'] },
     ],
     rights: '2026 Igor. Todos los derechos reservados',
     verse: 'Rm 10:9',

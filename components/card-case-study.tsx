@@ -13,6 +13,11 @@ type CardCaseStudyProps = {
   description: string;
   challenge: string;
   solution: string;
+  labels: {
+    challenge: string;
+    solution: string;
+    cta: string;
+  };
   leftStat: Stat;
   rightStat: Stat;
   imageSrc: string;
@@ -27,6 +32,7 @@ export function Card_Case_Study({
   description,
   challenge,
   solution,
+  labels,
   leftStat,
   rightStat,
   imageSrc,
@@ -52,6 +58,7 @@ export function Card_Case_Study({
               description={description}
               challenge={challenge}
               solution={solution}
+              labels={labels}
               leftStat={leftStat}
               rightStat={rightStat}
               isDark={isDark}
@@ -67,6 +74,7 @@ export function Card_Case_Study({
               description={description}
               challenge={challenge}
               solution={solution}
+              labels={labels}
               leftStat={leftStat}
               rightStat={rightStat}
               isDark={isDark}
@@ -92,6 +100,7 @@ function CardContent({
   description,
   challenge,
   solution,
+  labels,
   leftStat,
   rightStat,
   isDark,
@@ -101,6 +110,11 @@ function CardContent({
   description: string;
   challenge: string;
   solution: string;
+  labels: {
+    challenge: string;
+    solution: string;
+    cta: string;
+  };
   leftStat: Stat;
   rightStat: Stat;
   isDark: boolean;
@@ -118,11 +132,11 @@ function CardContent({
 
       <div className="grid gap-x-8 gap-y-8 sm:grid-cols-2">
         <div className="space-y-2">
-          <p className="text-[20px] font-medium leading-8">Challenge</p>
+          <p className="text-[20px] font-medium leading-8">{labels.challenge}</p>
           <p className={`text-sm leading-5 ${bodyTone}`}>{challenge}</p>
         </div>
         <div className="space-y-2">
-          <p className="text-[20px] font-medium leading-8">Solution</p>
+          <p className="text-[20px] font-medium leading-8">{labels.solution}</p>
           <p className={`text-sm leading-5 ${bodyTone}`}>{solution}</p>
         </div>
 
@@ -143,7 +157,7 @@ function CardContent({
       <div>
         <Button asChild size="xl">
           <Link href={href}>
-            View case study
+            {labels.cta}
             <ArrowRight className="h-4 w-4" strokeWidth={1.8} />
           </Link>
         </Button>

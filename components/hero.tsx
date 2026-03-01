@@ -32,7 +32,7 @@ export function Hero({ content }: { content: SiteContent['hero'] }) {
               <div className="relative size-20 overflow-hidden rounded-lg">
                 <Image
                   src={portraitImage}
-                  alt=""
+                  alt={content.portraitCard.imageAlt}
                   fill
                   sizes="80px"
                   className="object-cover"
@@ -71,7 +71,7 @@ export function Hero({ content }: { content: SiteContent['hero'] }) {
           <div className="relative h-[276px] w-[221px] overflow-hidden rounded-[20px]">
             <Image
               src={portraitImage}
-              alt="Igor Ferrão de Souza"
+              alt={content.portraitCard.imageAlt}
               fill
               sizes="221px"
               className="object-cover"
@@ -79,11 +79,11 @@ export function Hero({ content }: { content: SiteContent['hero'] }) {
             />
             <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-overlay-scrim to-transparent px-3 pb-3 pt-5 backdrop-blur-[10px]">
               <div className="space-y-2 text-primary-foreground">
-                <p className="text-[20px] font-medium leading-8">Igor Ferrão de Souza</p>
+                <p className="text-[20px] font-medium leading-8">{content.portraitCard.name}</p>
                 <p className="text-base leading-6">
-                  A Product Designer focused on intuitive
+                  {content.portraitCard.descriptionLine1}
                   <br />
-                  user experiences.
+                  {content.portraitCard.descriptionLine2}
                 </p>
               </div>
             </div>
@@ -95,7 +95,7 @@ export function Hero({ content }: { content: SiteContent['hero'] }) {
           <div className="relative h-[640px] w-[512px] overflow-hidden rounded-[20px]">
             <Image
               src={portraitImage}
-              alt="Igor Ferrão de Souza"
+              alt={content.portraitCard.imageAlt}
               fill
               sizes="512px"
               className="object-cover"
@@ -103,11 +103,11 @@ export function Hero({ content }: { content: SiteContent['hero'] }) {
             />
             <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-overlay-scrim to-transparent px-5 pb-5 pt-10 backdrop-blur-[10px]">
               <div className="space-y-2 text-primary-foreground">
-                <p className="text-[28px] font-medium leading-9">Igor Ferrão de Souza</p>
+                <p className="text-[28px] font-medium leading-9">{content.portraitCard.name}</p>
                 <p className="text-[18px] leading-7">
-                  A Product Designer focused on intuitive
+                  {content.portraitCard.descriptionLine1}
                   <br />
-                  user experiences.
+                  {content.portraitCard.descriptionLine2}
                 </p>
               </div>
             </div>

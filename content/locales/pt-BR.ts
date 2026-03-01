@@ -1,13 +1,30 @@
 import type { SiteContent } from '../types';
 
 export const content: SiteContent = {
+  meta: {
+    title: 'Igor Ferrão — Designer de Produto',
+    description: 'Designer de Produto focado em experiências digitais intuitivas.',
+  },
   navbar: {
     logo: { firstName: 'Igor', lastName: 'Ferrão' },
-    links: { about: 'Sobre mim', services: 'Serviços', cases: 'Cases' },
+    links: { about: 'Sobre mim', services: 'Serviços', cases: 'Estudos de caso' },
+    menu: {
+      openAriaLabel: 'Abrir menu de navegação',
+      closeAriaLabel: 'Fechar menu de navegação',
+      dialogAriaLabel: 'Menu de navegação',
+      title: 'Menu',
+      navAriaLabel: 'Navegação principal',
+    },
     languageSelectAriaLabel: 'Selecionar idioma',
     themeToggleAriaLabel: 'Alternar tema',
     paletteAriaLabel: 'Tema',
     paletteMenuAriaLabel: 'Abrir menu de tema',
+    themeOptions: [
+      { value: 'default', label: 'Ferrão Design' },
+      { value: 'nature', label: 'Natureza' },
+      { value: 'modern', label: 'Moderno' },
+      { value: 'claude', label: 'Claude' },
+    ],
     languages: [
       { value: 'pt-BR', label: 'Português' },
       { value: 'en-US', label: 'English' },
@@ -16,15 +33,21 @@ export const content: SiteContent = {
   },
   hero: {
     eyebrow: 'Oi! Eu sou Igor Ferrão.',
-    headline: 'Product Designer, Criador de Conteúdo e apaixonado por soluções criativas.',
+    headline: 'Designer de Produto, Criador de Conteúdo e apaixonado por soluções criativas.',
     subtitle:
       'Eu crio experiências digitais unindo estratégia, UX e design. Eu desenho produtos que equilibram a velocidade de startups com a escala corporativa — atualmente criando experiências digitais de hospitalidade na Hyatt.',
     ctas: { primary: 'Vamos conversar', secondary: 'Baixar CV' },
+    portraitCard: {
+      name: 'Igor Ferrão de Souza',
+      descriptionLine1: 'Designer de Produto focado em experiências',
+      descriptionLine2: 'intuitivas.',
+      imageAlt: 'Retrato de Igor Ferrão de Souza',
+    },
   },
   about: {
     label: 'SOBRE MIM',
     headlineLines: [
-      'Sou Ethan Riley, seu parceiro criativo em design.',
+      'Sou Igor Ferrão, seu parceiro criativo em design.',
       'Para mim, design é criar experiências que',
       'conectam de verdade com as pessoas. Não é só estética',
     ],
@@ -73,9 +96,14 @@ export const content: SiteContent = {
     ],
   },
   caseStudy: {
-    label: 'CASE STUDY',
+    label: 'ESTUDO DE CASO',
     title: 'Resultados Reais',
     description: 'Experiências marcantes, com visual forte e foco no usuário.',
+    cardLabels: {
+      challenge: 'Desafio',
+      solution: 'Solução',
+      cta: 'Ver case',
+    },
   },
   caseStudyDetail: {
     sectionTitles: {
@@ -89,18 +117,25 @@ export const content: SiteContent = {
       outcomesImpact: 'Resultados & Impacto',
       closingThoughts: 'Considerações Finais',
     },
+    lightbox: {
+      openImageAriaLabel: 'Abrir imagem',
+      closeImageAriaLabel: 'Fechar visualização de imagem',
+      dialogAriaLabel: 'Visualização de imagem',
+    },
     overviewLabels: {
       client: 'Cliente',
+      category: 'Categoria',
       role: 'Papel',
       timeline: 'Timeline',
       services: 'Serviços',
       deliverables: 'Entregáveis',
       tools: 'Ferramentas',
+      myRole: 'Meu papel',
     },
   },
   footer: {
     brandName: 'Igor Ferrão',
-    tagline: 'Product Designer focado em experiências intuitivas.',
+    tagline: 'Designer de Produto focado em experiências intuitivas.',
     columns: [
       { title: 'Produto', links: ['Funcionalidades', 'Preços', 'Integrações', 'Atualizações'] },
       { title: 'Recursos', links: ['Documentação', 'Guias', 'Blog', 'Suporte'] },

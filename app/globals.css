@@ -95,16 +95,21 @@
   --surface-inverse-foreground: #fafafa;
   --surface-inverse-card: #1f1f1f;
   --surface-inverse-pill: #525252;
-  --case-study-hero-bg: #d7ebe7;
-  --metric-card-bg: #fff4e3;
-  --metric-card-border: #e8c999;
-  --metric-card-label: #6a5637;
+  --case-study-hero-bg: var(--accent);
+  --metric-card-bg: var(--accent);
+  --metric-card-border: color-mix(in oklab, var(--accent-foreground) 18%, var(--border));
+  --metric-card-label: var(--accent-foreground);
   --status-available: #4bdd5c;
   --overlay-scrim: rgb(0 0 0 / 0.9);
 
   --page-gradient-accent: var(--primary);
   --page-gradient-fade-light: rgb(255 255 255 / 0);
   --page-gradient-fade-dark: rgb(0 0 0 / 0);
+
+  --case-study-image-surface:
+    radial-gradient(at 100% 100%, color-mix(in oklab, var(--primary) 18%, transparent) 0%, transparent 70%),
+    radial-gradient(at 0% 0%, color-mix(in oklab, var(--primary) 18%, transparent) 0%, transparent 70%),
+    linear-gradient(90deg, var(--accent) 0%, var(--accent) 100%);
 }
 
 .dark {
@@ -144,16 +149,27 @@
   --surface-inverse-foreground: #fafafa;
   --surface-inverse-card: #1f1f1f;
   --surface-inverse-pill: #525252;
-  --case-study-hero-bg: #d7ebe7;
-  --metric-card-bg: #fff4e3;
-  --metric-card-border: #e8c999;
-  --metric-card-label: #6a5637;
+  --case-study-hero-bg: var(--accent);
+  --metric-card-bg: var(--accent);
+  --metric-card-border: color-mix(in oklab, var(--accent-foreground) 18%, var(--border));
+  --metric-card-label: var(--accent-foreground);
   --status-available: #4bdd5c;
   --overlay-scrim: rgb(0 0 0 / 0.9);
 
   --page-gradient-accent: var(--primary);
   --page-gradient-fade-light: rgb(255 255 255 / 0);
   --page-gradient-fade-dark: rgb(0 0 0 / 0);
+
+  --case-study-image-surface:
+    radial-gradient(at 100% 100%, color-mix(in oklab, var(--primary) 18%, transparent) 0%, transparent 70%),
+    radial-gradient(at 0% 0%, color-mix(in oklab, var(--primary) 18%, transparent) 0%, transparent 70%),
+    linear-gradient(90deg, var(--accent) 0%, var(--accent) 100%);
+}
+
+.case-study-image-surface {
+  background-image: var(--case-study-image-surface);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* Color themes (data-theme) */

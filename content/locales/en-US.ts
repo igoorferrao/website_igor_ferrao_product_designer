@@ -1,13 +1,30 @@
 import type { SiteContent } from '../types';
 
 export const content: SiteContent = {
+  meta: {
+    title: 'Igor Ferrão — Product Designer',
+    description: 'Product Designer focused on intuitive digital experiences.',
+  },
   navbar: {
     logo: { firstName: 'Igor', lastName: 'Ferrão' },
     links: { about: 'About Me', services: 'Services', cases: 'Cases' },
+    menu: {
+      openAriaLabel: 'Open navigation menu',
+      closeAriaLabel: 'Close navigation menu',
+      dialogAriaLabel: 'Navigation menu',
+      title: 'Menu',
+      navAriaLabel: 'Primary',
+    },
     languageSelectAriaLabel: 'Select language',
     themeToggleAriaLabel: 'Toggle theme',
     paletteAriaLabel: 'Theme',
     paletteMenuAriaLabel: 'Open theme menu',
+    themeOptions: [
+      { value: 'default', label: 'Ferrão Design' },
+      { value: 'nature', label: 'Nature' },
+      { value: 'modern', label: 'Modern' },
+      { value: 'claude', label: 'Claude' },
+    ],
     languages: [
       { value: 'pt-BR', label: 'Português' },
       { value: 'en-US', label: 'English' },
@@ -20,13 +37,19 @@ export const content: SiteContent = {
     subtitle:
       'I craft digital experiences blending strategy, UX, and design. I design products that balance startup speed with corporate scale, currently shaping digital hospitality at Hyatt.',
     ctas: { primary: "Let's Talk", secondary: 'Download CV' },
+    portraitCard: {
+      name: 'Igor Ferrão de Souza',
+      descriptionLine1: 'A Product Designer focused on intuitive',
+      descriptionLine2: 'user experiences.',
+      imageAlt: 'Portrait of Igor Ferrão de Souza',
+    },
   },
   about: {
     label: 'ABOUT ME',
     headlineLines: [
-      "I'm Ethan Riley, your creative partner in design.",
-      'For me, design is all about creating experiences that',
-      "really connect with people. It's not just looking good",
+      "I'm Igor Ferrão, your creative partner in design.",
+      'For me, design is about creating experiences that',
+      "connect with people. It's not just looking good",
     ],
     videoAriaLabel: 'Open video placeholder',
     stats: [
@@ -76,6 +99,11 @@ export const content: SiteContent = {
     label: 'CASE STUDY',
     title: 'Real Results Showcase',
     description: 'Delivering standout experiences that are both visually striking and user-focused.',
+    cardLabels: {
+      challenge: 'Challenge',
+      solution: 'Solution',
+      cta: 'View case study',
+    },
   },
   caseStudyDetail: {
     sectionTitles: {
@@ -89,20 +117,27 @@ export const content: SiteContent = {
       outcomesImpact: 'Outcomes & Impact',
       closingThoughts: 'Closing Thoughts',
     },
+    lightbox: {
+      openImageAriaLabel: 'Open image',
+      closeImageAriaLabel: 'Close image preview',
+      dialogAriaLabel: 'Image preview',
+    },
     overviewLabels: {
       client: 'Client',
+      category: 'Category',
       role: 'Role',
       timeline: 'Timeline',
       services: 'Services',
       deliverables: 'Deliverables',
       tools: 'Tools',
+      myRole: 'My role',
     },
   },
   footer: {
     brandName: 'Igor Ferrão',
     tagline: 'A Product Designer focused on intuitive user experiences.',
     columns: [
-      { title: 'Product', links: ['Features', 'Princing', 'Integrations', 'Updates'] },
+      { title: 'Product', links: ['Features', 'Pricing', 'Integrations', 'Updates'] },
       { title: 'Resources', links: ['Documentation', 'Guides', 'Blog', 'Support'] },
       { title: 'Company', links: ['About', 'Careers', 'Contact', 'Partners'] },
     ],

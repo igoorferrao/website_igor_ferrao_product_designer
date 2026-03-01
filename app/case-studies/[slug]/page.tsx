@@ -1,10 +1,11 @@
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { Instrument_Sans } from 'next/font/google';
-import { getCaseStudyBySlug, getCaseStudySlugs } from '@/lib/case-studies';
+import type { Metadata } from 'next';
+import { getCaseStudyBySlug, getCaseStudyCards, getCaseStudySlugs } from '@/lib/case-studies';
 import { CaseStudy } from '@/components/case-study';
 import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar';
+import { LightboxImage } from '@/components/lightbox-image';
 import { getLocale } from '@/lib/i18n/get-locale';
 import { getContent } from '@/content/get-content';
 
@@ -21,11 +22,30 @@ export function generateStaticParams() {
   return getCaseStudySlugs();
 }
 
-export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
+export async function generateMetadata({ params }: CaseStudyPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const caseStudy = getCaseStudyBySlug(slug);
   const locale = await getLocale();
   const content = await getContent(locale);
+  const caseStudy = getCaseStudyBySlug(slug, locale);
+
+  if (!caseStudy) {
+    return {
+      title: content.meta.title,
+      description: content.meta.description,
+    };
+  }
+
+  return {
+    title: `${caseStudy.detail.title} | ${content.meta.title}`,
+    description: caseStudy.detail.subtitle,
+  };
+}
+
+export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
+  const { slug } = await params;
+  const locale = await getLocale();
+  const content = await getContent(locale);
+  const caseStudy = getCaseStudyBySlug(slug, locale);
 
   if (!caseStudy) {
     notFound();
@@ -34,14 +54,22 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   const { detail } = caseStudy;
   const sectionTitles = content.caseStudyDetail.sectionTitles;
   const overviewLabels = content.caseStudyDetail.overviewLabels;
+  const lightboxLabels = content.caseStudyDetail.lightbox;
+  const caseStudyCards = getCaseStudyCards(locale);
 
   function getOverviewLabel(label: string) {
     switch (label) {
       case 'Client':
         return overviewLabels.client;
+      case 'Category':
+        return overviewLabels.category;
       case 'Role':
         return overviewLabels.role;
+      case 'My role':
+        return overviewLabels.myRole;
       case 'Timeline':
+        return overviewLabels.timeline;
+      case 'Timelines':
         return overviewLabels.timeline;
       case 'Services':
         return overviewLabels.services;
@@ -60,185 +88,221 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         className={`${instrumentSans.variable} w-full max-w-360 bg-background font-(--font-instrument-sans) shadow-2xl rounded-4xl`}
       >
         <Navbar content={content.navbar} currentLocale={locale} />
-        <section className="py-8 px-4 md:py-16 md:px-16 text-foreground">
-          <div className="mx-auto w-full space-y-12">
-            <div className="grid gap-6 lg:grid-cols-[1fr_389px] lg:gap-8">
-              <div className="space-y-4">
-                <h1 className="max-w-155 text-[32px] font-medium leading-[1.15] tracking-[-0.04em] lg:text-[44px]">
+        <section className="px-4 py-8 text-foreground md:px-16 md:py-16">
+          <div className="mx-auto w-full space-y-16">
+            <header className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-10">
+              <div className="flex flex-1 flex-col gap-4">
+                <h1 className="max-w-[604px] text-[36px] font-medium leading-[44px] tracking-[-0.04em] md:text-[44px] md:leading-[52px] lg:text-[48px] lg:leading-[56px]">
                   {detail.title}
                 </h1>
-                <p className="max-w-165 text-base leading-6 text-muted-foreground">{detail.subtitle}</p>
+                <p className="max-w-[604px] text-base leading-[25.6px] text-muted-foreground">{detail.subtitle}</p>
               </div>
 
-              <div className="group relative mx-auto h-[264px] w-full max-w-[389px] overflow-hidden rounded-2xl bg-case-study-hero-bg">
-                <Image
-                  src={detail.heroImageSrc}
-                  alt={detail.heroImageAlt}
-                  fill
-                  className="object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:transform-none"
-                  sizes="(max-width: 1024px) 100vw, 389px"
-                  priority
-                />
-              </div>
-            </div>
+              <LightboxImage
+                src={detail.heroImageSrc}
+                alt={detail.heroImageAlt}
+                sizes="(max-width: 1024px) 100vw, 389px"
+                priority
+                className="case-study-image-surface aspect-[389/264] rounded-2xl lg:max-w-[389px]"
+                ariaLabels={{
+                  openImage: lightboxLabels.openImageAriaLabel,
+                  closeImage: lightboxLabels.closeImageAriaLabel,
+                  dialog: lightboxLabels.dialogAriaLabel,
+                }}
+              />
+            </header>
 
-            <div className="relative grid gap-8 lg:grid-cols-[1fr_389px] lg:gap-10">
-              <div className="space-y-10 text-sm leading-6 text-muted-foreground">
-                <section className="space-y-3">
-                  <h2 className="text-[22px] font-medium leading-8 text-foreground">{sectionTitles.introduction}</h2>
-                  <p>{detail.introduction}</p>
+            <div className="grid gap-12 lg:grid-cols-[1fr_389px] lg:gap-10">
+              <div className="divide-y divide-border">
+                <section className="space-y-6 py-10 first:pt-0">
+                  <h2 className="text-[32px] font-medium leading-[40px] tracking-[-0.04em] md:text-[40px] md:leading-[48px]">
+                    {sectionTitles.introduction}
+                  </h2>
+                  <p className="text-base leading-6 text-muted-foreground">{detail.introduction}</p>
                 </section>
 
-                <section className="space-y-3">
-                  <h2 className="text-[22px] font-medium leading-8 text-foreground">{sectionTitles.coreProblem}</h2>
-                  <ul className="space-y-2">
+                <section className="space-y-6 py-10">
+                  <h2 className="text-[32px] font-medium leading-[40px] tracking-[-0.04em] md:text-[40px] md:leading-[48px]">
+                    {sectionTitles.coreProblem}
+                  </h2>
+                  <ul className="list-disc space-y-2 pl-6 text-base leading-6 text-muted-foreground">
                     {detail.coreProblems.map((item) => (
-                      <li key={item} className="flex gap-2">
-                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-muted-foreground" />
-                        <span>{item}</span>
-                      </li>
+                      <li key={item}>{item}</li>
                     ))}
                   </ul>
                 </section>
 
-                <section className="space-y-3">
-                  <h2 className="text-[22px] font-medium leading-8 text-foreground">
+                <section className="space-y-6 py-10">
+                  <h2 className="text-[32px] font-medium leading-[40px] tracking-[-0.04em] md:text-[40px] md:leading-[48px]">
                     {sectionTitles.discoveryResearch}
                   </h2>
-                  <ul className="space-y-2">
+                  <ul className="list-disc space-y-2 pl-6 text-base leading-6 text-muted-foreground">
                     {detail.discoveryResearch.map((item) => (
-                      <li key={item} className="flex gap-2">
-                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-muted-foreground" />
-                        <span>{item}</span>
-                      </li>
+                      <li key={item}>{item}</li>
                     ))}
                   </ul>
-                </section>
 
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {detail.gallery.slice(0, 2).map((image) => (
-                    <div key={image.src} className="group relative h-55 overflow-hidden rounded-xl bg-secondary">
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        className="object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:transform-none"
-                        sizes="(max-width: 640px) 100vw, 320px"
+                  {detail.gallery[0] ? (
+                    <div className="overflow-hidden rounded-2xl border border-border bg-accent p-5">
+                      <LightboxImage
+                        src={detail.gallery[0].src}
+                        alt={detail.gallery[0].alt}
+                        sizes="(max-width: 1024px) 100vw, 819px"
+                        className="case-study-image-surface aspect-[819/420] rounded-2xl"
+                        imageClassName="object-contain"
+                        ariaLabels={{
+                          openImage: lightboxLabels.openImageAriaLabel,
+                          closeImage: lightboxLabels.closeImageAriaLabel,
+                          dialog: lightboxLabels.dialogAriaLabel,
+                        }}
                       />
                     </div>
-                  ))}
-                </div>
+                  ) : null}
+                </section>
 
-                <section className="space-y-3">
-                  <h2 className="text-[22px] font-medium leading-8 text-foreground">
+                <section className="space-y-6 py-10">
+                  <h2 className="text-[32px] font-medium leading-[40px] tracking-[-0.04em] md:text-[40px] md:leading-[48px]">
                     {sectionTitles.redesignStrategy}
                   </h2>
-                  <ul className="space-y-2">
+                  <ul className="list-disc space-y-2 pl-6 text-base leading-6 text-muted-foreground">
                     {detail.redesignStrategy.map((item) => (
-                      <li key={item} className="flex gap-2">
-                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-muted-foreground" />
-                        <span>{item}</span>
-                      </li>
+                      <li key={item}>{item}</li>
                     ))}
                   </ul>
                 </section>
 
-                <section className="space-y-3">
-                  <h2 className="text-[22px] font-medium leading-8 text-foreground">{sectionTitles.whatWeCrafted}</h2>
-                  <ul className="space-y-2">
+                <section className="space-y-6 py-10">
+                  <h2 className="text-[32px] font-medium leading-[40px] tracking-[-0.04em] md:text-[40px] md:leading-[48px]">
+                    {sectionTitles.whatWeCrafted}
+                  </h2>
+                  <ul className="list-disc space-y-2 pl-6 text-base leading-6 text-muted-foreground">
                     {detail.whatWeCrafted.map((item) => (
-                      <li key={item} className="flex gap-2">
-                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-muted-foreground" />
-                        <span>{item}</span>
-                      </li>
+                      <li key={item}>{item}</li>
                     ))}
                   </ul>
                 </section>
 
-                <section className="space-y-3">
-                  <h2 className="text-[22px] font-medium leading-8 text-foreground">{sectionTitles.businessResults}</h2>
-                  <ul className="space-y-2">
-                    {detail.businessResults.map((item) => (
-                      <li key={item} className="flex gap-2">
-                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-muted-foreground" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </section>
+                {detail.businessResults.length ? (
+                  <section className="space-y-6 py-10">
+                    <h2 className="text-[32px] font-medium leading-[40px] tracking-[-0.04em] md:text-[40px] md:leading-[48px]">
+                      {sectionTitles.businessResults}
+                    </h2>
+                    <ul className="list-disc space-y-2 pl-6 text-base leading-6 text-muted-foreground">
+                      {detail.businessResults.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
 
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {detail.gallery
-                    .slice()
-                    .reverse()
-                    .map((image) => (
-                      <div
-                        key={`${image.src}-repeat`}
-                        className="group relative h-55 overflow-hidden rounded-xl bg-secondary"
-                      >
-                        <Image
-                          src={image.src}
-                          alt={image.alt}
-                          fill
-                          className="object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:transform-none"
-                          sizes="(max-width: 640px) 100vw, 320px"
+                    {detail.gallery[1] ? (
+                      <div className="overflow-hidden rounded-2xl border border-border bg-accent p-5">
+                        <LightboxImage
+                          src={detail.gallery[1].src}
+                          alt={detail.gallery[1].alt}
+                          sizes="(max-width: 1024px) 100vw, 819px"
+                          className="case-study-image-surface aspect-[819/420] rounded-2xl"
+                          imageClassName="object-contain"
+                          ariaLabels={{
+                            openImage: lightboxLabels.openImageAriaLabel,
+                            closeImage: lightboxLabels.closeImageAriaLabel,
+                            dialog: lightboxLabels.dialogAriaLabel,
+                          }}
                         />
                       </div>
-                    ))}
-                </div>
+                    ) : null}
+                  </section>
+                ) : null}
 
-                <section className="space-y-3">
-                  <h2 className="text-[22px] font-medium leading-8 text-foreground">{sectionTitles.keyTakeaways}</h2>
-                  <ul className="space-y-2">
+                <section className="space-y-6 py-10">
+                  <h2 className="text-[32px] font-medium leading-[40px] tracking-[-0.04em] md:text-[40px] md:leading-[48px]">
+                    {sectionTitles.keyTakeaways}
+                  </h2>
+                  <ul className="list-disc space-y-2 pl-6 text-base leading-6 text-muted-foreground">
                     {detail.keyTakeaways.map((item) => (
-                      <li key={item} className="flex gap-2">
-                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-muted-foreground" />
-                        <span>{item}</span>
-                      </li>
+                      <li key={item}>{item}</li>
                     ))}
                   </ul>
                 </section>
 
-                <section className="space-y-3">
-                  <h2 className="text-[22px] font-medium leading-8 text-foreground">{sectionTitles.outcomesImpact}</h2>
-                  <p>{detail.outcomesImpactSummary}</p>
+                <section className="space-y-6 py-10">
+                  <h2 className="text-[32px] font-medium leading-[40px] tracking-[-0.04em] md:text-[40px] md:leading-[48px]">
+                    {sectionTitles.outcomesImpact}
+                  </h2>
+
+                  {detail.outcomesImpactSummary ? (
+                    <p className="text-base leading-6 text-muted-foreground">{detail.outcomesImpactSummary}</p>
+                  ) : null}
+
+                  <div className="rounded-2xl border border-border p-[21px]">
+                    <div className="grid gap-6 sm:grid-cols-2">
+                      {detail.impactMetrics.map((metric, index) => {
+                        const isTopRow = index < 2;
+                        const cellHeight = isTopRow ? 'min-h-[88px]' : 'min-h-[96px]';
+                        const dividerHeight = isTopRow ? 'h-12' : 'h-14';
+
+                        return (
+                          <div
+                            key={metric.label}
+                            className={[
+                              'flex items-center gap-6 rounded-lg bg-accent p-5 text-accent-foreground',
+                              cellHeight,
+                            ].join(' ')}
+                          >
+                            <p className="text-[40px] font-medium leading-[48px] tracking-[-0.04em]">{metric.value}</p>
+                            <div className={`w-px ${dividerHeight} bg-accent-foreground/50`} />
+                            <p className="flex-1 text-[18px] font-medium leading-7">{metric.label}</p>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {detail.gallery[2] && detail.gallery[3] ? (
+                    <div className="grid gap-5 pt-6 md:grid-cols-2">
+                      {[detail.gallery[2], detail.gallery[3]].map((image) => (
+                        <div key={`impact-${image.src}`} className="overflow-hidden rounded-2xl bg-accent p-5">
+                          <LightboxImage
+                            src={image.src}
+                            alt={image.alt}
+                            sizes="(max-width: 1024px) 100vw, 389px"
+                            className="case-study-image-surface h-[320px] rounded-2xl"
+                            imageClassName="object-contain"
+                            ariaLabels={{
+                              openImage: lightboxLabels.openImageAriaLabel,
+                              closeImage: lightboxLabels.closeImageAriaLabel,
+                              dialog: lightboxLabels.dialogAriaLabel,
+                            }}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
                 </section>
 
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {detail.impactMetrics.map((metric) => (
-                    <div
-                      key={metric.label}
-                      className="rounded-xl border border-accent-foreground bg-accent px-4 py-3 text-accent-foreground"
-                    >
-                      <p className="text-[26px] font-medium leading-8">{metric.value}</p>
-                      <p className="text-sm leading-5 text-accent-foreground">{metric.label}</p>
-                    </div>
-                  ))}
-                </div>
-
-                <section className="space-y-3">
-                  <h2 className="text-[22px] font-medium leading-8 text-foreground">{sectionTitles.closingThoughts}</h2>
-                  <p>{detail.closingThoughts}</p>
+                <section className="space-y-6 py-10 last:pb-0">
+                  <h2 className="text-[32px] font-medium leading-[40px] tracking-[-0.04em] md:text-[40px] md:leading-[48px]">
+                    {sectionTitles.closingThoughts}
+                  </h2>
+                  <p className="text-base leading-6 text-muted-foreground">{detail.closingThoughts}</p>
                 </section>
               </div>
 
-              <aside className="h-fit rounded-2xl border border-border bg-card p-5 shadow-[0_4px_12px_rgba(0,0,0,0.04)] lg:sticky lg:top-32 lg:self-start">
-                <dl className="space-y-4">
+              <aside className="h-fit rounded-2xl border border-border bg-background p-6 lg:sticky lg:top-32 lg:self-start">
+                <dl className="divide-y divide-border">
                   {detail.overview.map((item) => (
-                    <div
-                      key={item.label}
-                      className="grid grid-cols-[88px_1fr] gap-3 border-b border-border/60 pb-3 text-sm leading-5 last:border-b-0 last:pb-0"
-                    >
-                      <dt className="text-muted-foreground">{getOverviewLabel(item.label)}</dt>
-                      <dd className="font-medium text-foreground">
+                    <div key={item.label} className="flex gap-3 py-3 first:pt-0 last:pb-0">
+                      <dt className="w-[104px] shrink-0 text-base leading-6 text-muted-foreground">
+                        {getOverviewLabel(item.label)}
+                      </dt>
+                      <div className="w-[5px] shrink-0 text-base leading-6 text-muted-foreground">:</div>
+                      <dd className="min-w-0 flex-1 text-base leading-6 text-foreground">
                         {typeof item.value === 'string' ? (
-                          item.value
+                          <span>{item.value}</span>
                         ) : (
-                          <ul className="flex flex-wrap gap-2">
+                          <ul className="flex flex-wrap gap-3">
                             {item.value.map((service) => (
                               <li
                                 key={service}
-                                className="inline-flex items-center justify-center rounded-full border border-border px-4 py-2 text-sm font-normal leading-4 bg-card text-card-foreground"
+                                className="inline-flex items-center justify-center rounded-full border border-border px-4 py-2 text-base leading-6 text-foreground"
                               >
                                 {service}
                               </li>
@@ -254,7 +318,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           </div>
         </section>
 
-        <CaseStudy content={content.caseStudy} />
+        <CaseStudy content={content.caseStudy} cards={caseStudyCards} />
         <Footer content={content.footer} />
       </main>
     </div>

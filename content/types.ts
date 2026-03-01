@@ -1,4 +1,8 @@
 export type SiteContent = {
+  meta: {
+    title: string;
+    description: string;
+  };
   navbar: {
     logo: {
       firstName: string;
@@ -9,10 +13,21 @@ export type SiteContent = {
       services: string;
       cases: string;
     };
+    menu: {
+      openAriaLabel: string;
+      closeAriaLabel: string;
+      dialogAriaLabel: string;
+      title: string;
+      navAriaLabel: string;
+    };
     languageSelectAriaLabel: string;
     themeToggleAriaLabel: string;
     paletteAriaLabel: string;
     paletteMenuAriaLabel: string;
+    themeOptions: Array<{
+      value: 'default' | 'nature' | 'modern' | 'claude';
+      label: string;
+    }>;
     languages: Array<{
       value: 'pt-BR' | 'en-US' | 'es-ES';
       label: string;
@@ -29,6 +44,12 @@ export type SiteContent = {
     ctas: {
       primary: string;
       secondary: string;
+    };
+    portraitCard: {
+      name: string;
+      descriptionLine1: string;
+      descriptionLine2: string;
+      imageAlt: string;
     };
     socialProof?: {
       title: string;
@@ -65,6 +86,11 @@ export type SiteContent = {
     label: string;
     title: string;
     description: string;
+    cardLabels: {
+      challenge: string;
+      solution: string;
+      cta: string;
+    };
   };
   caseStudyDetail: {
     sectionTitles: {
@@ -78,13 +104,20 @@ export type SiteContent = {
       outcomesImpact: string;
       closingThoughts: string;
     };
+    lightbox: {
+      openImageAriaLabel: string;
+      closeImageAriaLabel: string;
+      dialogAriaLabel: string;
+    };
     overviewLabels: {
       client: string;
+      category: string;
       role: string;
       timeline: string;
       services: string;
       deliverables: string;
       tools: string;
+      myRole: string;
     };
   };
   footer: {

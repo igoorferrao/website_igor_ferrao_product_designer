@@ -15,7 +15,7 @@ export function Navbar({ content, currentLocale }: { content: SiteContent['navba
     <header className={`${instrumentSans.variable} font-(--font-instrument-sans)`}>
       <div className="relative flex items-center justify-between bg-background px-3 py-3 md:px-4 md:py-8 lg:px-16 lg:py-8">
         <div className="flex items-center gap-2 sm:gap-3 md:gap-5">
-          <NavbarMenu links={content.links} />
+          <NavbarMenu content={content} />
           <Link
             href="/"
             className="flex items-center gap-1 text-base leading-6 md:text-xl md:leading-8 lg:gap-2 lg:text-[32px] lg:leading-10"

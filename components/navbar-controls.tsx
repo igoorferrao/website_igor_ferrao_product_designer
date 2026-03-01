@@ -13,13 +13,6 @@ import { runRadialRootTransition } from '@/lib/radial-root-transition';
 
 type ColorTheme = 'default' | 'nature' | 'modern' | 'claude';
 
-const themeOptions = [
-  { value: 'default', label: 'Ferrão Design' },
-  { value: 'nature', label: 'Nature' },
-  { value: 'modern', label: 'Modern' },
-  { value: 'claude', label: 'Claude' },
-] as const satisfies ReadonlyArray<{ value: ColorTheme; label: string }>;
-
 function isColorTheme(value: string): value is ColorTheme {
   return value === 'default' || value === 'nature' || value === 'modern' || value === 'claude';
 }
@@ -48,6 +41,7 @@ export function NavbarControls({ content, currentLocale }: { content: SiteConten
   const themePointerOriginRef = React.useRef<{ x: number; y: number } | undefined>(undefined);
 
   const currentLabel = content.languages.find((lang) => lang.value === currentLocale)?.label ?? currentLocale;
+  const themeOptions = content.themeOptions as ReadonlyArray<{ value: ColorTheme; label: string }>;
 
   React.useEffect(() => {
     const stored = getStoredColorTheme();

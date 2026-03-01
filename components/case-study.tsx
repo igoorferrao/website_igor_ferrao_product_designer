@@ -1,6 +1,5 @@
 import { Instrument_Sans } from 'next/font/google';
 import { Card_Case_Study } from '@/components/card-case-study';
-import { caseStudyCards } from '@/lib/case-studies';
 import type { SiteContent } from '@/content/types';
 
 const instrumentSans = Instrument_Sans({
@@ -8,7 +7,22 @@ const instrumentSans = Instrument_Sans({
   variable: '--font-instrument-sans',
 });
 
-export function CaseStudy({ content }: { content: SiteContent['caseStudy'] }) {
+type CaseStudyCard = {
+  slug: string;
+  title: string;
+  description: string;
+  challenge: string;
+  solution: string;
+  leftStat: { value: string; label: string };
+  rightStat: { value: string; label: string };
+  imageSrc: string;
+  imageAlt: string;
+  href: string;
+  variant?: 'light' | 'dark';
+  imagePosition?: 'left' | 'right';
+};
+
+export function CaseStudy({ content, cards }: { content: SiteContent['caseStudy']; cards: CaseStudyCard[] }) {
   return (
     <section id="cases" className="px-4 py-8 lg:px-16 lg:py-16">
       <div
@@ -26,13 +40,14 @@ export function CaseStudy({ content }: { content: SiteContent['caseStudy'] }) {
         </div>
 
         <div className="space-y-[60px]">
-          {caseStudyCards.map((card) => (
+          {cards.map((card) => (
             <Card_Case_Study
               key={card.slug}
               title={card.title}
               description={card.description}
               challenge={card.challenge}
               solution={card.solution}
+              labels={content.cardLabels}
               leftStat={card.leftStat}
               rightStat={card.rightStat}
               imageSrc={card.imageSrc}
