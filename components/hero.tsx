@@ -22,15 +22,15 @@ const portraitImage = '/d64a1b54febb0531bbb407786294d0ffac43e298.png';
 
 const cvDownloads: Record<Locale, { href: string; filename: string }> = {
   'pt-BR': {
-    href: './cv/cv-pt-BR.pdf',
+    href: '/cv/pt-BR/Igor-Ferrao-CV-pt-BR.pdf',
     filename: 'Igor-Ferrao-CV-pt-BR.pdf',
   },
   'en-US': {
-    href: './cv/cv-en-US.pdf',
+    href: '/cv/en-US/Igor-Ferrao-CV-en-US.pdf',
     filename: 'Igor-Ferrao-CV-en-US.pdf',
   },
   'es-ES': {
-    href: './cv/cv-es-ES.pdf',
+    href: '/cv/es-ES/Igor-Ferrao-CV-es-ES.pdf',
     filename: 'Igor-Ferrao-CV-es-ES.pdf',
   },
 };
