@@ -2,8 +2,10 @@ import Image from 'next/image';
 import { Instrument_Sans } from 'next/font/google';
 import { Poppins } from 'next/font/google';
 import { MoveRight } from 'lucide-react';
+import { FileDown } from 'lucide-react';
 import type { SiteContent } from '@/content/types';
 import { Button } from '@/components/ui/button';
+import type { Locale } from '@/lib/i18n/locales';
 
 const instrumentSans = Instrument_Sans({
   subsets: ['latin'],
@@ -18,10 +20,25 @@ const poppins = Poppins({
 
 const portraitImage = '/d64a1b54febb0531bbb407786294d0ffac43e298.png';
 
-export function Hero({ content }: { content: SiteContent['hero'] }) {
+const cvDownloads: Record<Locale, { href: string; filename: string }> = {
+  'pt-BR': {
+    href: './cv/cv-pt-BR.pdf',
+    filename: 'Igor-Ferrao-CV-pt-BR.pdf',
+  },
+  'en-US': {
+    href: './cv/cv-en-US.pdf',
+    filename: 'Igor-Ferrao-CV-en-US.pdf',
+  },
+  'es-ES': {
+    href: './cv/cv-es-ES.pdf',
+    filename: 'Igor-Ferrao-CV-es-ES.pdf',
+  },
+};
+
+export function Hero({ content, locale }: { content: SiteContent['hero']; locale: Locale }) {
   const eyebrow = content.eyebrow ?? content.title?.line1 ?? '';
-  const headline =
-    content.headline ?? [content.title?.line1, content.title?.line2].filter(Boolean).join(' ') ?? '';
+  const headline = content.headline ?? [content.title?.line1, content.title?.line2].filter(Boolean).join(' ') ?? '';
+  const cvDownload = cvDownloads[locale];
 
   return (
     <section className={`${instrumentSans.variable} ${poppins.variable} px-3 py-10 sm:px-4 sm:py-16 lg:p-16`}>
@@ -57,9 +74,13 @@ export function Hero({ content }: { content: SiteContent['hero'] }) {
                 </a>
               </Button>
               <Button asChild variant="secondary" size="xl" className="flex-1 sm:flex-none sm:w-[175px]">
-                <a href="#" className="flex items-center justify-center gap-2">
+                <a
+                  href={cvDownload.href}
+                  download={cvDownload.filename}
+                  className="flex items-center justify-center gap-2"
+                >
                   {content.ctas.secondary}
-                  <MoveRight className="h-5 w-5" strokeWidth={2} />
+                  <FileDown className="h-5 w-5" strokeWidth={2} />
                 </a>
               </Button>
             </div>
