@@ -73,7 +73,7 @@ export function NavbarControls({ content, currentLocale }: { content: SiteConten
           <SelectTrigger
             aria-label={content.languageSelectAriaLabel}
             size="sm"
-            className="h-9 gap-2 rounded-xl border-transparent px-2 text-sm text-secondary-foreground hover:bg-muted [&_svg:not([class*='size-'])]:size-5 sm:px-3"
+            className="h-9 gap-2 rounded-xl border-transparent px-2 text-sm text-foreground hover:bg-muted [&_svg:not([class*='size-'])]:size-5 sm:px-3"
           >
             <SelectValue placeholder={currentLabel} />
           </SelectTrigger>
@@ -91,7 +91,7 @@ export function NavbarControls({ content, currentLocale }: { content: SiteConten
         <SelectTrigger
           aria-label={content.paletteAriaLabel}
           size="sm"
-          className="h-9 gap-2 rounded-xl border-transparent px-2 text-sm text-secondary-foreground hover:bg-muted [&_svg:not([class*='size-'])]:size-5 sm:px-3"
+          className="h-9 gap-2 rounded-xl border-transparent px-2 text-sm text-foreground hover:bg-muted [&_svg:not([class*='size-'])]:size-5 sm:px-3"
           onPointerDown={(event) => {
             themePointerOriginRef.current = { x: event.clientX, y: event.clientY };
           }}

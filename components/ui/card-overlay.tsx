@@ -29,7 +29,7 @@ export function CardOverlay() {
       </div>
 
       {/* Overlay do texto por cima */}
-      <div className="absolute inset-x-0 bottom-0 overflow-hidden rounded-b-4xl bg-linear-to-t from-overlay-scrim to-transparent px-5 pb-5 pt-10 text-surface-inverse-foreground">
+      <div className="absolute inset-x-0 bottom-0 overflow-hidden rounded-b-4xl bg-linear-to-t from-overlay-scrim to-transparent px-5 pb-5 pt-10 text-surface-inverse-foreground backdrop-blur-[10px]">
         <div className="space-y-2">
           <h2 className="text-[28px] font-medium leading-9">Igor Ferrão de Souza</h2>
           <p className="text-[18px] leading-7">

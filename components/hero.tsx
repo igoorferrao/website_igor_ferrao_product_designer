@@ -99,7 +99,7 @@ export function Hero({ content, locale }: { content: SiteContent['hero']; locale
               priority
             />
             <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-overlay-scrim to-transparent px-3 pb-3 pt-5 backdrop-blur-[10px]">
-              <div className="space-y-2 text-primary-foreground">
+              <div className="space-y-2 text-surface-inverse-foreground">
                 <p className="text-[20px] font-medium leading-8">{content.portraitCard.name}</p>
                 <p className="text-base leading-6">
                   {content.portraitCard.descriptionLine1}
@@ -123,7 +123,7 @@ export function Hero({ content, locale }: { content: SiteContent['hero']; locale
               priority
             />
             <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-overlay-scrim to-transparent px-5 pb-5 pt-10 backdrop-blur-[10px]">
-              <div className="space-y-2 text-primary-foreground">
+              <div className="space-y-2 text-surface-inverse-foreground">
                 <p className="text-[28px] font-medium leading-9">{content.portraitCard.name}</p>
                 <p className="text-[18px] leading-7">
                   {content.portraitCard.descriptionLine1}
