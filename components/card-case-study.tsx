@@ -47,7 +47,7 @@ export function Card_Case_Study({
   return (
     <article
       className={`rounded-2xl p-6 ${
-        isDark ? 'bg-surface-inverse text-surface-inverse-foreground' : 'bg-secondary text-foreground'
+        isDark ? 'bg-surface-inverse text-surface-inverse-foreground' : 'bg-secondary text-secondary-foreground'
       }`}
     >
       <div className="grid min-h-[354px] gap-8 lg:grid-cols-2">
@@ -120,8 +120,8 @@ function CardContent({
   isDark: boolean;
   href: string;
 }) {
-  const bodyTone = isDark ? 'text-surface-inverse-foreground' : 'text-muted-foreground';
-  const borderTone = isDark ? 'border-surface-inverse-foreground' : 'border-muted-foreground';
+  const bodyTone = isDark ? 'text-surface-inverse-foreground' : 'text-secondary-foreground';
+  const borderTone = isDark ? 'border-surface-inverse-foreground' : 'border-primary-foreground';
 
   return (
     <div className="flex h-full flex-col gap-12">

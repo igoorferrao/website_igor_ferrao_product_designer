@@ -34,9 +34,7 @@ export function CaseStudy({ content, cards }: { content: SiteContent['caseStudy'
             <p className="text-base font-medium leading-6">{content.label}</p>
           </div>
           <h2 className="text-[40px] font-medium leading-[1.2] tracking-[-0.05em]">{content.title}</h2>
-          <p className="text-base leading-6 text-muted-foreground">
-            {content.description}
-          </p>
+          <p className="text-base leading-6 text-muted-foreground">{content.description}</p>
         </div>
 
         <div className="space-y-[60px]">
