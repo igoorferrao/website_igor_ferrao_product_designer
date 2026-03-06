@@ -58,7 +58,7 @@ export function MyService({ content }: { content: SiteContent['myService'] }) {
   }
 
   return (
-    <section id="services" className="px-4 py-12 lg:px-16 lg:py-16">
+    <section id="services" className="px-3 py-8 md:px-4 md:py-16 lg:px-16 lg:py-16">
       <div
         className={`${instrumentSans.variable} mx-auto w-full max-w-360 font-(--font-instrument-sans) text-foreground`}
       >

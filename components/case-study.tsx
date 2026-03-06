@@ -24,7 +24,7 @@ type CaseStudyCard = {
 
 export function CaseStudy({ content, cards }: { content: SiteContent['caseStudy']; cards: CaseStudyCard[] }) {
   return (
-    <section id="cases" className="px-4 py-8 lg:px-16 lg:py-16">
+    <section id="cases" className="px-3 py-8 md:px-4 md:py-16 lg:px-16 lg:py-16">
       <div
         className={`${instrumentSans.variable} mx-auto w-full max-w-[1440px] space-y-16 font-[var(--font-instrument-sans)] text-foreground`}
       >

@@ -13,9 +13,9 @@ const PARTNERS = [
 
 const Partners: React.FC = () => {
   return (
-    <section className="flex flex-col gap-4 py-12 overflow-hidden">
+    <section className="h-[115px] overflow-hidden">
       <div className="relative w-full overflow-hidden">
-        <div className="partners-track flex w-max">
+        <div className="partners-track flex h-[115px] w-max items-center">
           {[0, 1].map((groupIndex) => (
             <div key={groupIndex} className="flex shrink-0">
               {PARTNERS.map((partner, index) => (
