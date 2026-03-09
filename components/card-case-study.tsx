@@ -1,167 +1,37 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-
-type Stat = {
-  value: string;
-  label: string;
-};
 
 type CardCaseStudyProps = {
   title: string;
-  description: string;
-  challenge: string;
-  solution: string;
-  labels: {
-    challenge: string;
-    solution: string;
-    cta: string;
-  };
-  leftStat: Stat;
-  rightStat: Stat;
-  imageSrc: string;
+  subtitle: string;
+  heroImage: string;
   imageAlt: string;
   href: string;
-  variant?: 'light' | 'dark';
-  imagePosition?: 'left' | 'right';
 };
 
 export function Card_Case_Study({
   title,
-  description,
-  challenge,
-  solution,
-  labels,
-  leftStat,
-  rightStat,
-  imageSrc,
+  subtitle,
+  heroImage,
   imageAlt,
   href,
-  variant = 'light',
-  imagePosition = 'left',
 }: CardCaseStudyProps) {
-  const isDark = variant === 'dark';
-  const contentFirst = imagePosition === 'right';
-
   return (
-    <article
-      className={`rounded-2xl p-6 ${
-        isDark ? 'bg-surface-inverse text-surface-inverse-foreground' : 'bg-secondary text-secondary-foreground'
-      }`}
-    >
-      <div className="grid min-h-[354px] gap-8 lg:grid-cols-2">
-        {contentFirst ? (
-          <>
-            <CardContent
-              title={title}
-              description={description}
-              challenge={challenge}
-              solution={solution}
-              labels={labels}
-              leftStat={leftStat}
-              rightStat={rightStat}
-              isDark={isDark}
-              href={href}
-            />
-            <CardImage imageSrc={imageSrc} imageAlt={imageAlt} />
-          </>
-        ) : (
-          <>
-            <CardImage imageSrc={imageSrc} imageAlt={imageAlt} />
-            <CardContent
-              title={title}
-              description={description}
-              challenge={challenge}
-              solution={solution}
-              labels={labels}
-              leftStat={leftStat}
-              rightStat={rightStat}
-              isDark={isDark}
-              href={href}
-            />
-          </>
-        )}
+    <Link href={href} className="group block cursor-pointer">
+      <div className="relative mb-6 aspect-video w-full overflow-hidden rounded-2xl bg-gray-100">
+        <Image
+          src={heroImage}
+          alt={imageAlt}
+          fill
+          sizes="(max-width: 767px) calc(100vw - 24px), (max-width: 1023px) calc(100vw - 32px), calc((100vw - 160px - 32px) / 2)"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          referrerPolicy="no-referrer"
+        />
       </div>
-    </article>
-  );
-}
-
-function CardImage({ imageSrc, imageAlt }: { imageSrc: string; imageAlt: string }) {
-  return (
-    <div className="relative min-h-[260px] overflow-hidden rounded-2xl lg:min-h-[354px]">
-      <Image src={imageSrc} alt={imageAlt} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
-    </div>
-  );
-}
-
-function CardContent({
-  title,
-  description,
-  challenge,
-  solution,
-  labels,
-  leftStat,
-  rightStat,
-  isDark,
-  href,
-}: {
-  title: string;
-  description: string;
-  challenge: string;
-  solution: string;
-  labels: {
-    challenge: string;
-    solution: string;
-    cta: string;
-  };
-  leftStat: Stat;
-  rightStat: Stat;
-  isDark: boolean;
-  href: string;
-}) {
-  const bodyTone = isDark ? 'text-surface-inverse-foreground' : 'text-secondary-foreground';
-  const borderTone = isDark ? 'border-surface-inverse-foreground' : 'border-primary-foreground';
-
-  return (
-    <div className="flex h-full flex-col gap-12">
-      <div className="space-y-3">
-        <h3 className="text-[28px] font-medium leading-9">{title}</h3>
-        <p className={`text-sm leading-5 ${bodyTone}`}>{description}</p>
+      <div className="flex flex-col items-start gap-3 md:flex-row md:items-start md:justify-between md:gap-4">
+        <h3 className="text-[20px] font-medium leading-8 text-gray-900">{title}</h3>
+        <span className="text-base leading-6 text-gray-500 md:text-right">{subtitle}</span>
       </div>
-
-      <div className="grid gap-x-8 gap-y-8 sm:grid-cols-2">
-        <div className="space-y-2">
-          <p className="text-[20px] font-medium leading-8">{labels.challenge}</p>
-          <p className={`text-sm leading-5 ${bodyTone}`}>{challenge}</p>
-        </div>
-        <div className="space-y-2">
-          <p className="text-[20px] font-medium leading-8">{labels.solution}</p>
-          <p className={`text-sm leading-5 ${bodyTone}`}>{solution}</p>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <p className="text-[28px] font-medium leading-9">{leftStat.value}</p>
-          <div className={`border-l pl-5 ${borderTone}`}>
-            <p className={`text-sm leading-5 ${bodyTone}`}>{leftStat.label}</p>
-          </div>
-        </div>
-        <div className="flex items-center gap-3">
-          <p className="text-[28px] font-medium leading-9">{rightStat.value}</p>
-          <div className={`border-l pl-5 ${borderTone}`}>
-            <p className={`text-sm leading-5 ${bodyTone}`}>{rightStat.label}</p>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <Button asChild size="xl">
-          <Link href={href}>
-            {labels.cta}
-            <ArrowRight className="h-4 w-4" strokeWidth={1.8} />
-          </Link>
-        </Button>
-      </div>
-    </div>
+    </Link>
   );
 }
