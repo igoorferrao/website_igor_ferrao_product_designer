@@ -46,7 +46,8 @@ export type SiteContent = {
       primary: string;
       secondary: string;
     };
-    portraitCard: {
+    // Legacy content kept optional while locale payloads are still being trimmed.
+    portraitCard?: {
       name: string;
       descriptionLine1: string;
       descriptionLine2: string;

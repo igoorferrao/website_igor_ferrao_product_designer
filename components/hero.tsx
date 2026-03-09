@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { Instrument_Sans } from 'next/font/google';
 import { Poppins } from 'next/font/google';
 import { MoveRight } from 'lucide-react';
@@ -17,8 +16,6 @@ const poppins = Poppins({
   weight: ['400'],
   variable: '--font-poppins',
 });
-
-const portraitImage = '/d64a1b54febb0531bbb407786294d0ffac43e298.png';
 
 const cvDownloads: Record<Locale, { href: string; filename: string }> = {
   'pt-BR': {
@@ -42,22 +39,9 @@ export function Hero({ content, locale }: { content: SiteContent['hero']; locale
 
   return (
     <section className={`${instrumentSans.variable} ${poppins.variable} px-3 py-10 md:px-4 md:py-16 lg:px-16`}>
-      <div className="mx-auto flex w-full max-w-[374px] flex-col gap-5 font-(--font-instrument-sans) text-foreground md:max-w-[748px] md:flex-row md:items-center md:justify-between md:gap-10 lg:max-w-[1024px]">
-        <div className="w-full md:w-[320px] lg:min-w-[500px]">
+      <div className="mx-auto flex w-full flex-col gap-5 font-(--font-instrument-sans) text-foreground md:flex-row md:items-center md:justify-between md:gap-10">
+        <div className="w-full md:max-w-[800px]">
           <div className="flex flex-col gap-8">
-            <div className="md:hidden">
-              <div className="relative size-20 overflow-hidden rounded-lg">
-                <Image
-                  src={portraitImage}
-                  alt={content.portraitCard.imageAlt}
-                  fill
-                  sizes="80px"
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            </div>
-
             <div className="space-y-5">
               <p className="font-(--font-poppins) text-[18px] leading-7">{eyebrow}</p>
               <h1 className="text-[40px] font-medium leading-[48px] tracking-[-2px] lg:text-[48px] lg:leading-[56px]">
@@ -83,52 +67,6 @@ export function Hero({ content, locale }: { content: SiteContent['hero']; locale
                   <FileDown className="h-5 w-5" strokeWidth={2} />
                 </a>
               </Button>
-            </div>
-          </div>
-        </div>
-
-        <div className="hidden md:block lg:hidden">
-          <div className="relative h-[276px] w-[221px] overflow-hidden rounded-[20px]">
-            <Image
-              src={portraitImage}
-              alt={content.portraitCard.imageAlt}
-              fill
-              sizes="221px"
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-overlay-scrim to-transparent px-3 pb-3 pt-5 backdrop-blur-[10px]">
-              <div className="space-y-2 text-surface-inverse-foreground">
-                <p className="text-[20px] font-medium leading-8">{content.portraitCard.name}</p>
-                <p className="text-base font-medium leading-6">
-                  {content.portraitCard.descriptionLine1}
-                  <br />
-                  {content.portraitCard.descriptionLine2}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="hidden lg:block">
-          <div className="relative h-[535px] w-[428px] overflow-hidden rounded-[20px]">
-            <Image
-              src={portraitImage}
-              alt={content.portraitCard.imageAlt}
-              fill
-              sizes="428px"
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-overlay-scrim to-transparent px-5 pb-5 pt-10 backdrop-blur-[10px]">
-              <div className="space-y-2 text-surface-inverse-foreground">
-                <p className="text-[28px] font-medium leading-9">{content.portraitCard.name}</p>
-                <p className="text-[18px] font-medium leading-7">
-                  {content.portraitCard.descriptionLine1}
-                  <br />
-                  {content.portraitCard.descriptionLine2}
-                </p>
-              </div>
             </div>
           </div>
         </div>

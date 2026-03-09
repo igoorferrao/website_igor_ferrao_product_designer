@@ -7,6 +7,7 @@ import { Navbar } from '@/components/navbar';
 import { getLocale } from '@/lib/i18n/get-locale';
 import { getContent } from '@/content/get-content';
 import { getCaseStudyCards } from '@/lib/case-studies';
+import { AboutMe } from '@/components/about-me';
 
 export default async function Page() {
   const locale = await getLocale();
@@ -20,6 +21,7 @@ export default async function Page() {
         <Hero content={content.hero} locale={locale} />
         <Partners />
         <CaseStudy content={content.caseStudy} cards={caseStudyCards} />
+        <AboutMe content={content.about} />
         <MyService content={content.myService} />
         <Footer content={content.footer} />
       </main>
