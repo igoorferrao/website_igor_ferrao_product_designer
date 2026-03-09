@@ -5,8 +5,9 @@ export type SiteContent = {
   };
   navbar: {
     logo: {
-      firstName: string;
-      lastName: string;
+      fullName: string;
+      location: string;
+      avatarAlt: string;
     };
     links: {
       about: string;

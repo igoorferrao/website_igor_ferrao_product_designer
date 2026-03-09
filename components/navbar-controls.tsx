@@ -42,6 +42,8 @@ export function NavbarControls({ content, currentLocale }: { content: SiteConten
 
   const currentLabel = content.languages.find((lang) => lang.value === currentLocale)?.label ?? currentLocale;
   const themeOptions = content.themeOptions as ReadonlyArray<{ value: ColorTheme; label: string }>;
+  const currentThemeLabel =
+    themeOptions.find((option) => option.value === colorTheme)?.label ?? themeOptions[0]?.label ?? '';
 
   React.useEffect(() => {
     const stored = getStoredColorTheme();
@@ -97,7 +99,9 @@ export function NavbarControls({ content, currentLocale }: { content: SiteConten
           }}
         >
           <PaletteIcon className="text-primary" />
-          <SelectValue />
+          <span className="hidden md:inline-flex">
+            <SelectValue placeholder={currentThemeLabel} />
+          </span>
         </SelectTrigger>
         <SelectContent>
           {themeOptions.map((option) => (

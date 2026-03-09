@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
+import { AnimatePresence, motion } from 'motion/react';
 import { MenuIcon, XIcon } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -18,11 +19,9 @@ export function NavbarMenu({ content }: { content: SiteContent['navbar'] }) {
     }
 
     document.addEventListener('keydown', onKeyDown);
-    document.body.style.overflow = 'hidden';
 
     return () => {
       document.removeEventListener('keydown', onKeyDown);
-      document.body.style.overflow = '';
     };
   }, [open]);
 
@@ -38,64 +37,48 @@ export function NavbarMenu({ content }: { content: SiteContent['navbar'] }) {
         aria-expanded={open}
         onClick={() => setOpen((value) => !value)}
       >
-        <MenuIcon className="size-5 text-muted-foreground" />
+        {open ? <XIcon className="size-5 text-muted-foreground" /> : <MenuIcon className="size-5 text-muted-foreground" />}
       </Button>
 
-      {open ? (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label={content.menu.dialogAriaLabel}
-          className="fixed inset-0 z-50 lg:hidden"
-        >
-          <button
-            type="button"
-            className="absolute inset-0 bg-overlay-scrim"
-            aria-label={content.menu.closeAriaLabel}
-            onClick={() => setOpen(false)}
-          />
-
-          <div className="absolute left-0 top-0 h-full w-72 bg-background shadow-2xl border-r border-border p-4">
-            <div className="flex items-center justify-between">
-              <p className="text-sm font-medium text-foreground">{content.menu.title}</p>
-              <Button
-                type="button"
-                variant="ghost"
-                size="icon-sm"
-                className="rounded-xl"
-                aria-label={content.menu.closeAriaLabel}
-                onClick={() => setOpen(false)}
-              >
-                <XIcon className="size-4 text-muted-foreground" />
-              </Button>
-            </div>
-
-            <nav aria-label={content.menu.navAriaLabel} className="mt-4 flex flex-col">
+      <AnimatePresence initial={false}>
+        {open ? (
+          <motion.div
+            key="mobile-nav"
+            role="dialog"
+            aria-modal="true"
+            aria-label={content.menu.dialogAriaLabel}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+            className="absolute inset-x-0 top-full z-50 overflow-hidden border-b border-border bg-background shadow-md lg:hidden"
+          >
+            <nav aria-label={content.menu.navAriaLabel} className="space-y-1 px-3 pb-4 pt-2">
               <Link
                 href="/#about"
-                className="rounded-xl px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
+                className="block rounded-xl px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
                 onClick={() => setOpen(false)}
               >
                 {content.links.about}
               </Link>
               <Link
                 href="/#services"
-                className="rounded-xl px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
+                className="block rounded-xl px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
                 onClick={() => setOpen(false)}
               >
                 {content.links.services}
               </Link>
               <Link
                 href="/#cases"
-                className="rounded-xl px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
+                className="block rounded-xl px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
                 onClick={() => setOpen(false)}
               >
                 {content.links.cases}
               </Link>
             </nav>
-          </div>
-        </div>
-      ) : null}
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </>
   );
 }

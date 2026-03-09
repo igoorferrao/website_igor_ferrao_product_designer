@@ -6,7 +6,7 @@ export const content: SiteContent = {
     description: 'Designer de Produto focado em experiências digitais intuitivas.',
   },
   navbar: {
-    logo: { firstName: 'Igor', lastName: 'Ferrão' },
+    logo: { fullName: 'Igor Ferrão', location: 'Based in Brasil', avatarAlt: 'Foto de perfil de Igor Ferrão' },
     links: { about: 'Sobre mim', services: 'Serviços', cases: 'Estudos de caso' },
     menu: {
       openAriaLabel: 'Abrir menu de navegação',
