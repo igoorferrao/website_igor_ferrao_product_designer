@@ -12,7 +12,7 @@ type CaseStudyCard = {
 
 export function CaseStudy({ content, cards }: { content: SiteContent['caseStudy']; cards: CaseStudyCard[] }) {
   return (
-    <section id="cases" className="bg-white px-3 py-8 md:px-4 md:py-16 lg:px-16 lg:py-16">
+    <section id="cases" className="bg-background px-3 py-8 md:px-4 md:py-16 lg:px-16 lg:py-16">
       <div className="mx-auto w-full">
         <header className="mb-16 space-y-4">
           <div className="flex items-center gap-2">

@@ -21,8 +21,8 @@ export default async function Page() {
         <Hero content={content.hero} locale={locale} />
         <Partners />
         <CaseStudy content={content.caseStudy} cards={caseStudyCards} />
-        <AboutMe content={content.about} />
         <MyService content={content.myService} />
+        <AboutMe content={content.about} />
         <Footer content={content.footer} />
       </main>
     </div>

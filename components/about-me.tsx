@@ -6,7 +6,7 @@ export function AboutMe({ content }: { content: SiteContent['about'] }) {
   const description = descriptionLines.join(' ');
 
   return (
-    <section id="about" className="py-24 bg-white">
+    <section id="about" className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Content Left */}
@@ -27,7 +27,7 @@ export function AboutMe({ content }: { content: SiteContent['about'] }) {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 text-gray-400 hover:text-black transition-colors"
+                className="p-2 text-muted-foreground transition-colors hover:text-primary"
               >
                 <Instagram size={24} />
               </a>
@@ -35,7 +35,7 @@ export function AboutMe({ content }: { content: SiteContent['about'] }) {
                 href="https://x.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 text-gray-400 hover:text-black transition-colors"
+                className="p-2 text-muted-foreground transition-colors hover:text-primary"
               >
                 <Twitter size={24} />
               </a>
@@ -43,7 +43,7 @@ export function AboutMe({ content }: { content: SiteContent['about'] }) {
                 href="https://dribbble.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 text-gray-400 hover:text-black transition-colors"
+                className="p-2 text-muted-foreground transition-colors hover:text-primary"
               >
                 <Dribbble size={24} />
               </a>
@@ -51,7 +51,7 @@ export function AboutMe({ content }: { content: SiteContent['about'] }) {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 text-gray-400 hover:text-black transition-colors"
+                className="p-2 text-muted-foreground transition-colors hover:text-primary"
               >
                 <Linkedin size={24} />
               </a>
@@ -65,13 +65,13 @@ export function AboutMe({ content }: { content: SiteContent['about'] }) {
 
             {/* Metrics */}
             <div className="grid grid-cols-2 gap-6 w-full max-w-lg">
-              <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                <div className="text-3xl font-semibold text-gray-900 mb-1">6+ years</div>
-                <div className="text-sm text-gray-500">Design experience</div>
+              <div className="bg-secondary/20 rounded-2xl p-6 border border-border">
+                <div className="text-3xl font-semibold text-foreground mb-1">6+ years</div>
+                <div className="text-sm text-foreground">Design experience</div>
               </div>
-              <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                <div className="text-3xl font-semibold text-gray-900 mb-1">40+</div>
-                <div className="text-sm text-gray-500">Project delivered</div>
+              <div className="bg-secondary/20 rounded-2xl p-6 border border-border">
+                <div className="text-3xl font-semibold text-foreground mb-1">40+</div>
+                <div className="text-sm text-foreground">Project delivered</div>
               </div>
             </div>
           </div>

@@ -90,7 +90,7 @@ export function MyService({ content }: { content: SiteContent['myService'] }) {
                     className={cn(
                       'w-full text-left outline-none transition-colors',
                       'rounded-[20px] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-                      isActive ? 'border border-secondary bg-background' : 'bg-secondary hover:bg-secondary/80'
+                      isActive ? 'border border-border bg-background' : 'bg-secondary/30 hover:bg-secondary/80 border',
                     )}
                   >
                     <div className="flex items-center justify-between gap-3 rounded-xl px-5 py-4">

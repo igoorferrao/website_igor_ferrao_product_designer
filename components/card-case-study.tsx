@@ -9,13 +9,7 @@ type CardCaseStudyProps = {
   href: string;
 };
 
-export function Card_Case_Study({
-  title,
-  subtitle,
-  heroImage,
-  imageAlt,
-  href,
-}: CardCaseStudyProps) {
+export function Card_Case_Study({ title, subtitle, heroImage, imageAlt, href }: CardCaseStudyProps) {
   return (
     <Link href={href} className="group block cursor-pointer">
       <div className="relative mb-6 aspect-video w-full overflow-hidden rounded-2xl bg-gray-100">
@@ -29,8 +23,8 @@ export function Card_Case_Study({
         />
       </div>
       <div className="flex flex-col items-start gap-3 md:flex-row md:items-start md:justify-between md:gap-4">
-        <h3 className="text-[20px] font-medium leading-8 text-gray-900">{title}</h3>
-        <span className="text-base leading-6 text-gray-500 md:text-right">{subtitle}</span>
+        <h3 className="text-[20px] font-medium leading-8 text-foreground">{title}</h3>
+        <span className="text-base leading-6 text-secondary-foreground md:text-right">{subtitle}</span>
       </div>
     </Link>
   );
