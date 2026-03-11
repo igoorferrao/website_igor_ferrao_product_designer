@@ -18,6 +18,8 @@ export type CaseStudySummary = {
   imageAlt: string;
   variant: 'light' | 'dark';
   imagePosition: 'left' | 'right';
+  isComingSoon?: boolean;
+  comingSoonLabel?: string;
 };
 
 export type CaseStudyDetail = {
@@ -180,6 +182,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
         imageAlt: 'Tablet mockup case study preview',
         variant: 'dark',
         imagePosition: 'right',
+        isComingSoon: true,
+        comingSoonLabel: 'Coming soon',
       },
       detail: {
         slug: 'driving-digital-growth',
@@ -266,6 +270,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
         imageAlt: 'Tablet product case study preview',
         variant: 'light',
         imagePosition: 'left',
+        isComingSoon: true,
+        comingSoonLabel: 'Coming soon',
       },
       detail: {
         slug: 'designing-future-success',
@@ -448,6 +454,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
         imageAlt: 'Prévia do case em mockup de tablet',
         variant: 'dark',
         imagePosition: 'right',
+        isComingSoon: true,
+        comingSoonLabel: 'Em breve',
       },
       detail: {
         slug: 'driving-digital-growth',
@@ -534,6 +542,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
         imageAlt: 'Prévia do case em mockup de tablet',
         variant: 'light',
         imagePosition: 'left',
+        isComingSoon: true,
+        comingSoonLabel: 'Em breve',
       },
       detail: {
         slug: 'designing-future-success',
@@ -716,6 +726,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
         imageAlt: 'Vista previa del caso en mockup de tablet',
         variant: 'dark',
         imagePosition: 'right',
+        isComingSoon: true,
+        comingSoonLabel: 'Próximamente',
       },
       detail: {
         slug: 'driving-digital-growth',
@@ -802,6 +814,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
         imageAlt: 'Vista previa del caso en mockup de tablet',
         variant: 'light',
         imagePosition: 'left',
+        isComingSoon: true,
+        comingSoonLabel: 'Próximamente',
       },
       detail: {
         slug: 'designing-future-success',

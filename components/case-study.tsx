@@ -8,6 +8,8 @@ type CaseStudyCard = {
   imageSrc: string;
   imageAlt: string;
   href: string;
+  isComingSoon?: boolean;
+  comingSoonLabel?: string;
 };
 
 export function CaseStudy({ content, cards }: { content: SiteContent['caseStudy']; cards: CaseStudyCard[] }) {
@@ -32,6 +34,8 @@ export function CaseStudy({ content, cards }: { content: SiteContent['caseStudy'
               heroImage={card.imageSrc}
               imageAlt={card.imageAlt}
               href={card.href}
+              isComingSoon={card.isComingSoon}
+              comingSoonLabel={card.comingSoonLabel}
             />
           ))}
         </div>
