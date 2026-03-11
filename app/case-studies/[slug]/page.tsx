@@ -141,23 +141,6 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
-
-                  {detail.gallery[0] ? (
-                    <div className="overflow-hidden rounded-2xl border border-border bg-accent p-5">
-                      <LightboxImage
-                        src={detail.gallery[0].src}
-                        alt={detail.gallery[0].alt}
-                        sizes="(max-width: 1024px) 100vw, 819px"
-                        className="case-study-image-surface aspect-[819/420] rounded-2xl"
-                        imageClassName="object-contain"
-                        ariaLabels={{
-                          openImage: lightboxLabels.openImageAriaLabel,
-                          closeImage: lightboxLabels.closeImageAriaLabel,
-                          dialog: lightboxLabels.dialogAriaLabel,
-                        }}
-                      />
-                    </div>
-                  ) : null}
                 </section>
 
                 <section className="space-y-6 py-10">
@@ -169,6 +152,22 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
+                  {detail.gallery[0] ? (
+                    <div className="overflow-hidden rounded-2xl border border-border">
+                      <LightboxImage
+                        src={detail.gallery[0].src}
+                        alt={detail.gallery[0].alt}
+                        sizes="(max-width: 1024px) 100vw, 819px"
+                        className="case-study-image-surface aspect-[819/420] rounded-2xl"
+                        imageClassName="object-cover"
+                        ariaLabels={{
+                          openImage: lightboxLabels.openImageAriaLabel,
+                          closeImage: lightboxLabels.closeImageAriaLabel,
+                          dialog: lightboxLabels.dialogAriaLabel,
+                        }}
+                      />
+                    </div>
+                  ) : null}
                 </section>
 
                 <section className="space-y-6 py-10">
@@ -194,13 +193,13 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                     </ul>
 
                     {detail.gallery[1] ? (
-                      <div className="overflow-hidden rounded-2xl border border-border bg-accent p-5">
+                      <div className="overflow-hidden rounded-2xl border border-border">
                         <LightboxImage
                           src={detail.gallery[1].src}
                           alt={detail.gallery[1].alt}
                           sizes="(max-width: 1024px) 100vw, 819px"
                           className="case-study-image-surface aspect-[819/420] rounded-2xl"
-                          imageClassName="object-contain"
+                          imageClassName="object-cover"
                           ariaLabels={{
                             openImage: lightboxLabels.openImageAriaLabel,
                             closeImage: lightboxLabels.closeImageAriaLabel,
@@ -259,13 +258,13 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                   {detail.gallery[2] && detail.gallery[3] ? (
                     <div className="grid gap-5 pt-6 md:grid-cols-2">
                       {[detail.gallery[2], detail.gallery[3]].map((image) => (
-                        <div key={`impact-${image.src}`} className="overflow-hidden rounded-2xl bg-accent p-5">
+                        <div key={`impact-${image.src}`} className="overflow-hidden rounded-2xl border border-border">
                           <LightboxImage
                             src={image.src}
                             alt={image.alt}
                             sizes="(max-width: 1024px) 100vw, 389px"
                             className="case-study-image-surface h-[320px] rounded-2xl"
-                            imageClassName="object-contain"
+                            imageClassName="object-cover"
                             ariaLabels={{
                               openImage: lightboxLabels.openImageAriaLabel,
                               closeImage: lightboxLabels.closeImageAriaLabel,

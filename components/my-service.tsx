@@ -12,12 +12,12 @@ const instrumentSans = Instrument_Sans({
   variable: '--font-instrument-sans',
 });
 
-const fallbackImageSrc = '/figma-assets/6212514260f27e0b62ccc7b0d6f5537f64fa68f5.png';
+const fallbackImageSrc = '/Webdevelopment.png';
 const imageSrcByTabId: Record<string, string> = {
-  branding: fallbackImageSrc,
-  'web-development': '/figma-assets/webdevelopment_exemple.jpg',
-  'web-design': fallbackImageSrc,
-  marketing: fallbackImageSrc,
+  branding: '/Webdevelopment.png',
+  'web-development': '/Webdevelopment.png',
+  'web-design': '/Webdevelopment.png',
+  marketing: '/Webdevelopment.png',
 };
 
 function getTabImageSrc(id: string) {
@@ -90,7 +90,9 @@ export function MyService({ content }: { content: SiteContent['myService'] }) {
                     className={cn(
                       'w-full text-left outline-none transition-colors',
                       'rounded-[20px] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-                      isActive ? 'border border-border bg-background' : 'bg-secondary/30 hover:bg-secondary/80 border',
+                      isActive
+                        ? 'border border-border bg-background'
+                        : 'bg-secondary/30 hover:bg-secondary/50 border cursor-pointer',
                     )}
                   >
                     <div className="flex items-center justify-between gap-3 rounded-xl px-5 py-4">

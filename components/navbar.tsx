@@ -6,7 +6,7 @@ import type { Locale } from '@/lib/i18n/locales';
 import { NavbarControls } from '@/components/navbar-controls';
 import { NavbarMenu } from '@/components/navbar-menu';
 
-const navbarAvatarImage = '/d64a1b54febb0531bbb407786294d0ffac43e298.png';
+const navbarAvatarImage = '/Avatar_IgorFerraodeSouza.png';
 
 const instrumentSans = Instrument_Sans({
   subsets: ['latin'],
@@ -19,10 +19,7 @@ export function Navbar({ content, currentLocale }: { content: SiteContent['navba
       <div className="relative flex items-center justify-between bg-background/95 px-3 py-3 backdrop-blur supports-[backdrop-filter]:bg-background/70 md:px-4 md:py-8 lg:px-16 lg:py-8">
         <div className="flex items-center gap-2 sm:gap-3 md:gap-5">
           <NavbarMenu content={content} />
-          <Link
-            href="/"
-            className="flex items-center gap-2 sm:gap-3"
-          >
+          <Link href="/" className="flex items-center gap-2 sm:gap-3">
             <Image
               src={navbarAvatarImage}
               alt={content.logo.avatarAlt}

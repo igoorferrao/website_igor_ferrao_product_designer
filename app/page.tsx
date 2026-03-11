@@ -1,6 +1,5 @@
 import { Hero } from '@/components/hero';
 import Partners from '@/components/partners';
-import { MyService } from '@/components/my-service';
 import { CaseStudy } from '@/components/case-study';
 import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar';
@@ -21,7 +20,6 @@ export default async function Page() {
         <Hero content={content.hero} locale={locale} />
         <Partners />
         <CaseStudy content={content.caseStudy} cards={caseStudyCards} />
-        <MyService content={content.myService} />
         <AboutMe content={content.about} />
         <Footer content={content.footer} />
       </main>

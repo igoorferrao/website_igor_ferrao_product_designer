@@ -80,7 +80,7 @@ export function AboutMe({ content }: { content: SiteContent['about'] }) {
           <div className="relative">
             <div className="rounded-2xl overflow-hidden bg-gray-100 aspect-4/5 w-full max-w-md mx-auto lg:ml-auto">
               <img
-                src="/d64a1b54febb0531bbb407786294d0ffac43e298.png"
+                src="/Avatar_IgorFerraodeSouza.png"
                 alt="Alex Morgan"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"

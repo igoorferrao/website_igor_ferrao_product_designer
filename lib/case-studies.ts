@@ -49,11 +49,11 @@ type CaseStudyCard = CaseStudySummary & { href: string };
 
 const sharedAssets = {
   greenn: {
-    hero: '/acc46efb158bbff6d403d8d9595c9ccc35beb827.png',
-    collageResearch: '/b196884b96f2a93d2f76743a64798d600ed04bde.png',
-    collageResults: '/90c1500a91a9a2c584312ea313be0c8eabf3d14c.png',
-    impactImage1: '/a52f5cbc7d5d84664f5daec3925e682c4d910b2a.png',
-    impactImage2: '/5a13800ef6ffad423187ff45656965f5031c66df.png',
+    hero: '/GreennDashboard_01.png',
+    collageResearch: '/GreennDashboard_00.png',
+    collageResults: '/GreennDashboard_03.png',
+    impactImage1: '/GreennDashboard_01.png',
+    impactImage2: '/GreennDashboard_04.png',
   },
   growthlab: {
     preview: '/figma-33-220/902ef81d2ecf99bd662113cf090f39326690b610.png',
@@ -73,8 +73,7 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       summary: {
         slug: 'greenn-info-product-dashboard',
         title: 'Greenn — Building an info-product dashboard app.',
-        description:
-          'A mobile app for Greenn “producers” (creators/sellers) to manage their account and track sales.',
+        description: 'A mobile app for Greenn “producers” (creators/sellers) to manage their account and track sales.',
         challenge:
           'Low adoption and high support volume because key sales and statement information was hard to find and often felt unreliable.',
         solution:
@@ -89,8 +88,7 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       detail: {
         slug: 'greenn-info-product-dashboard',
         title: 'Greenn — Building an info-product dashboard app.',
-        subtitle:
-          'A mobile app for Greenn “producers” (creators/sellers) to manage their account and track sales.',
+        subtitle: 'A mobile app for Greenn “producers” (creators/sellers) to manage their account and track sales.',
         heroImageSrc: sharedAssets.greenn.hero,
         heroImageAlt: 'Greenn producer app screens preview',
         overview: [
@@ -160,7 +158,10 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
           'This redesign focused on making the Greenn producer app genuinely useful in the moments it matters most. Producers open it to get quick answers about revenue, balances, and withdrawals, so we prioritized clarity, speed, and confidence over adding more features. In two weeks, we aligned Product and Customer Support on the highest-impact flows, simplified the interface, and introduced clearer hierarchy and system feedback so users always understood what was happening. We also delivered a componentized UI foundation that improved handoff quality, reduced rework, and enabled reuse across other squads/products. The result was an experience that improved both perception and day-to-day usage, reflected in rating uplift after release and stronger engagement over time.',
         gallery: [
           { src: sharedAssets.greenn.collageResearch, alt: 'Greenn producer app screens collage (overview)' },
-          { src: sharedAssets.greenn.collageResults, alt: 'Greenn producer app screens collage (sales and statements)' },
+          {
+            src: sharedAssets.greenn.collageResults,
+            alt: 'Greenn producer app screens collage (sales and statements)',
+          },
           { src: sharedAssets.greenn.impactImage1, alt: 'Greenn producer app mockup (hand holding phone)' },
           { src: sharedAssets.greenn.impactImage2, alt: 'Greenn producer app mockups (two phones)' },
         ],
@@ -193,7 +194,13 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
           { label: 'Timeline', value: '6 weeks' },
           {
             label: 'Services',
-            value: ['UX Research', 'Web Design', 'Information Architecture', 'Conversion Optimization', 'Component Library'],
+            value: [
+              'UX Research',
+              'Web Design',
+              'Information Architecture',
+              'Conversion Optimization',
+              'Component Library',
+            ],
           },
           { label: 'Deliverables', value: 'Component library' },
           { label: 'Tools', value: 'Figma + GA4' },
@@ -324,8 +331,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       },
     },
   ],
-	  'pt-BR': [
-	    {
+  'pt-BR': [
+    {
       summary: {
         slug: 'greenn-info-product-dashboard',
         title: 'Greenn — App de dashboard para infoprodutos.',
@@ -349,13 +356,16 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
           'Um app mobile para produtores da Greenn (criadores/vendedores) gerenciarem a conta e acompanharem vendas.',
         heroImageSrc: sharedAssets.greenn.hero,
         heroImageAlt: 'Prévia das telas do app de produtores da Greenn',
-	        overview: [
-	          { label: 'Client', value: 'Greenn Pagamentos e Tecnologia.' },
-	          { label: 'Category', value: 'Infoprodutos' },
-	          { label: 'Timeline', value: '2 semanas' },
-	          { label: 'My role', value: 'Designer de Produto' },
-	          { label: 'Services', value: ['Pesquisa UX', 'Design de Interface (UI)', 'Design de App Mobile', 'Prototipação'] },
-	        ],
+        overview: [
+          { label: 'Client', value: 'Greenn Pagamentos e Tecnologia.' },
+          { label: 'Category', value: 'Infoprodutos' },
+          { label: 'Timeline', value: '2 semanas' },
+          { label: 'My role', value: 'Designer de Produto' },
+          {
+            label: 'Services',
+            value: ['Pesquisa UX', 'Design de Interface (UI)', 'Design de App Mobile', 'Prototipação'],
+          },
+        ],
         introduction:
           'O app de produtores da Greenn tinha baixa adoção e alto volume de suporte porque informações-chave de vendas e extratos eram difíceis de encontrar e frequentemente pareciam pouco confiáveis. Em duas semanas, redesenhamos os fluxos centrais para tornar as métricas mais escaneáveis, a navegação mais intuitiva e os dados financeiros mais fáceis de confiar.',
         coreProblems: [
@@ -416,7 +426,10 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
           'Este redesign focou em tornar o app de produtores realmente útil nos momentos que mais importam. Produtores abrem o app para respostas rápidas sobre receita, saldos e saques — então priorizamos clareza, velocidade e confiança. Em duas semanas, alinhamos Produto e Suporte nos fluxos de maior impacto, simplificamos a interface e introduzimos hierarquia e feedback de sistema mais claros para que o usuário sempre entendesse o que estava acontecendo. Também entregamos uma base de UI componentizada que melhorou o handoff, reduziu retrabalho e permitiu reutilização por outros squads/produtos. O resultado foi uma experiência que melhorou percepção e uso no dia a dia, refletida no aumento de avaliação e no engajamento.',
         gallery: [
           { src: sharedAssets.greenn.collageResearch, alt: 'Collage de telas do app de produtores da Greenn (resumo)' },
-          { src: sharedAssets.greenn.collageResults, alt: 'Collage de telas do app de produtores da Greenn (vendas e extrato)' },
+          {
+            src: sharedAssets.greenn.collageResults,
+            alt: 'Collage de telas do app de produtores da Greenn (vendas e extrato)',
+          },
           { src: sharedAssets.greenn.impactImage1, alt: 'Mockup do app da Greenn (mão segurando o celular)' },
           { src: sharedAssets.greenn.impactImage2, alt: 'Mockups do app da Greenn (dois celulares)' },
         ],
@@ -443,14 +456,20 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
           'Um redesign web para uma consultoria de growth, com foco em narrativa, confiança e melhor conversão de campanhas.',
         heroImageSrc: sharedAssets.growthlab.hero,
         heroImageAlt: 'Prévia do redesign do site da GrowthLab',
-	        overview: [
-	          { label: 'Client', value: 'Agência de growth' },
-	          { label: 'Role', value: 'Designer de Produto' },
-	          { label: 'Timeline', value: '6 semanas' },
-	          {
-	            label: 'Services',
-	            value: ['Pesquisa UX', 'Design Web', 'Arquitetura da Informação', 'Otimização de Conversão', 'Biblioteca de Componentes'],
-	          },
+        overview: [
+          { label: 'Client', value: 'Agência de growth' },
+          { label: 'Role', value: 'Designer de Produto' },
+          { label: 'Timeline', value: '6 semanas' },
+          {
+            label: 'Services',
+            value: [
+              'Pesquisa UX',
+              'Design Web',
+              'Arquitetura da Informação',
+              'Otimização de Conversão',
+              'Biblioteca de Componentes',
+            ],
+          },
           { label: 'Deliverables', value: 'Biblioteca de componentes' },
           { label: 'Tools', value: 'Figma + GA4' },
         ],
@@ -471,11 +490,11 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
           'Blocos de confiança mais cedo no scroll para visitantes mobile.',
           'Linguagem visual componentizada para reduzir variação.',
         ],
-	        whatWeCrafted: [
-	          'Seções reutilizáveis (hero, prova social, preços) para montagem rápida de páginas.',
-	          'Hierarquia de CTA com microcopy contextual.',
-	          'Testemunhos com social proof por perfil/role.',
-	        ],
+        whatWeCrafted: [
+          'Seções reutilizáveis (hero, prova social, preços) para montagem rápida de páginas.',
+          'Hierarquia de CTA com microcopy contextual.',
+          'Testemunhos com social proof por perfil/role.',
+        ],
         businessResults: [
           'Maior conversão em destinos de tráfego pago.',
           'Menor tempo de handoff de design para dev.',
@@ -523,14 +542,17 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
           'Um redesign de UX focado em melhorar clareza no onboarding e engajamento de alunos em uma plataforma digital.',
         heroImageSrc: sharedAssets.skilllex.hero,
         heroImageAlt: 'Visão geral da plataforma Skilllex',
-	        overview: [
-	          { label: 'Client', value: 'Plataforma EdTech' },
-	          { label: 'Role', value: 'Designer de Produto' },
-	          { label: 'Timeline', value: '10 semanas' },
-	          { label: 'Services', value: ['Pesquisa UX', 'Design UX/UI', 'Onboarding', 'Fluxos de Usuário', 'Prototipação'] },
-	          { label: 'Deliverables', value: 'Fluxos + protótipos' },
-	          { label: 'Tools', value: 'Figma + Hotjar' },
-	        ],
+        overview: [
+          { label: 'Client', value: 'Plataforma EdTech' },
+          { label: 'Role', value: 'Designer de Produto' },
+          { label: 'Timeline', value: '10 semanas' },
+          {
+            label: 'Services',
+            value: ['Pesquisa UX', 'Design UX/UI', 'Onboarding', 'Fluxos de Usuário', 'Prototipação'],
+          },
+          { label: 'Deliverables', value: 'Fluxos + protótipos' },
+          { label: 'Tools', value: 'Figma + Hotjar' },
+        ],
         introduction:
           'A Skilllex precisava de uma experiência mais clara para novos alunos, especialmente nos primeiros sete dias — período com maior abandono.',
         coreProblems: [
@@ -580,8 +602,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       },
     },
   ],
-	  'es-ES': [
-	    {
+  'es-ES': [
+    {
       summary: {
         slug: 'greenn-info-product-dashboard',
         title: 'Greenn — App de dashboard para infoproductos.',
@@ -605,13 +627,16 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
           'Una app móvil para productores de Greenn (creadores/vendedores) para gestionar su cuenta y seguir ventas.',
         heroImageSrc: sharedAssets.greenn.hero,
         heroImageAlt: 'Vista previa de pantallas de la app de productores de Greenn',
-	        overview: [
-	          { label: 'Client', value: 'Greenn Pagamentos e Tecnologia.' },
-	          { label: 'Category', value: 'Infoproductos' },
-	          { label: 'Timeline', value: '2 semanas' },
-	          { label: 'My role', value: 'Diseñador de Producto' },
-	          { label: 'Services', value: ['Investigación UX', 'Diseño de Interfaz (UI)', 'Diseño de App Móvil', 'Prototipado'] },
-	        ],
+        overview: [
+          { label: 'Client', value: 'Greenn Pagamentos e Tecnologia.' },
+          { label: 'Category', value: 'Infoproductos' },
+          { label: 'Timeline', value: '2 semanas' },
+          { label: 'My role', value: 'Diseñador de Producto' },
+          {
+            label: 'Services',
+            value: ['Investigación UX', 'Diseño de Interfaz (UI)', 'Diseño de App Móvil', 'Prototipado'],
+          },
+        ],
         introduction:
           'La app de productores de Greenn tenía baja adopción y alto volumen de soporte porque la información clave de ventas y extractos era difícil de encontrar y a menudo parecía poco fiable. En dos semanas, rediseñamos los flujos centrales para hacer las métricas más escaneables, la navegación más intuitiva y los datos financieros más fáciles de confiar.',
         coreProblems: [
@@ -699,14 +724,20 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
           'Un rediseño web para una consultora de growth, enfocada en narrativa, confianza y mejor conversión de campañas.',
         heroImageSrc: sharedAssets.growthlab.hero,
         heroImageAlt: 'Vista previa del rediseño del sitio de GrowthLab',
-	        overview: [
-	          { label: 'Client', value: 'Agencia de growth' },
-	          { label: 'Role', value: 'Diseñador de Producto' },
-	          { label: 'Timeline', value: '6 semanas' },
-	          {
-	            label: 'Services',
-	            value: ['Investigación UX', 'Diseño Web', 'Arquitectura de Información', 'Optimización de Conversión', 'Librería de Componentes'],
-	          },
+        overview: [
+          { label: 'Client', value: 'Agencia de growth' },
+          { label: 'Role', value: 'Diseñador de Producto' },
+          { label: 'Timeline', value: '6 semanas' },
+          {
+            label: 'Services',
+            value: [
+              'Investigación UX',
+              'Diseño Web',
+              'Arquitectura de Información',
+              'Optimización de Conversión',
+              'Librería de Componentes',
+            ],
+          },
           { label: 'Deliverables', value: 'Librería de componentes' },
           { label: 'Tools', value: 'Figma + GA4' },
         ],
@@ -727,11 +758,11 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
           'Bloques de confianza más temprano en el scroll para mobile.',
           'Lenguaje visual componentizado para reducir variación.',
         ],
-	        whatWeCrafted: [
-	          'Secciones reutilizables (hero, proof, precios) para montaje rápido.',
-	          'Jerarquía de CTA mejorada con microcopy contextual.',
-	          'Testimonios con social proof por rol.',
-	        ],
+        whatWeCrafted: [
+          'Secciones reutilizables (hero, proof, precios) para montaje rápido.',
+          'Jerarquía de CTA mejorada con microcopy contextual.',
+          'Testimonios con social proof por rol.',
+        ],
         businessResults: [
           'Mayor conversión en destinos de tráfico pago.',
           'Menor tiempo de handoff de diseño a desarrollo.',
@@ -779,14 +810,17 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
           'Un rediseño de UX enfocado en mejorar la claridad del onboarding y el engagement de estudiantes en una plataforma digital.',
         heroImageSrc: sharedAssets.skilllex.hero,
         heroImageAlt: 'Vista general de la plataforma Skilllex',
-	        overview: [
-	          { label: 'Client', value: 'Plataforma EdTech' },
-	          { label: 'Role', value: 'Diseñador de Producto' },
-	          { label: 'Timeline', value: '10 semanas' },
-	          { label: 'Services', value: ['Investigación UX', 'Diseño UX/UI', 'Onboarding', 'Flujos de Usuario', 'Prototipado'] },
-	          { label: 'Deliverables', value: 'Flujos + prototipos' },
-	          { label: 'Tools', value: 'Figma + Hotjar' },
-	        ],
+        overview: [
+          { label: 'Client', value: 'Plataforma EdTech' },
+          { label: 'Role', value: 'Diseñador de Producto' },
+          { label: 'Timeline', value: '10 semanas' },
+          {
+            label: 'Services',
+            value: ['Investigación UX', 'Diseño UX/UI', 'Onboarding', 'Flujos de Usuario', 'Prototipado'],
+          },
+          { label: 'Deliverables', value: 'Flujos + prototipos' },
+          { label: 'Tools', value: 'Figma + Hotjar' },
+        ],
         introduction:
           'Skilllex necesitaba una experiencia más clara para nuevos estudiantes, especialmente en los primeros siete días donde el abandono era mayor.',
         coreProblems: [
@@ -846,7 +880,10 @@ export function getCaseStudyCards(locale: Locale): CaseStudyCard[] {
 }
 
 export function getCaseStudyBySlug(slug: string, locale: Locale) {
-  return caseStudiesByLocale[locale].find((item) => item.summary.slug === slug) ?? caseStudiesByLocale[defaultLocale].find((item) => item.summary.slug === slug);
+  return (
+    caseStudiesByLocale[locale].find((item) => item.summary.slug === slug) ??
+    caseStudiesByLocale[defaultLocale].find((item) => item.summary.slug === slug)
+  );
 }
 
 export function getCaseStudySlugs() {

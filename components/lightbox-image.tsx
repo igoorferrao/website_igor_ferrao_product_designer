@@ -21,7 +21,15 @@ type LightboxImageProps = {
   };
 };
 
-export function LightboxImage({ src, alt, sizes, priority, className, imageClassName, ariaLabels }: LightboxImageProps) {
+export function LightboxImage({
+  src,
+  alt,
+  sizes,
+  priority,
+  className,
+  imageClassName,
+  ariaLabels,
+}: LightboxImageProps) {
   const [open, setOpen] = React.useState(false);
   const openLabel = ariaLabels?.openImage ?? 'Open image';
   const closeLabel = ariaLabels?.closeImage ?? 'Close image preview';
@@ -50,7 +58,7 @@ export function LightboxImage({ src, alt, sizes, priority, className, imageClass
         className={cn(
           'group relative block w-full overflow-hidden text-left outline-none',
           'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-          className
+          className,
         )}
         onClick={() => setOpen(true)}
         aria-label={alt ? `${openLabel}: ${alt}` : openLabel}
@@ -63,7 +71,7 @@ export function LightboxImage({ src, alt, sizes, priority, className, imageClass
           priority={priority}
           className={cn(
             'object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:transform-none',
-            imageClassName
+            imageClassName,
           )}
         />
       </button>
@@ -79,7 +87,7 @@ export function LightboxImage({ src, alt, sizes, priority, className, imageClass
 
           <div className="absolute inset-0 flex items-center justify-center p-4 md:p-10">
             <div className="relative w-full max-w-6xl">
-              <div className="relative h-[80vh] w-full overflow-hidden rounded-2xl bg-background">
+              <div className="relative h-[80vh] w-full overflow-hidden rounded-2xl bg-accent">
                 <div className="absolute right-4 top-4 z-10">
                   <Button
                     type="button"
@@ -92,7 +100,7 @@ export function LightboxImage({ src, alt, sizes, priority, className, imageClass
                     <XIcon className="size-5 text-foreground" />
                   </Button>
                 </div>
-                <Image src={src} alt={alt} fill className="object-contain" sizes="100vw" priority={priority} />
+                <Image src={src} alt={alt} fill className="object-cover" sizes="100vw" priority={priority} />
               </div>
             </div>
           </div>
