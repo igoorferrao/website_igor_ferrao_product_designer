@@ -5,8 +5,9 @@ import type { Locale } from '@/lib/i18n/locales';
 import { NavbarControls } from '@/components/navbar-controls';
 import { NavbarMenu } from '@/components/navbar-menu';
 import { getLocalizedPath } from '@/lib/i18n/routing';
+import { assetPath } from '@/lib/asset-path';
 
-const navbarAvatarImage = '/Avatar_IgorFerraodeSouza.png';
+const navbarAvatarImage = assetPath('/Avatar_IgorFerraodeSouza.png');
 
 export function Navbar({ content, currentLocale }: { content: SiteContent['navbar']; currentLocale: Locale }) {
   return (

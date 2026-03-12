@@ -1,22 +1,24 @@
 import Image from 'next/image';
+import { assetPath } from '@/lib/asset-path';
+
+const profileImage = assetPath('/d64a1b54febb0531bbb407786294d0ffac43e298.png');
 
 export function CardOverlay() {
   return (
     <div
       className="relative rounded-4xl"
-      style={{ '--img': "url('/d64a1b54febb0531bbb407786294d0ffac43e298.png')" } as React.CSSProperties}
+      style={{ '--img': `url('${profileImage}')` } as React.CSSProperties}
     >
-      <div className="relative rounded-4xl overflow-hidden aspect-512/640 w-full">
+      <div className="relative aspect-512/640 w-full overflow-hidden rounded-4xl">
         <Image
-          src="/d64a1b54febb0531bbb407786294d0ffac43e298.png"
-          alt="Igor Ferrão de Souza"
+          src={profileImage}
+          alt="Igor Ferrao de Souza"
           fill
           className="object-cover"
           sizes="(max-width: 1024px) 100vw, 512px"
           priority
         />
 
-        {/* BLUR LAYER (duplica a imagem e aplica blur + mask só embaixo) */}
         <div
           className="
                     pointer-events-none absolute -inset-7.5
@@ -28,10 +30,9 @@ export function CardOverlay() {
         />
       </div>
 
-      {/* Overlay do texto por cima */}
       <div className="absolute inset-x-0 bottom-0 overflow-hidden rounded-b-4xl bg-linear-to-t from-overlay-scrim to-transparent px-5 pb-5 pt-10 text-surface-inverse-foreground backdrop-blur-[10px]">
         <div className="space-y-2">
-          <h2 className="text-[28px] font-medium leading-9">Igor Ferrão de Souza</h2>
+          <h2 className="text-[28px] font-medium leading-9">Igor Ferrao de Souza</h2>
           <p className="text-[18px] leading-7">
             A Product Designer focused on intuitive
             <br />

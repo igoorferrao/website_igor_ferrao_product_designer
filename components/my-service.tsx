@@ -4,14 +4,15 @@ import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { useState, type KeyboardEvent } from 'react';
 import type { SiteContent } from '@/content/types';
+import { assetPath } from '@/lib/asset-path';
 import { cn } from '@/lib/utils';
 
-const fallbackImageSrc = '/Webdevelopment.png';
+const fallbackImageSrc = assetPath('/Webdevelopment.png');
 const imageSrcByTabId: Record<string, string> = {
-  branding: '/Webdevelopment.png',
-  'web-development': '/Webdevelopment.png',
-  'web-design': '/Webdevelopment.png',
-  marketing: '/Webdevelopment.png',
+  branding: assetPath('/Webdevelopment.png'),
+  'web-development': assetPath('/Webdevelopment.png'),
+  'web-design': assetPath('/Webdevelopment.png'),
+  marketing: assetPath('/Webdevelopment.png'),
 };
 
 function getTabImageSrc(id: string) {

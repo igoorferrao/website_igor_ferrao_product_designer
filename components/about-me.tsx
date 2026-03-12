@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { Instagram, Twitter, Dribbble, Linkedin } from 'lucide-react';
 import type { SiteContent } from '@/content/types';
+import { assetPath } from '@/lib/asset-path';
 
 export function AboutMe({ content }: { content: SiteContent['about'] }) {
   const [title, ...descriptionLines] = content.headlineLines;
@@ -81,7 +82,7 @@ export function AboutMe({ content }: { content: SiteContent['about'] }) {
           <div className="w-fit lg:justify-self-end">
             <div className="rounded-2xl overflow-hidden bg-gray-100 aspect-4/5 w-full max-w-md">
               <img
-                src="/Avatar_IgorFerraodeSouza.png"
+                src={assetPath('/Avatar_IgorFerraodeSouza.png')}
                 alt="Alex Morgan"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"

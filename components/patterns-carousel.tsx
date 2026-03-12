@@ -1,28 +1,29 @@
 import Image from 'next/image';
+import { assetPath } from '@/lib/asset-path';
 
 const logos = [
   {
-    src: '/8040ebad0882a0e95fc66b98857711af4b0753d2.png',
+    src: assetPath('/8040ebad0882a0e95fc66b98857711af4b0753d2.png'),
     alt: 'Logoipsum logo 1',
     width: 167,
   },
   {
-    src: '/dc537083b4d9f4ac905920a923ed084d67cb8087.png',
+    src: assetPath('/dc537083b4d9f4ac905920a923ed084d67cb8087.png'),
     alt: 'Logoipsum logo 2',
     width: 167,
   },
   {
-    src: '/5b0a5f3c330aaa9237bf15248316994b68cf190c.png',
+    src: assetPath('/5b0a5f3c330aaa9237bf15248316994b68cf190c.png'),
     alt: 'Logoipsum logo 3',
     width: 167,
   },
   {
-    src: '/6dfeeece993a6a1ec84e0ca6311de69ec3150701.png',
+    src: assetPath('/6dfeeece993a6a1ec84e0ca6311de69ec3150701.png'),
     alt: 'Logoipsum logo 4',
     width: 167,
   },
   {
-    src: '/9daa0bdc429c8e20b2fc36e10203111db386365a.png',
+    src: assetPath('/9daa0bdc429c8e20b2fc36e10203111db386365a.png'),
     alt: 'Logoipsum logo 5',
     width: 167,
   },

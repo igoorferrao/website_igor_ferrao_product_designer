@@ -1,6 +1,7 @@
 import type { Locale } from '@/lib/i18n/locales';
 import { defaultLocale } from '@/lib/i18n/locales';
 import { getLocalizedPath } from '@/lib/i18n/routing';
+import { assetPath } from '@/lib/asset-path';
 
 export type Stat = {
   value: string;
@@ -52,21 +53,21 @@ type CaseStudyCard = CaseStudySummary & { href: string };
 
 const sharedAssets = {
   greenn: {
-    hero: '/GreennDashboard_01.png',
-    collageResearch: '/GreennDashboard_00.png',
-    collageResults: '/GreennDashboard_03.png',
-    impactImage1: '/GreennDashboard_01.png',
-    impactImage2: '/GreennDashboard_04.png',
+    hero: assetPath('/GreennDashboard_01.png'),
+    collageResearch: assetPath('/GreennDashboard_00.png'),
+    collageResults: assetPath('/GreennDashboard_03.png'),
+    impactImage1: assetPath('/GreennDashboard_01.png'),
+    impactImage2: assetPath('/GreennDashboard_04.png'),
   },
   growthlab: {
-    preview: '/figma-33-220/902ef81d2ecf99bd662113cf090f39326690b610.png',
-    hero: '/figma-assets/6212514260f27e0b62ccc7b0d6f5537f64fa68f5.png',
-    gallery: '/figma-assets/5c2c8c5ebec97d6357f87e4fd8a81bace5438a50.png',
+    preview: assetPath('/acc46efb158bbff6d403d8d9595c9ccc35beb827.png'),
+    hero: assetPath('/6212514260f27e0b62ccc7b0d6f5537f64fa68f5.png'),
+    gallery: assetPath('/acc46efb158bbff6d403d8d9595c9ccc35beb827.png'),
   },
   skilllex: {
-    preview: '/figma-33-220/e6d534a3f6d9b26f956c874e277db8f92f8c25d0.png',
-    hero: '/figma-assets/6212514260f27e0b62ccc7b0d6f5537f64fa68f5.png',
-    gallery: '/figma-assets/21cd39231d7d41d5d9f973580b9834b0a4dbf0ac.png',
+    preview: assetPath('/acc46efb158bbff6d403d8d9595c9ccc35beb827.png'),
+    hero: assetPath('/6212514260f27e0b62ccc7b0d6f5537f64fa68f5.png'),
+    gallery: assetPath('/acc46efb158bbff6d403d8d9595c9ccc35beb827.png'),
   },
 } as const;
 
