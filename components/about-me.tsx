@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Instagram, Twitter, Dribbble, Linkedin } from 'lucide-react';
 import type { SiteContent } from '@/content/types';
 
@@ -8,7 +9,7 @@ export function AboutMe({ content }: { content: SiteContent['about'] }) {
   return (
     <section id="about" className="bg-background">
       <div className="max-w-full px-4 md:py-16 lg:px-16">
-        <div className="grid grid-cols-1 gap-16 items-center lg:[grid-template-columns:minmax(0,1.25fr)_minmax(0,0.75fr)]">
+        <div className="grid grid-cols-1 gap-16 items-center lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)]">
           {/* Content Left */}
           <div className="flex flex-col items-start">
             {/* Badge & Headline */}
@@ -17,8 +18,8 @@ export function AboutMe({ content }: { content: SiteContent['about'] }) {
                 <span className="h-1.5 w-1.5 rounded-sm bg-muted-foreground" />
                 <p className="text-base font-medium leading-6">{content.label}</p>
               </div>
-              <h2 className="text-[40px] font-medium leading-[48px] tracking-[-0.05em]">{title}</h2>
-              <p className="max-w-[500px] text-base leading-6 text-muted-foreground">{description}</p>
+              <h2 className="text-[40px] font-medium leading-12 tracking-[-0.05em]">{title}</h2>
+              <p className="max-w-125 text-base leading-6 text-muted-foreground">{description}</p>
             </header>
 
             {/* Social Links */}

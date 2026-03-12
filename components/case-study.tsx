@@ -21,8 +21,8 @@ export function CaseStudy({ content, cards }: { content: SiteContent['caseStudy'
             <span className="h-1.5 w-1.5 rounded-sm bg-muted-foreground" />
             <p className="text-base font-medium leading-6">{content.label}</p>
           </div>
-          <h2 className="text-[40px] font-medium leading-[48px] tracking-[-0.05em]">{content.title}</h2>
-          <p className="max-w-[500px] text-base leading-6 text-muted-foreground">{content.description}</p>
+          <h2 className="text-[40px] font-medium leading-12 tracking-[-0.05em]">{content.title}</h2>
+          <p className="max-w-125 text-base leading-6 text-muted-foreground">{content.description}</p>
         </header>
 
         <div className="grid w-full grid-cols-1 gap-12 lg:grid-cols-2">

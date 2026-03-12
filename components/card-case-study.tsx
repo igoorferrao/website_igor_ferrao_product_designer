@@ -45,7 +45,7 @@ export function Card_Case_Study({
 
         {isComingSoon ? (
           <div className="absolute inset-0 z-10 flex items-center justify-center">
-            <Badge variant="muted" className="min-w-[110px]">
+            <Badge variant="muted" className="min-w-27.5">
               {comingSoonLabel}
             </Badge>
           </div>

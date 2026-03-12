@@ -40,24 +40,24 @@ export function Hero({ content, locale }: { content: SiteContent['hero']; locale
   return (
     <section className={`${instrumentSans.variable} ${poppins.variable} px-3 py-10 md:px-4 md:py-16 lg:px-16`}>
       <div className="mx-auto flex w-full flex-col gap-5 font-(--font-instrument-sans) text-foreground md:flex-row md:items-center md:justify-between md:gap-10">
-        <div className="w-full md:max-w-[800px]">
+        <div className="w-full md:max-w-200">
           <div className="flex flex-col gap-8">
             <div className="space-y-5">
               <p className="font-(--font-poppins) text-[18px] leading-7">{eyebrow}</p>
-              <h1 className="text-[40px] font-medium leading-[48px] tracking-[-2px] lg:text-[48px] lg:leading-[56px]">
+              <h1 className="text-[40px] font-medium leading-12 tracking-[-2px] lg:text-[48px] lg:leading-14">
                 {headline}
               </h1>
               <p className="text-base leading-6 text-muted-foreground">{content.subtitle}</p>
             </div>
 
             <div className="flex w-full items-center gap-4 md:gap-10">
-              <Button asChild size="xl" className="flex-1 md:w-[175px] md:flex-none">
+              <Button asChild size="xl" className="flex-1 md:w-43.75 md:flex-none">
                 <a href="#" className="flex items-center justify-center gap-2">
                   {content.ctas.primary}
                   <MoveRight className="h-5 w-5" strokeWidth={2} />
                 </a>
               </Button>
-              <Button asChild variant="secondary" size="xl" className="flex-1 md:w-[175px] md:flex-none">
+              <Button asChild variant="secondary" size="xl" className="flex-1 md:w-43.75 md:flex-none">
                 <a
                   href={cvDownload.href}
                   download={cvDownload.filename}
