@@ -51,11 +51,11 @@ export function Card_Case_Study({
           </div>
         ) : null}
       </div>
-      <div className="flex flex-col items-start gap-3 md:flex-row md:items-start md:justify-between md:gap-4">
+      <div className="flex flex-col items-start gap-2 md:items-start">
         <h3 className={cn('text-[20px] font-medium leading-8 text-foreground', isComingSoon && 'text-foreground/60')}>
           {title}
         </h3>
-        <span className={cn('text-base leading-6 text-foreground md:text-right', isComingSoon && 'text-foreground/60')}>
+        <span className={cn('text-base leading-6 text-foreground', isComingSoon && 'text-foreground/60')}>
           {subtitle}
         </span>
       </div>

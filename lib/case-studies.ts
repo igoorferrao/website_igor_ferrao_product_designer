@@ -75,7 +75,7 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       summary: {
         slug: 'greenn-info-product-dashboard',
         title: 'Greenn — Building an info-product dashboard app.',
-        description: 'A mobile app for Greenn “producers” (creators/sellers) to manage their account and track sales.',
+        description: 'A mobile app for Greenn “producers” (creators/sellers).',
         challenge:
           'Low adoption and high support volume because key sales and statement information was hard to find and often felt unreliable.',
         solution:
@@ -90,7 +90,7 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       detail: {
         slug: 'greenn-info-product-dashboard',
         title: 'Greenn — Building an info-product dashboard app.',
-        subtitle: 'A mobile app for Greenn “producers” (creators/sellers) to manage their account and track sales.',
+        subtitle: 'A mobile app for Greenn “producers” (creators/sellers).',
         heroImageSrc: sharedAssets.greenn.hero,
         heroImageAlt: 'Greenn producer app screens preview',
         overview: [
@@ -172,8 +172,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
     {
       summary: {
         slug: 'driving-digital-growth',
-        title: 'Driving Digital Growth',
-        description: 'A conversion-first web refresh to improve clarity, trust, and campaign performance.',
+        title: 'Learning Area — Design System for multiple products.',
+        description: 'A Design System for every brand the platform needed.',
         challenge: 'The legacy marketing site failed to communicate trust and value quickly.',
         solution: 'A modular IA and landing system reduced friction across campaigns.',
         leftStat: { value: '52%', label: 'Qualified lead growth' },
@@ -187,9 +187,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       },
       detail: {
         slug: 'driving-digital-growth',
-        title: 'GrowthLab — Conversion Platform Refresh',
-        subtitle:
-          'A web redesign for a growth consultancy focused on storytelling, trust, and better campaign conversion.',
+        title: 'Learning Area — Design System for multiple products.',
+        subtitle: 'A Design System for every brand the platform needed.',
         heroImageSrc: sharedAssets.growthlab.hero,
         heroImageAlt: 'Growth website redesign preview',
         overview: [
@@ -260,8 +259,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
     {
       summary: {
         slug: 'designing-future-success',
-        title: 'Designing Future Success',
-        description: 'A UX redesign focused on onboarding clarity and learner activation in an EdTech product.',
+        title: 'Responsive Learning Area Platform',
+        description: 'A responsive learning platform redesigned to improve the student experience across every device.',
         challenge: 'Product education was fragmented and new users churned in onboarding.',
         solution: 'Guided learning journeys and role-based dashboards improved activation.',
         leftStat: { value: '42%', label: 'Activation increase' },
@@ -275,9 +274,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       },
       detail: {
         slug: 'designing-future-success',
-        title: 'Skilllex — Learning Product Experience',
-        subtitle:
-          'A UX redesign focused on improving onboarding clarity and learner engagement in a digital education platform.',
+        title: 'Responsive Learning Area Platform',
+        subtitle: 'A responsive learning platform redesigned to improve the student experience across every device.',
         heroImageSrc: sharedAssets.skilllex.hero,
         heroImageAlt: 'Skilllex platform visual overview',
         overview: [
@@ -341,9 +339,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
     {
       summary: {
         slug: 'greenn-info-product-dashboard',
-        title: 'Greenn — App de dashboard para infoprodutos.',
-        description:
-          'Um app mobile para produtores da Greenn (criadores/vendedores) gerenciarem a conta e acompanharem vendas.',
+        title: 'Greenn — Construindo um app de dashboard para infoprodutos.',
+        description: 'Um app mobile para “produtores” da Greenn (criadores/vendedores).',
         challenge:
           'Baixa adoção e alto volume de suporte porque informações-chave de vendas e extratos eram difíceis de encontrar e pareciam pouco confiáveis.',
         solution:
@@ -357,9 +354,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       },
       detail: {
         slug: 'greenn-info-product-dashboard',
-        title: 'Greenn — App de dashboard para infoprodutos.',
-        subtitle:
-          'Um app mobile para produtores da Greenn (criadores/vendedores) gerenciarem a conta e acompanharem vendas.',
+        title: 'Greenn — Construindo um app de dashboard para infoprodutos.',
+        subtitle: 'Um app mobile para “produtores” da Greenn (criadores/vendedores).',
         heroImageSrc: sharedAssets.greenn.hero,
         heroImageAlt: 'Prévia das telas do app de produtores da Greenn',
         overview: [
@@ -444,8 +440,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
     {
       summary: {
         slug: 'driving-digital-growth',
-        title: 'Acelerando Crescimento Digital',
-        description: 'Redesign web focado em conversão para aumentar clareza, confiança e performance de campanhas.',
+        title: 'Learning Area — Design System para múltiplos produtos.',
+        description: 'Um Design System para cada marca que a plataforma precisava.',
         challenge: 'O site legado não comunicava valor e confiança com rapidez.',
         solution: 'Uma IA modular e um sistema de landing pages reduziram fricção nas campanhas.',
         leftStat: { value: '52%', label: 'Crescimento de leads qualificados' },
@@ -459,9 +455,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       },
       detail: {
         slug: 'driving-digital-growth',
-        title: 'GrowthLab — Plataforma de Conversão (Refresh)',
-        subtitle:
-          'Um redesign web para uma consultoria de growth, com foco em narrativa, confiança e melhor conversão de campanhas.',
+        title: 'Learning Area — Design System para múltiplos produtos.',
+        subtitle: 'Um Design System para cada marca que a plataforma precisava.',
         heroImageSrc: sharedAssets.growthlab.hero,
         heroImageAlt: 'Prévia do redesign do site da GrowthLab',
         overview: [
@@ -532,8 +527,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
     {
       summary: {
         slug: 'designing-future-success',
-        title: 'Desenhando o Sucesso Futuro',
-        description: 'Redesign de UX focado em onboarding, clareza e ativação em um produto EdTech.',
+        title: 'Plataforma Learning Area Responsiva',
+        description: 'Uma plataforma de aprendizagem responsiva redesenhada para melhorar a experiência do aluno em qualquer dispositivo.',
         challenge: 'Educação do produto fragmentada e churn no onboarding.',
         solution: 'Jornadas guiadas e dashboards por perfil melhoraram ativação.',
         leftStat: { value: '42%', label: 'Aumento de ativação' },
@@ -547,9 +542,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       },
       detail: {
         slug: 'designing-future-success',
-        title: 'Skilllex — Experiência de Produto de Aprendizagem',
-        subtitle:
-          'Um redesign de UX focado em melhorar clareza no onboarding e engajamento de alunos em uma plataforma digital.',
+        title: 'Plataforma Learning Area Responsiva',
+        subtitle: 'Uma plataforma de aprendizagem responsiva redesenhada para melhorar a experiência do aluno em qualquer dispositivo.',
         heroImageSrc: sharedAssets.skilllex.hero,
         heroImageAlt: 'Visão geral da plataforma Skilllex',
         overview: [
@@ -616,9 +610,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
     {
       summary: {
         slug: 'greenn-info-product-dashboard',
-        title: 'Greenn — App de dashboard para infoproductos.',
-        description:
-          'Una app móvil para productores de Greenn (creadores/vendedores) para gestionar su cuenta y seguir ventas.',
+        title: 'Greenn — Creando una app de dashboard para infoproductos.',
+        description: 'Una app móvil para “productores” de Greenn (creadores/vendedores).',
         challenge:
           'Baja adopción y alto volumen de soporte porque la información clave de ventas y extractos era difícil de encontrar y a menudo parecía poco fiable.',
         solution:
@@ -632,9 +625,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       },
       detail: {
         slug: 'greenn-info-product-dashboard',
-        title: 'Greenn — App de dashboard para infoproductos.',
-        subtitle:
-          'Una app móvil para productores de Greenn (creadores/vendedores) para gestionar su cuenta y seguir ventas.',
+        title: 'Greenn — Creando una app de dashboard para infoproductos.',
+        subtitle: 'Una app móvil para “productores” de Greenn (creadores/vendedores).',
         heroImageSrc: sharedAssets.greenn.hero,
         heroImageAlt: 'Vista previa de pantallas de la app de productores de Greenn',
         overview: [
@@ -716,8 +708,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
     {
       summary: {
         slug: 'driving-digital-growth',
-        title: 'Impulsando el Crecimiento Digital',
-        description: 'Rediseño web orientado a conversión para aumentar claridad, confianza y rendimiento de campañas.',
+        title: 'Learning Area — Design System para múltiples productos.',
+        description: 'Un Design System para cada marca que la plataforma necesitaba.',
         challenge: 'El sitio legado no comunicaba valor y confianza con rapidez.',
         solution: 'Una IA modular y un sistema de landings redujo fricción en campañas.',
         leftStat: { value: '52%', label: 'Crecimiento de leads cualificados' },
@@ -731,9 +723,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       },
       detail: {
         slug: 'driving-digital-growth',
-        title: 'GrowthLab — Refresh de Plataforma de Conversión',
-        subtitle:
-          'Un rediseño web para una consultora de growth, enfocada en narrativa, confianza y mejor conversión de campañas.',
+        title: 'Learning Area — Design System para múltiples productos.',
+        subtitle: 'Un Design System para cada marca que la plataforma necesitaba.',
         heroImageSrc: sharedAssets.growthlab.hero,
         heroImageAlt: 'Vista previa del rediseño del sitio de GrowthLab',
         overview: [
@@ -804,8 +795,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
     {
       summary: {
         slug: 'designing-future-success',
-        title: 'Diseñando el Éxito del Futuro',
-        description: 'Rediseño de UX centrado en onboarding, claridad y activación en un producto EdTech.',
+        title: 'Plataforma Learning Area Responsive',
+        description: 'Una plataforma de aprendizaje responsive rediseñada para mejorar la experiencia del estudiante en cualquier dispositivo.',
         challenge: 'Educación del producto fragmentada y churn en onboarding.',
         solution: 'Rutas guiadas y dashboards por perfil mejoraron activación.',
         leftStat: { value: '42%', label: 'Aumento de activación' },
@@ -819,9 +810,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       },
       detail: {
         slug: 'designing-future-success',
-        title: 'Skilllex — Experiencia de Producto de Aprendizaje',
-        subtitle:
-          'Un rediseño de UX enfocado en mejorar la claridad del onboarding y el engagement de estudiantes en una plataforma digital.',
+        title: 'Plataforma Learning Area Responsive',
+        subtitle: 'Una plataforma de aprendizaje responsive rediseñada para mejorar la experiencia del estudiante en cualquier dispositivo.',
         heroImageSrc: sharedAssets.skilllex.hero,
         heroImageAlt: 'Vista general de la plataforma Skilllex',
         overview: [

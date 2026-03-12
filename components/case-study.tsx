@@ -25,7 +25,7 @@ export function CaseStudy({ content, cards }: { content: SiteContent['caseStudy'
           <p className="max-w-[500px] text-base leading-6 text-muted-foreground">{content.description}</p>
         </header>
 
-        <div className="grid w-full grid-cols-1 gap-8 lg:grid-cols-2">
+        <div className="grid w-full grid-cols-1 gap-12 lg:grid-cols-2">
           {cards.map((card) => (
             <Card_Case_Study
               key={card.slug}
