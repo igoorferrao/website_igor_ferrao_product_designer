@@ -1,25 +1,20 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Instrument_Sans } from 'next/font/google';
 import type { SiteContent } from '@/content/types';
 import type { Locale } from '@/lib/i18n/locales';
 import { NavbarControls } from '@/components/navbar-controls';
 import { NavbarMenu } from '@/components/navbar-menu';
+import { getLocalizedPath } from '@/lib/i18n/routing';
 
 const navbarAvatarImage = '/Avatar_IgorFerraodeSouza.png';
 
-const instrumentSans = Instrument_Sans({
-  subsets: ['latin'],
-  variable: '--font-instrument-sans',
-});
-
 export function Navbar({ content, currentLocale }: { content: SiteContent['navbar']; currentLocale: Locale }) {
   return (
-    <header className={`${instrumentSans.variable} sticky top-0 z-40 font-(--font-instrument-sans)`}>
+    <header className="sticky top-0 z-40 font-(--font-instrument-sans)">
       <div className="relative flex items-center justify-between bg-background/95 px-3 py-3 backdrop-blur supports-[backdrop-filter]:bg-background/70 md:px-4 md:py-8 lg:px-16 lg:py-8">
         <div className="flex items-center gap-2 sm:gap-3 md:gap-5">
           <NavbarMenu content={content} />
-          <Link href="/" className="flex items-center gap-2 sm:gap-3">
+          <Link href={getLocalizedPath('/', currentLocale)} className="flex items-center gap-2 sm:gap-3">
             <Image
               src={navbarAvatarImage}
               alt={content.logo.avatarAlt}

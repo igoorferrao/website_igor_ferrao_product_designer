@@ -1,5 +1,6 @@
 import type { Locale } from '@/lib/i18n/locales';
 import { defaultLocale } from '@/lib/i18n/locales';
+import { getLocalizedPath } from '@/lib/i18n/routing';
 
 export type Stat = {
   value: string;
@@ -879,7 +880,7 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
 export function getCaseStudyCards(locale: Locale): CaseStudyCard[] {
   return caseStudiesByLocale[locale].map((item) => ({
     ...item.summary,
-    href: `/case-studies/${item.summary.slug}`,
+    href: getLocalizedPath(`/case-studies/${item.summary.slug}`, locale),
   }));
 }
 

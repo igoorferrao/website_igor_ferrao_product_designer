@@ -1,21 +1,9 @@
-import { Instrument_Sans } from 'next/font/google';
-import { Poppins } from 'next/font/google';
 import { MoveRight } from 'lucide-react';
 import { FileDown } from 'lucide-react';
 import type { SiteContent } from '@/content/types';
 import { Button } from '@/components/ui/button';
 import type { Locale } from '@/lib/i18n/locales';
-
-const instrumentSans = Instrument_Sans({
-  subsets: ['latin'],
-  variable: '--font-instrument-sans',
-});
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400'],
-  variable: '--font-poppins',
-});
+import { withBasePath } from '@/lib/i18n/routing';
 
 const cvDownloads: Record<Locale, { href: string; filename: string }> = {
   'pt-BR': {
@@ -38,7 +26,7 @@ export function Hero({ content, locale }: { content: SiteContent['hero']; locale
   const cvDownload = cvDownloads[locale];
 
   return (
-    <section className={`${instrumentSans.variable} ${poppins.variable} px-3 py-10 md:px-4 md:py-16 lg:px-16`}>
+    <section className="px-3 py-10 md:px-4 md:py-16 lg:px-16">
       <div className="mx-auto flex w-full flex-col gap-5 font-(--font-instrument-sans) text-foreground md:flex-row md:items-center md:justify-between md:gap-10">
         <div className="w-full md:max-w-200">
           <div className="flex flex-col gap-8">
@@ -59,7 +47,7 @@ export function Hero({ content, locale }: { content: SiteContent['hero']; locale
               </Button>
               <Button asChild variant="secondary" size="xl" className="flex-1 md:w-43.75 md:flex-none">
                 <a
-                  href={cvDownload.href}
+                  href={withBasePath(cvDownload.href)}
                   download={cvDownload.filename}
                   className="flex items-center justify-center gap-2"
                 >

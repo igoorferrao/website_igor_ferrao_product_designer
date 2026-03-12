@@ -1,16 +1,10 @@
-import { Instrument_Sans } from 'next/font/google';
 import type { SiteContent } from '@/content/types';
 import { FooterVerseMark } from '@/components/footer-verse-mark';
-
-const instrumentSans = Instrument_Sans({
-  subsets: ['latin'],
-  variable: '--font-instrument-sans',
-});
 
 export function Footer({ content }: { content: SiteContent['footer'] }) {
   return (
     <footer id="contact" className="overflow-hidden bg-background px-3 py-8 md:px-4 md:py-16 lg:px-16 lg:py-16">
-      <div className={`${instrumentSans.variable} mx-auto w-full max-w-360 font-(--font-instrument-sans)`}>
+      <div className="mx-auto w-full max-w-360 font-(--font-instrument-sans)">
         <div className="mx-auto w-full rounded-[32px] border border-border bg-card p-8 shadow-[0_8px_16px_rgba(0,0,0,0.05)] md:p-14">
           <div className="flex flex-col gap-10">
             <div className="flex flex-col justify-between gap-10 lg:flex-row">

@@ -1,11 +1,11 @@
 'use client';
 
 import * as React from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { PaletteIcon } from 'lucide-react';
 
-import { setLocale } from '@/app/actions/set-locale';
 import { isLocale, type Locale } from '@/lib/i18n/locales';
+import { getLocalizedPath } from '@/lib/i18n/routing';
 import type { SiteContent } from '@/content/types';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { ThemeToggle } from '@/components/theme-toggle';
@@ -34,9 +34,8 @@ function applyColorTheme(theme: ColorTheme) {
 }
 
 export function NavbarControls({ content, currentLocale }: { content: SiteContent['navbar']; currentLocale: Locale }) {
+  const router = useRouter();
   const pathname = usePathname();
-  const formRef = React.useRef<HTMLFormElement>(null);
-  const localeInputRef = React.useRef<HTMLInputElement>(null);
   const [colorTheme, setColorTheme] = React.useState<ColorTheme>('default');
   const themePointerOriginRef = React.useRef<{ x: number; y: number } | undefined>(undefined);
 
@@ -53,8 +52,7 @@ export function NavbarControls({ content, currentLocale }: { content: SiteConten
 
   function handleLocaleChange(value: string) {
     if (!isLocale(value)) return;
-    if (localeInputRef.current) localeInputRef.current.value = value;
-    formRef.current?.requestSubmit();
+    router.push(getLocalizedPath(pathname, value));
   }
 
   function handleThemeChange(value: string) {
@@ -67,10 +65,7 @@ export function NavbarControls({ content, currentLocale }: { content: SiteConten
 
   return (
     <div className="flex items-center gap-2 sm:gap-3">
-      <form ref={formRef} action={setLocale}>
-        <input type="hidden" name="redirectTo" value={pathname} />
-        <input ref={localeInputRef} type="hidden" name="locale" defaultValue={currentLocale} />
-
+      <div>
         <Select defaultValue={currentLocale} onValueChange={handleLocaleChange}>
           <SelectTrigger
             aria-label={content.languageSelectAriaLabel}
@@ -87,7 +82,7 @@ export function NavbarControls({ content, currentLocale }: { content: SiteConten
             ))}
           </SelectContent>
         </Select>
-      </form>
+      </div>
 
       <Select value={colorTheme} onValueChange={handleThemeChange}>
         <SelectTrigger

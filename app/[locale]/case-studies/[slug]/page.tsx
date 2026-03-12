@@ -6,20 +6,29 @@ import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar';
 import { LightboxImage } from '@/components/lightbox-image';
 import { getContent } from '@/content/get-content';
-import { defaultLocale } from '@/lib/i18n/locales';
+import { isLocale, locales, type Locale } from '@/lib/i18n/locales';
 
-type CaseStudyPageProps = {
-  params: Promise<{ slug: string }>;
+type LocalizedCaseStudyPageProps = {
+  params: Promise<{ locale: string; slug: string }>;
 };
 
 export function generateStaticParams() {
-  return getCaseStudySlugs();
+  return locales
+    .filter((locale) => locale !== 'pt-BR')
+    .flatMap((locale) => getCaseStudySlugs().map(({ slug }) => ({ locale, slug })));
 }
 
-export async function generateMetadata({ params }: CaseStudyPageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const content = await getContent(defaultLocale);
-  const caseStudy = getCaseStudyBySlug(slug, defaultLocale);
+export async function generateMetadata({
+  params,
+}: LocalizedCaseStudyPageProps): Promise<Metadata> {
+  const { locale, slug } = await params;
+
+  if (!isLocale(locale)) {
+    return {};
+  }
+
+  const content = await getContent(locale);
+  const caseStudy = getCaseStudyBySlug(slug, locale);
 
   if (!caseStudy) {
     return {
@@ -34,10 +43,17 @@ export async function generateMetadata({ params }: CaseStudyPageProps): Promise<
   };
 }
 
-export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
-  const { slug } = await params;
-  const content = await getContent(defaultLocale);
-  const caseStudy = getCaseStudyBySlug(slug, defaultLocale);
+export default async function LocalizedCaseStudyPage({
+  params,
+}: LocalizedCaseStudyPageProps) {
+  const { locale, slug } = await params;
+
+  if (!isLocale(locale)) {
+    notFound();
+  }
+
+  const content = await getContent(locale);
+  const caseStudy = getCaseStudyBySlug(slug, locale);
 
   if (!caseStudy) {
     notFound();
@@ -47,7 +63,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   const sectionTitles = content.caseStudyDetail.sectionTitles;
   const overviewLabels = content.caseStudyDetail.overviewLabels;
   const lightboxLabels = content.caseStudyDetail.lightbox;
-  const caseStudyCards = getCaseStudyCards(defaultLocale);
+  const caseStudyCards = getCaseStudyCards(locale as Locale);
 
   function getOverviewLabel(label: string) {
     switch (label) {
@@ -76,10 +92,8 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
 
   return (
     <div className="flex justify-center bg-[radial-gradient(at_-50%_0%,var(--page-gradient-accent)_0%,var(--page-gradient-fade-light)_50%),radial-gradient(at_160%_0%,var(--page-gradient-accent)_0%,var(--page-gradient-fade-light)_50%),radial-gradient(at_180%_120%,var(--page-gradient-accent)_0%,var(--page-gradient-fade-dark)_50%)] p-4 selection:bg-primary/40 selection:text-primary-foreground md:p-16">
-      <main
-        className="w-full max-w-360 rounded-4xl bg-background font-(--font-instrument-sans) shadow-2xl"
-      >
-        <Navbar content={content.navbar} currentLocale={defaultLocale} />
+      <main className="w-full max-w-360 rounded-4xl bg-background font-(--font-instrument-sans) shadow-2xl">
+        <Navbar content={content.navbar} currentLocale={locale} />
         <section className="px-4 py-8 text-foreground md:px-16 md:py-16">
           <div className="mx-auto w-full space-y-16">
             <header className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-10">
@@ -87,7 +101,9 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                 <h1 className="max-w-[604px] text-[36px] font-medium leading-[44px] tracking-[-0.04em] md:text-[44px] md:leading-[52px] lg:text-[48px] lg:leading-[56px]">
                   {detail.title}
                 </h1>
-                <p className="max-w-[604px] text-base leading-[25.6px] text-muted-foreground">{detail.subtitle}</p>
+                <p className="max-w-[604px] text-base leading-[25.6px] text-muted-foreground">
+                  {detail.subtitle}
+                </p>
               </div>
 
               <LightboxImage
@@ -238,7 +254,9 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                               cellHeight,
                             ].join(' ')}
                           >
-                            <p className="text-[40px] font-medium leading-[48px] tracking-[-0.04em]">{metric.value}</p>
+                            <p className="text-[40px] font-medium leading-[48px] tracking-[-0.04em]">
+                              {metric.value}
+                            </p>
                             <div className={`w-px ${dividerHeight} bg-accent-foreground/50`} />
                             <p className="flex-1 text-[18px] font-medium leading-7">{metric.label}</p>
                           </div>

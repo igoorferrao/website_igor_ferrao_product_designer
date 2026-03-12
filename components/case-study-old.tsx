@@ -1,11 +1,5 @@
-import { Instrument_Sans } from 'next/font/google';
 import { Card_Case_Study_Old } from '@/components/card-case-study-old';
 import type { SiteContent } from '@/content/types';
-
-const instrumentSans = Instrument_Sans({
-  subsets: ['latin'],
-  variable: '--font-instrument-sans',
-});
 
 type CaseStudyCard = {
   slug: string;
@@ -25,9 +19,7 @@ type CaseStudyCard = {
 export function CaseStudyOld({ content, cards }: { content: SiteContent['caseStudy']; cards: CaseStudyCard[] }) {
   return (
     <section id="cases" className="px-3 py-8 md:px-4 md:py-16 lg:px-16 lg:py-16">
-      <div
-        className={`${instrumentSans.variable} mx-auto w-full max-w-[1440px] space-y-16 font-[var(--font-instrument-sans)] text-foreground`}
-      >
+      <div className="mx-auto w-full max-w-[1440px] space-y-16 font-[var(--font-instrument-sans)] text-foreground">
         <div className="max-w-[500px] space-y-4">
           <div className="flex items-center gap-2">
             <span className="h-1.5 w-1.5 bg-muted-foreground" />
