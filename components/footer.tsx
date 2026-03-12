@@ -1,5 +1,6 @@
 import { Instrument_Sans } from 'next/font/google';
 import type { SiteContent } from '@/content/types';
+import { FooterVerseMark } from '@/components/footer-verse-mark';
 
 const instrumentSans = Instrument_Sans({
   subsets: ['latin'],
@@ -42,9 +43,9 @@ export function Footer({ content }: { content: SiteContent['footer'] }) {
           </div>
         </div>
 
-        <p className="mt-8 bg-linear-to-b from-muted-foreground to-background bg-clip-text text-center text-[clamp(64px,23vw,64px)] md:text-[clamp(160px,23vw,160px)] lg:text-[clamp(200px,23vw,200px)] xl:text-[clamp(320px,23vw,320px)] leading-[0.95] font-bold text-transparent opacity-20">
-          {content.verse}
-        </p>
+        <div className="mt-8 w-full">
+          <FooterVerseMark />
+        </div>
       </div>
     </footer>
   );
