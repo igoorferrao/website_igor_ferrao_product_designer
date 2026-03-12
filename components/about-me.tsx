@@ -6,9 +6,9 @@ export function AboutMe({ content }: { content: SiteContent['about'] }) {
   const description = descriptionLines.join(' ');
 
   return (
-    <section id="about" className="py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-4 md:py-16 lg:px-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section id="about" className="bg-background">
+      <div className="max-w-full px-4 md:py-16 lg:px-16">
+        <div className="grid grid-cols-1 gap-16 items-center lg:[grid-template-columns:minmax(0,1.25fr)_minmax(0,0.75fr)]">
           {/* Content Left */}
           <div className="flex flex-col items-start">
             {/* Badge & Headline */}
@@ -58,7 +58,7 @@ export function AboutMe({ content }: { content: SiteContent['about'] }) {
             </div>
 
             {/* Description */}
-            <p className="text-lg md:text-xl text-gray-500 leading-relaxed mb-12 max-w-xl">
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-12 max-w-xl">
               A multidisciplinary designer with 6+ years of experience crafting brand identities and digital products
               for startups and established companies across Europe and the US
             </p>
@@ -77,8 +77,8 @@ export function AboutMe({ content }: { content: SiteContent['about'] }) {
           </div>
 
           {/* Content Right (Image) */}
-          <div className="relative">
-            <div className="rounded-2xl overflow-hidden bg-gray-100 aspect-4/5 w-full max-w-md mx-auto lg:ml-auto">
+          <div className="w-fit lg:justify-self-end">
+            <div className="rounded-2xl overflow-hidden bg-gray-100 aspect-4/5 w-full max-w-md">
               <img
                 src="/Avatar_IgorFerraodeSouza.png"
                 alt="Alex Morgan"
