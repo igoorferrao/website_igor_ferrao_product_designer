@@ -142,7 +142,7 @@ export const content: SiteContent = {
       { title: 'Recursos', links: ['Documentación', 'Guías', 'Blog', 'Soporte'] },
       { title: 'Empresa', links: ['Acerca de', 'Carreras', 'Contacto', 'Socios'] },
     ],
-    rights: '2026 Igor. Todos los derechos reservados',
+    rights: '© 2026 Igor Ferrão.',
     verse: 'Rm 10:9',
   },
 };

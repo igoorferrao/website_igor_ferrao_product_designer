@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { Instagram, Twitter, Dribbble, Linkedin } from 'lucide-react';
+import { Instagram, Twitter, Youtube, Linkedin } from 'lucide-react';
 import type { SiteContent } from '@/content/types';
 import { assetPath } from '@/lib/asset-path';
 
@@ -26,7 +26,7 @@ export function AboutMe({ content }: { content: SiteContent['about'] }) {
             {/* Social Links */}
             <div className="flex gap-4 mb-8">
               <a
-                href="https://instagram.com"
+                href="https://instagram.com/igoorferrao"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 text-muted-foreground transition-colors hover:text-primary"
@@ -34,7 +34,7 @@ export function AboutMe({ content }: { content: SiteContent['about'] }) {
                 <Instagram size={24} />
               </a>
               <a
-                href="https://x.com"
+                href="https://x.com/igoorferrao"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 text-muted-foreground transition-colors hover:text-primary"
@@ -42,15 +42,15 @@ export function AboutMe({ content }: { content: SiteContent['about'] }) {
                 <Twitter size={24} />
               </a>
               <a
-                href="https://dribbble.com"
+                href="https://www.youtube.com/@FerraoDesign"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 text-muted-foreground transition-colors hover:text-primary"
               >
-                <Dribbble size={24} />
+                <Youtube size={24} />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/igor-ferrao-de-souza/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 text-muted-foreground transition-colors hover:text-primary"
