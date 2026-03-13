@@ -35,7 +35,7 @@ export const content: SiteContent = {
     eyebrow: 'Oi! Eu sou Igor Ferrão.',
     headline: 'Designer de Produto, Criador de Conteúdo e apaixonado por soluções criativas.',
     subtitle:
-      'Eu crio experiências digitais unindo estratégia, UX e design. Eu desenho produtos que equilibram a velocidade de startups com a escala corporativa — atualmente criando experiências digitais de hospitalidade na Hyatt.',
+      'Eu crio experiências digitais unindo estratégia, UX e design. Eu desenho produtos que equilibram a velocidade de startups com a escala corporativa — atualmente criando experiências digitais de plataforma de produtos na Greenn.',
     ctas: { primary: 'Vamos conversar', secondary: 'Baixar CV' },
     portraitCard: {
       name: 'Igor Ferrão de Souza',

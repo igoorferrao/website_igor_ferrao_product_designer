@@ -35,7 +35,7 @@ export const content: SiteContent = {
     eyebrow: "Hey! I'm Igor Ferrão.",
     headline: 'Product Designer, Content Creator, and passionate about creative solutions.',
     subtitle:
-      'I craft digital experiences blending strategy, UX, and design. I design products that balance startup speed with corporate scale, currently shaping digital hospitality at Hyatt.',
+      'I craft digital experiences blending strategy, UX, and design. I design products that balance startup speed with corporate scale, currently shaping digital product platform at Greenn.',
     ctas: { primary: "Let's Talk", secondary: 'Download CV' },
     portraitCard: {
       name: 'Igor Ferrão de Souza',
@@ -61,7 +61,8 @@ export const content: SiteContent = {
   myService: {
     label: 'MY SERVICE',
     title: 'Professional Service Solutions',
-    description: 'Tailored digital solutions designed to elevate your business performance, growth, and long-term success.',
+    description:
+      'Tailored digital solutions designed to elevate your business performance, growth, and long-term success.',
     ctas: { primary: 'Hire Me', secondary: 'Watch Video' },
     tabsAriaLabel: 'Service categories',
     tabs: [

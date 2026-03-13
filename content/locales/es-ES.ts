@@ -35,7 +35,7 @@ export const content: SiteContent = {
     eyebrow: '¡Hola! Soy Igor Ferrão.',
     headline: 'Diseñador de Producto, Creador de Contenido y apasionado por soluciones creativas.',
     subtitle:
-      'Creo experiencias digitales combinando estrategia, UX y diseño. Diseño productos que equilibran la velocidad de las startups con la escala corporativa; actualmente dando forma a la hospitalidad digital en Hyatt.',
+      'Creo experiencias digitales combinando estrategia, UX y diseño. Diseño productos que equilibran la velocidad de las startups con la escala corporativa; actualmente dando forma a la plataforma de productos digitales en Greenn.',
     ctas: { primary: 'Hablemos', secondary: 'Descargar CV' },
     portraitCard: {
       name: 'Igor Ferrão de Souza',
@@ -61,7 +61,8 @@ export const content: SiteContent = {
   myService: {
     label: 'MIS SERVICIOS',
     title: 'Soluciones Profesionales',
-    description: 'Soluciones digitales a medida para elevar el rendimiento de tu negocio, su crecimiento y éxito a largo plazo.',
+    description:
+      'Soluciones digitales a medida para elevar el rendimiento de tu negocio, su crecimiento y éxito a largo plazo.',
     ctas: { primary: 'Contrátame', secondary: 'Ver video' },
     tabsAriaLabel: 'Categorías de servicio',
     tabs: [
