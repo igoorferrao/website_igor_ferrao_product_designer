@@ -53,7 +53,7 @@ type CaseStudyCard = CaseStudySummary & { href: string };
 
 const sharedAssets = {
   greenn: {
-    hero: assetPath('/GreennDashboard_01.png'),
+    hero: assetPath('/imageHero_GreennDashboard.png'),
     collageResearch: assetPath('/GreennDashboard_00.png'),
     collageResults: assetPath('/GreennDashboard_03.png'),
     impactImage1: assetPath('/GreennDashboard_01.png'),
@@ -530,7 +530,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       summary: {
         slug: 'designing-future-success',
         title: 'Plataforma Learning Area Responsiva',
-        description: 'Uma plataforma de aprendizagem responsiva redesenhada para melhorar a experiência do aluno em qualquer dispositivo.',
+        description:
+          'Uma plataforma de aprendizagem responsiva redesenhada para melhorar a experiência do aluno em qualquer dispositivo.',
         challenge: 'Educação do produto fragmentada e churn no onboarding.',
         solution: 'Jornadas guiadas e dashboards por perfil melhoraram ativação.',
         leftStat: { value: '42%', label: 'Aumento de ativação' },
@@ -545,7 +546,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       detail: {
         slug: 'designing-future-success',
         title: 'Plataforma Learning Area Responsiva',
-        subtitle: 'Uma plataforma de aprendizagem responsiva redesenhada para melhorar a experiência do aluno em qualquer dispositivo.',
+        subtitle:
+          'Uma plataforma de aprendizagem responsiva redesenhada para melhorar a experiência do aluno em qualquer dispositivo.',
         heroImageSrc: sharedAssets.skilllex.hero,
         heroImageAlt: 'Visão geral da plataforma Skilllex',
         overview: [
@@ -798,7 +800,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       summary: {
         slug: 'designing-future-success',
         title: 'Plataforma Learning Area Responsive',
-        description: 'Una plataforma de aprendizaje responsive rediseñada para mejorar la experiencia del estudiante en cualquier dispositivo.',
+        description:
+          'Una plataforma de aprendizaje responsive rediseñada para mejorar la experiencia del estudiante en cualquier dispositivo.',
         challenge: 'Educación del producto fragmentada y churn en onboarding.',
         solution: 'Rutas guiadas y dashboards por perfil mejoraron activación.',
         leftStat: { value: '42%', label: 'Aumento de activación' },
@@ -813,7 +816,8 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       detail: {
         slug: 'designing-future-success',
         title: 'Plataforma Learning Area Responsive',
-        subtitle: 'Una plataforma de aprendizaje responsive rediseñada para mejorar la experiencia del estudiante en cualquier dispositivo.',
+        subtitle:
+          'Una plataforma de aprendizaje responsive rediseñada para mejorar la experiencia del estudiante en cualquier dispositivo.',
         heroImageSrc: sharedAssets.skilllex.hero,
         heroImageAlt: 'Vista general de la plataforma Skilllex',
         overview: [

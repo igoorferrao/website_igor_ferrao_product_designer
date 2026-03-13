@@ -52,7 +52,7 @@ export const content: SiteContent = {
       'conectam de verdade com as pessoas. Não é só estética',
     ],
     summary:
-      'Designer multidisciplinar com mais de 6 anos de experiência criando identidades de marca e produtos digitais para startups e empresas consolidadas na Europa e nos Estados Unidos.',
+      'Designer multidisciplinar com mais de 6 anos de experiência criando identidades de marca e produtos digitais para startups e empresas consolidadas no Brasil.',
     videoAriaLabel: 'Abrir vídeo',
     stats: [
       { value: '6+ anos', label: 'Experiência em design' },

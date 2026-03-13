@@ -52,7 +52,7 @@ export const content: SiteContent = {
       "connect with people. It's not just looking good",
     ],
     summary:
-      'A multidisciplinary designer with 6+ years of experience crafting brand identities and digital products for startups and established companies across Europe and the US.',
+      'A multidisciplinary designer with 6+ years of experience crafting brand identities and digital products for startups and established companies in Brazil.',
     videoAriaLabel: 'Open video placeholder',
     stats: [
       { value: '6+ years', label: 'Design experience' },
