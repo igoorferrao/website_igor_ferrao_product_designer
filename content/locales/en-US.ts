@@ -51,12 +51,19 @@ export const content: SiteContent = {
       'For me, design is about creating experiences that',
       "connect with people. It's not just looking good",
     ],
+    summary:
+      'A multidisciplinary designer with 6+ years of experience crafting brand identities and digital products for startups and established companies across Europe and the US.',
     videoAriaLabel: 'Open video placeholder',
     stats: [
+      { value: '6+ years', label: 'Design experience' },
+      { value: '40+', label: 'Projects delivered' },
+    ],
+    legacyStats: [
       { label: 'Client satisfaction rate', value: '98%', description: 'Delivering measurable financial impact.' },
       { label: 'Business transformed', value: '99+', description: 'Helping companies grow, perform better.' },
       { label: 'Experience and Expertise', value: '14+', description: 'Trusted and recommended by clients.' },
     ],
+    portraitAlt: 'Portrait of Igor Ferrão de Souza',
   },
   myService: {
     label: 'MY SERVICE',

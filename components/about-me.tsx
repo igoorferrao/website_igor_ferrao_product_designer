@@ -60,20 +60,17 @@ export function AboutMe({ content }: { content: SiteContent['about'] }) {
             </div>
 
             {/* Description */}
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-12 max-w-xl">
-              A multidisciplinary designer with 6+ years of experience crafting brand identities and digital products
-              for startups and established companies across Europe and the US
-            </p>
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-12 max-w-xl">{content.summary}</p>
 
             {/* Metrics */}
             <div className="grid grid-cols-2 gap-6 w-full max-w-lg">
               <div className="bg-secondary/20 rounded-2xl p-6 border border-border">
-                <div className="text-3xl font-semibold text-foreground mb-1">6+ years</div>
-                <div className="text-sm text-foreground">Design experience</div>
+                <div className="text-3xl font-semibold text-foreground mb-1">{content.stats[0].value}</div>
+                <div className="text-sm text-foreground">{content.stats[0].label}</div>
               </div>
               <div className="bg-secondary/20 rounded-2xl p-6 border border-border">
-                <div className="text-3xl font-semibold text-foreground mb-1">40+</div>
-                <div className="text-sm text-foreground">Project delivered</div>
+                <div className="text-3xl font-semibold text-foreground mb-1">{content.stats[1].value}</div>
+                <div className="text-sm text-foreground">{content.stats[1].label}</div>
               </div>
             </div>
           </div>
@@ -83,7 +80,7 @@ export function AboutMe({ content }: { content: SiteContent['about'] }) {
             <div className="rounded-2xl overflow-hidden bg-gray-100 aspect-4/5 w-full max-w-md">
               <img
                 src={assetPath('/Avatar_IgorFerraodeSouza.png')}
-                alt="Alex Morgan"
+                alt={content.portraitAlt}
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />

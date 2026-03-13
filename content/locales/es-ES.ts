@@ -51,12 +51,19 @@ export const content: SiteContent = {
       'Para mí, el diseño se trata de crear experiencias que',
       'conecten de verdad con las personas. No es solo verse bien',
     ],
+    summary:
+      'Diseñador multidisciplinario con más de 6 años de experiencia creando identidades de marca y productos digitales para startups y empresas consolidadas en Europa y Estados Unidos.',
     videoAriaLabel: 'Abrir video',
     stats: [
+      { value: '6+ años', label: 'Experiencia en diseño' },
+      { value: '40+', label: 'Proyectos entregados' },
+    ],
+    legacyStats: [
       { label: 'Satisfacción de clientes', value: '98%', description: 'Generando impacto financiero medible.' },
       { label: 'Negocios transformados', value: '99+', description: 'Ayudando a empresas a crecer y rendir mejor.' },
       { label: 'Experiencia y especialidad', value: '14+', description: 'Confiable y recomendado por clientes.' },
     ],
+    portraitAlt: 'Retrato de Igor Ferrão de Souza',
   },
   myService: {
     label: 'MIS SERVICIOS',

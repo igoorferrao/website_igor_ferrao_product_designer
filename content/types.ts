@@ -61,12 +61,24 @@ export type SiteContent = {
   about: {
     label: string;
     headlineLines: [string, string, string];
+    summary: string;
     videoAriaLabel: string;
-    stats: Array<{
+    stats: [
+      {
+        value: string;
+        label: string;
+      },
+      {
+        value: string;
+        label: string;
+      },
+    ];
+    legacyStats?: Array<{
       label: string;
       value: string;
       description: string;
     }>;
+    portraitAlt: string;
   };
   myService: {
     label: string;
