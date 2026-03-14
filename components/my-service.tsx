@@ -54,7 +54,7 @@ export function MyService({ content }: { content: SiteContent['myService'] }) {
 
   return (
     <section id="services" className="px-3 py-8 md:px-4 md:py-16 lg:px-16 lg:py-16">
-      <div className="mx-auto w-full max-w-360 font-(--font-instrument-sans) text-foreground">
+      <div className="mx-auto w-full max-w-360 text-foreground">
         <div className="flex flex-col gap-12 lg:gap-16">
           <header className="space-y-4">
             <div className="flex items-center gap-2">

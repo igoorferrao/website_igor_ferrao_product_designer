@@ -27,11 +27,11 @@ export function Hero({ content, locale }: { content: SiteContent['hero']; locale
 
   return (
     <section className="px-3 py-10 md:px-4 md:py-16 lg:px-16">
-      <div className="mx-auto flex w-full flex-col gap-5 font-(--font-instrument-sans) text-foreground md:flex-row md:items-center md:justify-between md:gap-10">
+      <div className="mx-auto flex w-full flex-col gap-5 text-foreground md:flex-row md:items-center md:justify-between md:gap-10">
         <div className="w-full md:max-w-200">
           <div className="flex flex-col gap-8">
             <div className="space-y-5">
-              <p className="font-(--font-poppins) text-[18px] leading-7">{eyebrow}</p>
+              <p className="text-[18px] leading-7">{eyebrow}</p>
               <h1 className="text-[40px] font-medium leading-12 tracking-[-2px] lg:text-[48px] lg:leading-14">
                 {headline}
               </h1>

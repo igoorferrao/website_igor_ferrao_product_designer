@@ -92,7 +92,7 @@ export default async function LocalizedCaseStudyPage({
 
   return (
     <div className="flex justify-center bg-[radial-gradient(at_-50%_0%,var(--page-gradient-accent)_0%,var(--page-gradient-fade-light)_50%),radial-gradient(at_160%_0%,var(--page-gradient-accent)_0%,var(--page-gradient-fade-light)_50%),radial-gradient(at_180%_120%,var(--page-gradient-accent)_0%,var(--page-gradient-fade-dark)_50%)] p-4 selection:bg-primary/40 selection:text-primary-foreground md:p-16">
-      <main className="w-full max-w-360 rounded-4xl bg-background font-(--font-instrument-sans) shadow-2xl">
+      <main className="w-full max-w-360 rounded-4xl bg-background shadow-2xl">
         <Navbar content={content.navbar} currentLocale={locale} />
         <section className="px-4 py-8 text-foreground md:px-16 md:py-16">
           <div className="mx-auto w-full space-y-16">
@@ -333,3 +333,4 @@ export default async function LocalizedCaseStudyPage({
     </div>
   );
 }
+

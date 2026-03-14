@@ -23,7 +23,9 @@ const Partners: React.FC = () => {
                   key={`${partner}-${groupIndex}-${index}`}
                   className="flex items-center opacity-50 transition-opacity hover:cursor-default hover:opacity-100"
                 >
-                  <span className="px-8 text-2xl font-bold font-serif uppercase text-muted-foreground">{partner}</span>
+                  <span className="font-partners px-8 text-2xl font-semibold uppercase text-muted-foreground">
+                    {partner}
+                  </span>
                   <span className="mx-8 inline-block h-2 w-2 rounded-full bg-muted-foreground/40" />
                 </div>
               ))}
