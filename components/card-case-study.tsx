@@ -27,10 +27,24 @@ export function Card_Case_Study({
     <>
       <div
         className={cn(
-          'relative mb-6 aspect-video w-full overflow-hidden rounded-2xl bg-gray-100',
+          'relative mb-6 aspect-video w-full overflow-hidden rounded-2xl bg-primary/90 px-8 py-10',
           isComingSoon && 'after:absolute after:inset-0 after:bg-background/30',
         )}
       >
+        <h1 className="max-w-[70%] text-[40px] font-medium leading-12 tracking-[-0.05em] text-primary-foreground">
+          Título dentro do card que vai pra lá
+        </h1>
+        <div
+          className="
+            pointer-events-none absolute inset-0 z-0
+            bg-[url('/patterns/square.svg')]
+            bg-repeat
+            bg-[length:32px_32px]
+            opacity-20
+            [mask-image:radial-gradient(ellipse_at_center,_black_50%,_transparent_100%)]
+            [-webkit-mask-image:radial-gradient(ellipse_at_center,_black_50%,_transparent_100%)]
+          "
+        />
         <Image
           src={heroImage}
           alt={imageAlt}

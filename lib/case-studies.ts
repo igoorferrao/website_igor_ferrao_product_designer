@@ -53,7 +53,7 @@ type CaseStudyCard = CaseStudySummary & { href: string };
 
 const sharedAssets = {
   greenn: {
-    hero: assetPath('/GreennDashboard_00.png'),
+    hero: assetPath('/imageHero_GreennDashboard.png'),
     collageResearch: assetPath('/GreennDashboard_00.png'),
     collageResults: assetPath('/GreennDashboard_03.png'),
     impactImage1: assetPath('/GreennDashboard_01.png'),
