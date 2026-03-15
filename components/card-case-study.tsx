@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import type { ReactNode } from 'react';
 
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
@@ -10,6 +11,8 @@ type CardCaseStudyProps = {
   heroImage: string;
   imageAlt: string;
   href: string;
+  heroTitle?: ReactNode;
+  heroTitleClassName?: string;
   isComingSoon?: boolean;
   comingSoonLabel?: string;
 };
@@ -20,20 +23,47 @@ export function Card_Case_Study({
   heroImage,
   imageAlt,
   href,
+  heroTitle,
+  heroTitleClassName,
   isComingSoon = false,
   comingSoonLabel = 'Em breve',
 }: CardCaseStudyProps) {
+  const resolvedHeroTitle = heroTitle === undefined ? title : heroTitle;
+
   const content = (
     <>
       <div
         className={cn(
           'relative mb-6 aspect-video w-full overflow-hidden rounded-2xl bg-primary/90 px-8 py-10',
-          isComingSoon && 'after:absolute after:inset-0 after:bg-background/30',
+          isComingSoon &&
+            "after:pointer-events-none after:absolute after:inset-0 after:z-20 after:bg-background/30 after:content-['']",
         )}
       >
-        <h1 className="max-w-[70%] text-[40px] font-medium leading-12 tracking-[-0.05em] text-primary-foreground">
-          Título dentro do card que vai pra lá
-        </h1>
+        <div className="absolute inset-0 z-10">
+          <Image
+            src={heroImage}
+            alt={imageAlt}
+            fill
+            sizes="(max-width: 767px) calc(100vw - 24px), (max-width: 1023px) calc(100vw - 32px), calc((100vw - 160px - 32px) / 2)"
+            className={cn(
+              'h-full w-full object-cover transition-transform duration-500',
+              isComingSoon ? 'scale-100 grayscale opacity-50 saturate-0' : 'group-hover:scale-105',
+            )}
+            referrerPolicy="no-referrer"
+          />
+        </div>
+
+        {resolvedHeroTitle != null ? (
+          <h4
+            className={cn(
+              'relative z-30 max-w-[70%] text-[32px] font-medium leading-10 tracking-[-0.05em] text-primary-foreground drop-shadow-sm',
+              heroTitleClassName,
+            )}
+          >
+            {resolvedHeroTitle}
+          </h4>
+        ) : null}
+
         <div
           className="
             pointer-events-none absolute inset-0 z-0
@@ -45,20 +75,9 @@ export function Card_Case_Study({
             [-webkit-mask-image:radial-gradient(ellipse_at_center,_black_50%,_transparent_100%)]
           "
         />
-        <Image
-          src={heroImage}
-          alt={imageAlt}
-          fill
-          sizes="(max-width: 767px) calc(100vw - 24px), (max-width: 1023px) calc(100vw - 32px), calc((100vw - 160px - 32px) / 2)"
-          className={cn(
-            'h-full w-full object-cover transition-transform duration-500',
-            isComingSoon ? 'scale-100 grayscale opacity-50 saturate-0' : 'group-hover:scale-105',
-          )}
-          referrerPolicy="no-referrer"
-        />
 
         {isComingSoon ? (
-          <div className="absolute inset-0 z-10 flex items-center justify-center">
+          <div className="absolute inset-0 z-40 flex items-center justify-center">
             <Badge variant="muted" className="min-w-27.5">
               {comingSoonLabel}
             </Badge>
