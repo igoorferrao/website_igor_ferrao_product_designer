@@ -36,7 +36,7 @@ export function Card_Case_Study({
         className={cn(
           'relative mb-6 aspect-video w-full overflow-hidden rounded-2xl bg-primary/90 px-8 py-10',
           isComingSoon &&
-            "after:pointer-events-none after:absolute after:inset-0 after:z-20 after:bg-background/30 after:content-['']",
+            "after:pointer-events-none after:absolute after:inset-0 after:z-20 grayscale after:content-['']",
         )}
       >
         <div className="absolute inset-0 z-10">
