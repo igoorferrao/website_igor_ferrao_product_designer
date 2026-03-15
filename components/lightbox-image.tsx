@@ -12,8 +12,11 @@ type LightboxImageProps = {
   alt: string;
   sizes?: string;
   priority?: boolean;
+  interactive?: boolean;
   className?: string;
   imageClassName?: string;
+  dialogImageClassName?: string;
+  dialogSurfaceClassName?: string;
   ariaLabels?: {
     openImage: string;
     closeImage: string;
@@ -26,8 +29,11 @@ export function LightboxImage({
   alt,
   sizes,
   priority,
+  interactive = true,
   className,
   imageClassName,
+  dialogImageClassName,
+  dialogSurfaceClassName,
   ariaLabels,
 }: LightboxImageProps) {
   const [open, setOpen] = React.useState(false);
@@ -51,6 +57,25 @@ export function LightboxImage({
     };
   }, [open]);
 
+  const image = (
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      sizes={sizes}
+      priority={priority}
+      className={cn(
+        'object-cover motion-reduce:transition-none motion-reduce:transform-none',
+        interactive && 'transition-transform duration-300 ease-out group-hover:scale-[1.02]',
+        imageClassName,
+      )}
+    />
+  );
+
+  if (!interactive) {
+    return <div className={cn('relative block w-full overflow-hidden', className)}>{image}</div>;
+  }
+
   return (
     <>
       <button
@@ -63,17 +88,7 @@ export function LightboxImage({
         onClick={() => setOpen(true)}
         aria-label={alt ? `${openLabel}: ${alt}` : openLabel}
       >
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          sizes={sizes}
-          priority={priority}
-          className={cn(
-            'object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:transform-none',
-            imageClassName,
-          )}
-        />
+        {image}
       </button>
 
       {open ? (
@@ -85,10 +100,15 @@ export function LightboxImage({
             onClick={() => setOpen(false)}
           />
 
-          <div className="absolute inset-0 flex items-center justify-center p-4 md:p-10">
-            <div className="relative w-full max-w-6xl">
-              <div className="relative h-[80vh] w-full overflow-hidden rounded-2xl bg-accent">
-                <div className="absolute right-4 top-4 z-10">
+          <div className="absolute inset-0 flex items-center justify-center p-3 sm:p-4 md:p-10">
+            <div className="relative flex max-h-[calc(100dvh-1.5rem)] w-full max-w-6xl items-center justify-center md:max-h-[calc(100dvh-5rem)]">
+              <div
+                className={cn(
+                  'relative aspect-[1204/732] w-full max-h-[calc(100dvh-1.5rem)] overflow-hidden rounded-2xl bg-accent md:max-h-[calc(100dvh-5rem)]',
+                  dialogSurfaceClassName,
+                )}
+              >
+                <div className="absolute right-3 top-3 z-10 md:right-4 md:top-4">
                   <Button
                     type="button"
                     variant="secondary"
@@ -100,7 +120,14 @@ export function LightboxImage({
                     <XIcon className="size-5 text-foreground" />
                   </Button>
                 </div>
-                <Image src={src} alt={alt} fill className="object-cover" sizes="100vw" priority={priority} />
+                <Image
+                  src={src}
+                  alt={alt}
+                  fill
+                  className={cn('object-contain', dialogImageClassName)}
+                  sizes="100vw"
+                  priority={priority}
+                />
               </div>
             </div>
           </div>
