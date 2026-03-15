@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getCaseStudyBySlug, getCaseStudyCards, getCaseStudySlugs } from '@/lib/case-studies';
 import { CaseStudy } from '@/components/case-study';
+import { CaseStudyHeroThumb } from '@/components/case-study-hero-thumb';
 import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar';
 import { LightboxImage } from '@/components/lightbox-image';
@@ -44,6 +45,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   }
 
   const { detail } = caseStudy;
+  const heroTitle = caseStudy.summary.heroTitle ?? detail.title;
   const sectionTitles = content.caseStudyDetail.sectionTitles;
   const overviewLabels = content.caseStudyDetail.overviewLabels;
   const lightboxLabels = content.caseStudyDetail.lightbox;
@@ -88,18 +90,22 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                 <p className="max-w-[604px] text-base leading-[25.6px] text-muted-foreground">{detail.subtitle}</p>
               </div>
 
-              <LightboxImage
-                src={detail.heroImageSrc}
-                alt={detail.heroImageAlt}
-                sizes="(max-width: 1024px) 100vw, 389px"
-                priority
-                className="case-study-image-surface aspect-[389/264] rounded-2xl lg:max-w-[389px]"
-                ariaLabels={{
-                  openImage: lightboxLabels.openImageAriaLabel,
-                  closeImage: lightboxLabels.closeImageAriaLabel,
-                  dialog: lightboxLabels.dialogAriaLabel,
-                }}
-              />
+              <CaseStudyHeroThumb heroTitle={heroTitle} size="detail" className="lg:max-w-[389px]">
+                <LightboxImage
+                  src={detail.heroImageSrc}
+                  alt={detail.heroImageAlt}
+                  sizes="(max-width: 1024px) 100vw, 389px"
+                  priority
+                  interactive={false}
+                  className="h-full rounded-2xl"
+                  imageClassName="object-cover"
+                  ariaLabels={{
+                    openImage: lightboxLabels.openImageAriaLabel,
+                    closeImage: lightboxLabels.closeImageAriaLabel,
+                    dialog: lightboxLabels.dialogAriaLabel,
+                  }}
+                />
+              </CaseStudyHeroThumb>
             </header>
 
             <div className="grid gap-12 lg:grid-cols-[1fr_389px] lg:gap-10">
@@ -147,9 +153,10 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                       <LightboxImage
                         src={detail.gallery[0].src}
                         alt={detail.gallery[0].alt}
-                        sizes="(max-width: 1024px) 100vw, 819px"
-                        className="case-study-image-surface aspect-[819/420] rounded-2xl"
+                        sizes="(max-width: 1024px) 100vw, 1204px"
+                        className="case-study-image-surface aspect-[1204/732] rounded-2xl"
                         imageClassName="object-cover"
+                        dialogSurfaceClassName="case-study-image-surface"
                         ariaLabels={{
                           openImage: lightboxLabels.openImageAriaLabel,
                           closeImage: lightboxLabels.closeImageAriaLabel,
@@ -187,9 +194,10 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                         <LightboxImage
                           src={detail.gallery[1].src}
                           alt={detail.gallery[1].alt}
-                          sizes="(max-width: 1024px) 100vw, 819px"
-                          className="case-study-image-surface aspect-[819/420] rounded-2xl"
+                          sizes="(max-width: 1024px) 100vw, 1204px"
+                          className="case-study-image-surface aspect-[1204/732] rounded-2xl"
                           imageClassName="object-cover"
+                          dialogSurfaceClassName="case-study-image-surface"
                           ariaLabels={{
                             openImage: lightboxLabels.openImageAriaLabel,
                             closeImage: lightboxLabels.closeImageAriaLabel,
@@ -252,9 +260,10 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                           <LightboxImage
                             src={image.src}
                             alt={image.alt}
-                            sizes="(max-width: 1024px) 100vw, 389px"
-                            className="case-study-image-surface h-[320px] rounded-2xl"
+                            sizes="(max-width: 768px) 100vw, 592px"
+                            className="case-study-image-surface aspect-[1204/732] rounded-2xl"
                             imageClassName="object-cover"
+                            dialogSurfaceClassName="case-study-image-surface"
                             ariaLabels={{
                               openImage: lightboxLabels.openImageAriaLabel,
                               closeImage: lightboxLabels.closeImageAriaLabel,
