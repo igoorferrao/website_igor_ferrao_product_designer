@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { Instagram, Twitter, Youtube, Linkedin } from 'lucide-react';
+import { Instagram, Youtube, Linkedin } from 'lucide-react';
 import type { SiteContent } from '@/content/types';
 import { assetPath } from '@/lib/asset-path';
 
@@ -32,14 +32,6 @@ export function AboutMe({ content }: { content: SiteContent['about'] }) {
                 className="p-2 text-muted-foreground transition-colors hover:text-primary"
               >
                 <Instagram size={24} />
-              </a>
-              <a
-                href="https://x.com/igoorferrao"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 text-muted-foreground transition-colors hover:text-primary"
-              >
-                <Twitter size={24} />
               </a>
               <a
                 href="https://www.youtube.com/@FerraoDesign"
