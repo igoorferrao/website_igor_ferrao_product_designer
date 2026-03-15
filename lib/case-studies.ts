@@ -11,6 +11,7 @@ export type Stat = {
 export type CaseStudySummary = {
   slug: string;
   title: string;
+  heroTitle?: string;
   description: string;
   challenge: string;
   solution: string;
@@ -53,19 +54,19 @@ type CaseStudyCard = CaseStudySummary & { href: string };
 
 const sharedAssets = {
   greenn: {
-    hero: assetPath('/GreennDashboard_00.png'),
+    hero: assetPath('/imageHero_GreennDashboard.png'),
     collageResearch: assetPath('/GreennDashboard_00.png'),
     collageResults: assetPath('/GreennDashboard_03.png'),
     impactImage1: assetPath('/GreennDashboard_01.png'),
     impactImage2: assetPath('/GreennDashboard_04.png'),
   },
   growthlab: {
-    preview: assetPath('/acc46efb158bbff6d403d8d9595c9ccc35beb827.png'),
+    preview: assetPath('/imageHero_LearningArea.png'),
     hero: assetPath('/6212514260f27e0b62ccc7b0d6f5537f64fa68f5.png'),
     gallery: assetPath('/acc46efb158bbff6d403d8d9595c9ccc35beb827.png'),
   },
   skilllex: {
-    preview: assetPath('/acc46efb158bbff6d403d8d9595c9ccc35beb827.png'),
+    preview: assetPath('/imageHero_LearningAreaResponsive.png'),
     hero: assetPath('/6212514260f27e0b62ccc7b0d6f5537f64fa68f5.png'),
     gallery: assetPath('/acc46efb158bbff6d403d8d9595c9ccc35beb827.png'),
   },
@@ -77,6 +78,7 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       summary: {
         slug: 'greenn-info-product-dashboard',
         title: 'Greenn — Building an info-product dashboard app.',
+        heroTitle: 'Greenn — Building an info-product dashboard app.',
         description: 'A mobile app for Greenn “producers” (creators/sellers).',
         challenge:
           'Low adoption and high support volume because key sales and statement information was hard to find and often felt unreliable.',
@@ -175,6 +177,7 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       summary: {
         slug: 'driving-digital-growth',
         title: 'Learning Area — Design System for multiple products.',
+        heroTitle: 'Learning Area — Design System for multiple products.',
         description: 'A Design System for every brand the platform needed.',
         challenge: 'The legacy marketing site failed to communicate trust and value quickly.',
         solution: 'A modular IA and landing system reduced friction across campaigns.',
@@ -262,6 +265,7 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       summary: {
         slug: 'designing-future-success',
         title: 'Responsive Learning Area Platform',
+        heroTitle: 'Responsive Learning Area Platform',
         description: 'A responsive learning platform redesigned to improve the student experience across every device.',
         challenge: 'Product education was fragmented and new users churned in onboarding.',
         solution: 'Guided learning journeys and role-based dashboards improved activation.',
@@ -342,6 +346,7 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       summary: {
         slug: 'greenn-info-product-dashboard',
         title: 'Greenn — Construindo um app de dashboard para infoprodutos.',
+        heroTitle: 'Um app de dashboard para infoprodutos.',
         description: 'Um app mobile para “produtores” da Greenn (criadores/vendedores).',
         challenge:
           'Baixa adoção e alto volume de suporte porque informações-chave de vendas e extratos eram difíceis de encontrar e pareciam pouco confiáveis.',
@@ -443,6 +448,7 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       summary: {
         slug: 'driving-digital-growth',
         title: 'Learning Area — Design System para múltiplos produtos.',
+        heroTitle: 'Learning Area — Design System para múltiplos produtos.',
         description: 'Um Design System para cada marca que a plataforma precisava.',
         challenge: 'O site legado não comunicava valor e confiança com rapidez.',
         solution: 'Uma IA modular e um sistema de landing pages reduziram fricção nas campanhas.',
@@ -530,6 +536,7 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       summary: {
         slug: 'designing-future-success',
         title: 'Plataforma Learning Area Responsiva',
+        heroTitle: 'Plataforma Learning Area Responsiva',
         description:
           'Uma plataforma de aprendizagem responsiva redesenhada para melhorar a experiência do aluno em qualquer dispositivo.',
         challenge: 'Educação do produto fragmentada e churn no onboarding.',
@@ -615,6 +622,7 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       summary: {
         slug: 'greenn-info-product-dashboard',
         title: 'Greenn — Creando una app de dashboard para infoproductos.',
+        heroTitle: 'Greenn — Creando una app de dashboard para infoproductos.',
         description: 'Una app móvil para “productores” de Greenn (creadores/vendedores).',
         challenge:
           'Baja adopción y alto volumen de soporte porque la información clave de ventas y extractos era difícil de encontrar y a menudo parecía poco fiable.',
@@ -713,6 +721,7 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       summary: {
         slug: 'driving-digital-growth',
         title: 'Learning Area — Design System para múltiples productos.',
+        heroTitle: 'Learning Area — Design System para múltiples productos.',
         description: 'Un Design System para cada marca que la plataforma necesitaba.',
         challenge: 'El sitio legado no comunicaba valor y confianza con rapidez.',
         solution: 'Una IA modular y un sistema de landings redujo fricción en campañas.',
@@ -800,6 +809,7 @@ const caseStudiesByLocale: Record<Locale, CaseStudy[]> = {
       summary: {
         slug: 'designing-future-success',
         title: 'Plataforma Learning Area Responsive',
+        heroTitle: 'Plataforma Learning Area Responsive',
         description:
           'Una plataforma de aprendizaje responsive rediseñada para mejorar la experiencia del estudiante en cualquier dispositivo.',
         challenge: 'Educación del producto fragmentada y churn en onboarding.',

@@ -4,6 +4,7 @@ import type { SiteContent } from '@/content/types';
 type CaseStudyCard = {
   slug: string;
   title: string;
+  heroTitle?: string;
   description: string;
   imageSrc: string;
   imageAlt: string;
@@ -30,6 +31,7 @@ export function CaseStudy({ content, cards }: { content: SiteContent['caseStudy'
             <Card_Case_Study
               key={card.slug}
               title={card.title}
+              heroTitle={card.heroTitle}
               subtitle={card.description}
               heroImage={card.imageSrc}
               imageAlt={card.imageAlt}
