@@ -61,7 +61,7 @@ const sharedAssets = {
     impactImage2: assetPath('/GreennDashboard_04.png'),
   },
   growthlab: {
-    preview: assetPath('/acc46efb158bbff6d403d8d9595c9ccc35beb827.png'),
+    preview: assetPath('/imageHero_LearningArea.png'),
     hero: assetPath('/6212514260f27e0b62ccc7b0d6f5537f64fa68f5.png'),
     gallery: assetPath('/acc46efb158bbff6d403d8d9595c9ccc35beb827.png'),
   },
