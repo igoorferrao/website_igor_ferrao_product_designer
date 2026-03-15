@@ -23,7 +23,7 @@ export function CaseStudyHeroThumb({
     <div
       className={cn(
         'relative aspect-video w-full overflow-hidden rounded-2xl bg-primary/90',
-        isDetail ? 'px-6 py-7' : 'px-8 py-10',
+        isDetail ? 'px-6 py-7' : 'px-4 py-4 sm:px-8 sm:py-10',
         className,
       )}
     >
@@ -33,7 +33,9 @@ export function CaseStudyHeroThumb({
         <h4
           className={cn(
             'pointer-events-none relative z-30 block max-w-[70%] font-medium tracking-[-0.05em] text-primary-foreground drop-shadow-sm',
-            isDetail ? 'text-[24px] leading-8 md:text-[28px] md:leading-9' : 'text-[32px] leading-10',
+            isDetail
+              ? 'text-[24px] leading-8 md:text-[28px] md:leading-9'
+              : 'text-[24px] leading-8 sm:text-[32px] sm:leading-10',
             heroTitleClassName,
           )}
         >
