@@ -6,7 +6,7 @@ export const content: SiteContent = {
     description: 'Product Designer focused on intuitive digital experiences.',
   },
   navbar: {
-    logo: { fullName: 'Igor Ferrão', location: 'Based in Brasil', avatarAlt: 'Profile photo of Igor Ferrão' },
+    logo: { fullName: 'Igor Ferrão', location: 'Based in Brazil', avatarAlt: 'Profile photo of Igor Ferrão' },
     links: { about: 'About Me', services: 'Services', cases: 'Cases' },
     menu: {
       openAriaLabel: 'Open navigation menu',
@@ -35,7 +35,7 @@ export const content: SiteContent = {
     eyebrow: "Hey! I'm Igor Ferrão.",
     headline: 'Product Designer, Content Creator, and passionate about creative solutions.',
     subtitle:
-      'I craft digital experiences blending strategy, UX, and design. I design products that balance startup speed with corporate scale, currently shaping digital product platform at Greenn.',
+      "I craft digital experiences by blending strategy, UX, and design. I design products that balance startup speed with corporate scale. I'm currently creating digital experiences for Greenn's product platform.",
     ctas: { primary: "Let's Talk", secondary: 'Download CV' },
     portraitCard: {
       name: 'Igor Ferrão de Souza',
@@ -48,8 +48,8 @@ export const content: SiteContent = {
     label: 'ABOUT ME',
     headlineLines: [
       "I'm Igor Ferrão, your creative partner in design.",
-      'For me, design is about creating experiences that',
-      "connect with people. It's not just looking good",
+      'For me, design means creating experiences that',
+      "genuinely connect with people, not just aesthetics.",
     ],
     summary:
       'A multidisciplinary designer with 6+ years of experience crafting brand identities and digital products for startups and established companies in Brazil.',

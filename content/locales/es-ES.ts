@@ -6,7 +6,7 @@ export const content: SiteContent = {
     description: 'Diseñador de Producto enfocado en experiencias digitales intuitivas.',
   },
   navbar: {
-    logo: { fullName: 'Igor Ferrão', location: 'Based in Brasil', avatarAlt: 'Foto de perfil de Igor Ferrão' },
+    logo: { fullName: 'Igor Ferrão', location: 'Con base en Brasil', avatarAlt: 'Foto de perfil de Igor Ferrão' },
     links: { about: 'Sobre mí', services: 'Servicios', cases: 'Casos' },
     menu: {
       openAriaLabel: 'Abrir menú de navegación',
@@ -35,7 +35,7 @@ export const content: SiteContent = {
     eyebrow: '¡Hola! Soy Igor Ferrão.',
     headline: 'Diseñador de Producto, Creador de Contenido y apasionado por soluciones creativas.',
     subtitle:
-      'Creo experiencias digitales combinando estrategia, UX y diseño. Diseño productos que equilibran la velocidad de las startups con la escala corporativa; actualmente dando forma a la plataforma de productos digitales en Greenn.',
+      'Creo experiencias digitales uniendo estrategia, UX y diseño. Diseño productos que equilibran la velocidad de las startups con la escala corporativa. Actualmente estoy creando experiencias digitales para la plataforma de productos de Greenn.',
     ctas: { primary: 'Hablemos', secondary: 'Descargar CV' },
     portraitCard: {
       name: 'Igor Ferrão de Souza',
@@ -48,8 +48,8 @@ export const content: SiteContent = {
     label: 'SOBRE MÍ',
     headlineLines: [
       'Soy Igor Ferrão, tu socio creativo en diseño.',
-      'Para mí, el diseño se trata de crear experiencias que',
-      'conecten de verdad con las personas. No es solo verse bien',
+      'Para mí, el diseño consiste en crear experiencias que',
+      'conecten de verdad con las personas, no se trata solo de estética.',
     ],
     summary:
       'Diseñador multidisciplinario con más de 6 años de experiencia creando identidades de marca y productos digitales para startups y empresas consolidadas en Brasil.',
