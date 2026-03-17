@@ -1,4 +1,4 @@
-import { MessageCircle } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { FileDown } from 'lucide-react';
 import type { SiteContent } from '@/content/types';
 import { Button } from '@/components/ui/button';
@@ -40,9 +40,9 @@ export function Hero({ content, locale }: { content: SiteContent['hero']; locale
 
             <div className="flex w-full items-center gap-4 md:gap-10">
               <Button asChild size="xl" className="flex-1 md:w-43.75 md:flex-none">
-                <a href="#" className="flex items-center justify-center gap-2">
+                <a href="#mailto:igoorferrao+website@gmail.com" className="flex items-center justify-center gap-2">
                   {content.ctas.primary}
-                  <MessageCircle className="h-5 w-5" strokeWidth={2.5} />
+                  <Mail className="h-5 w-5" strokeWidth={2.5} />
                 </a>
               </Button>
               <Button asChild variant="secondary" size="xl" className="flex-1 md:w-43.75 md:flex-none">
