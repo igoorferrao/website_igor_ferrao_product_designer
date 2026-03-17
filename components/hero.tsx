@@ -38,7 +38,7 @@ export function Hero({ content, locale }: { content: SiteContent['hero']; locale
               <p className="text-base leading-6 text-muted-foreground">{content.subtitle}</p>
             </div>
 
-            <div className="flex w-full items-center gap-4 md:gap-10">
+            <div className="flex w-full items-center gap-4 md:gap-10 flex-wrap">
               <Button asChild size="xl" className="flex-1 md:w-43.75 md:flex-none">
                 <a href="mailto:igoorferrao+website@gmail.com" className="flex items-center justify-center gap-2">
                   {content.ctas.primary}

@@ -23,7 +23,7 @@ export function CaseStudyHeroThumb({
     <div
       className={cn(
         'relative aspect-video w-full overflow-hidden rounded-2xl bg-primary/90',
-        isDetail ? 'px-6 py-7' : 'px-4 py-4 sm:px-8 sm:py-10',
+        isDetail ? 'px-6 py-7' : 'px-4 py-4 xl:px-8 xl:py-10',
         className,
       )}
     >

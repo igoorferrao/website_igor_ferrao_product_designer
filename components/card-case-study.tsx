@@ -55,14 +55,14 @@ export function Card_Case_Study({
         />
 
         {isComingSoon ? (
-          <div className="absolute md:inset-0 right-4 top-5 z-40 flex items-center justify-center">
+          <div className="absolute xl:inset-0 right-4 top-5 z-40 flex items-center justify-center">
             <Badge variant="muted" className="min-w-20">
               {comingSoonLabel}
             </Badge>
           </div>
         ) : null}
       </CaseStudyHeroThumb>
-      <div className="flex flex-col items-start gap-2 md:items-start">
+      <div className="flex flex-col items-start gap-2">
         <h3 className={cn('text-[20px] font-medium leading-8 text-foreground', isComingSoon && 'text-foreground/60')}>
           {title}
         </h3>
