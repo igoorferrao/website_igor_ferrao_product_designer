@@ -9,7 +9,7 @@ type TransitionConfig = {
 };
 
 const DEFAULT_DURATION = 560;
-const DEFAULT_EASING = 'cubic-bezier(0.22, 1, 0.36, 1)';
+const DEFAULT_EASING = 'cubic-bezier(0.65, 0, 0.35, 1)';
 
 function shouldReduceMotion() {
   return window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false;
