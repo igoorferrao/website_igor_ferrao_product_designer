@@ -8,7 +8,7 @@ type TransitionConfig = {
   easing?: string;
 };
 
-const DEFAULT_DURATION = 560;
+const DEFAULT_DURATION = 800;
 const DEFAULT_EASING = 'cubic-bezier(0.65, 0, 0.35, 1)';
 
 function shouldReduceMotion() {
@@ -23,14 +23,21 @@ function getOrigin(point?: Partial<Point>): Point {
 }
 
 function getEndRadius(x: number, y: number) {
-  return Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+  const viewportLeft = window.visualViewport?.offsetLeft ?? 0;
+  const viewportTop = window.visualViewport?.offsetTop ?? 0;
+  const viewportWidth = window.visualViewport?.width ?? window.innerWidth;
+  const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
+  const viewportRight = viewportLeft + viewportWidth;
+  const viewportBottom = viewportTop + viewportHeight;
+  const farthestX = Math.max(Math.abs(x - viewportLeft), Math.abs(viewportRight - x));
+  const farthestY = Math.max(Math.abs(y - viewportTop), Math.abs(viewportBottom - y));
+  const radius = Math.hypot(farthestX, farthestY);
+  const overscan = Math.max(32, Math.max(viewportWidth, viewportHeight) * 0.05);
+
+  return Math.ceil(radius + overscan);
 }
 
-export function runRadialRootTransition(
-  run: () => void,
-  point?: Partial<Point>,
-  config: TransitionConfig = {}
-) {
+export function runRadialRootTransition(run: () => void, point?: Partial<Point>, config: TransitionConfig = {}) {
   const canAnimate =
     typeof document.startViewTransition === 'function' &&
     typeof document.documentElement.animate === 'function' &&
@@ -66,7 +73,7 @@ export function runRadialRootTransition(
             duration,
             easing,
             pseudoElement: '::view-transition-new(root)',
-          }
+          },
         );
       })
       .catch(() => {
