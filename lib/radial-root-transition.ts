@@ -23,16 +23,12 @@ function getOrigin(point?: Partial<Point>): Point {
 }
 
 function getEndRadius(x: number, y: number) {
-  const viewportLeft = window.visualViewport?.offsetLeft ?? 0;
-  const viewportTop = window.visualViewport?.offsetTop ?? 0;
-  const viewportWidth = window.visualViewport?.width ?? window.innerWidth;
-  const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
-  const viewportRight = viewportLeft + viewportWidth;
-  const viewportBottom = viewportTop + viewportHeight;
-  const farthestX = Math.max(Math.abs(x - viewportLeft), Math.abs(viewportRight - x));
-  const farthestY = Math.max(Math.abs(y - viewportTop), Math.abs(viewportBottom - y));
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+  const farthestX = Math.max(x, viewportWidth - x);
+  const farthestY = Math.max(y, viewportHeight - y);
   const radius = Math.hypot(farthestX, farthestY);
-  const overscan = Math.max(32, Math.max(viewportWidth, viewportHeight) * 0.05);
+  const overscan = Math.max(64, Math.max(viewportWidth, viewportHeight) * 0.08);
 
   return Math.ceil(radius + overscan);
 }
