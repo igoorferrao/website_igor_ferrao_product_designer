@@ -57,9 +57,11 @@ export function NavbarControls({ content, currentLocale }: { content: SiteConten
 
   function handleThemeChange(value: string) {
     if (!isColorTheme(value)) return;
-    setColorTheme(value);
 
-    const run = () => applyColorTheme(value);
+    const run = () => {
+      setColorTheme(value);
+      applyColorTheme(value);
+    };
     runRadialRootTransition(run, themePointerOriginRef.current);
   }
 

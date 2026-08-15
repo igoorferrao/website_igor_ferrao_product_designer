@@ -528,12 +528,13 @@ html {
 }
 
 @supports (view-transition-name: root) {
-  html {
-    view-transition-name: root;
+  ::view-transition-image-pair(root) {
+    isolation: auto;
   }
 
   ::view-transition-old(root),
   ::view-transition-new(root) {
+    display: block;
     animation: none;
     mix-blend-mode: normal;
   }
