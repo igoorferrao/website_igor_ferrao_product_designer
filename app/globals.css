@@ -527,25 +527,19 @@ html {
   }
 }
 
-@supports (view-transition-name: root) {
-  ::view-transition-image-pair(root) {
-    isolation: auto;
-  }
-
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
-    display: block;
-    animation: none;
-    mix-blend-mode: normal;
-  }
-
-  ::view-transition-old(root) {
-    z-index: 1;
-  }
-
-  ::view-transition-new(root) {
-    z-index: 2;
-  }
+.theme-transition-overlay {
+  position: fixed;
+  z-index: 2147483647;
+  width: 100px;
+  height: 100px;
+  border-radius: 9999px;
+  opacity: 1;
+  pointer-events: none;
+  contain: strict;
+  backface-visibility: hidden;
+  transform: translate(-50%, -50%) scale(0);
+  transform-origin: center;
+  will-change: transform, opacity;
 }
 
 @keyframes patterns-marquee {
