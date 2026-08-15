@@ -37,7 +37,7 @@ export function NavbarControls({ content, currentLocale }: { content: SiteConten
   const router = useRouter();
   const pathname = usePathname();
   const [colorTheme, setColorTheme] = React.useState<ColorTheme>('default');
-  const themePointerOriginRef = React.useRef<{ x: number; y: number } | undefined>(undefined);
+  const themeTriggerRef = React.useRef<HTMLButtonElement>(null);
 
   const currentLabel = content.languages.find((lang) => lang.value === currentLocale)?.label ?? currentLocale;
   const themeOptions = content.themeOptions as ReadonlyArray<{ value: ColorTheme; label: string }>;
@@ -62,7 +62,16 @@ export function NavbarControls({ content, currentLocale }: { content: SiteConten
       setColorTheme(value);
       applyColorTheme(value);
     };
-    runRadialRootTransition(run, themePointerOriginRef.current);
+
+    const triggerRect = themeTriggerRef.current?.getBoundingClientRect();
+    const origin = triggerRect
+      ? {
+          x: triggerRect.left + triggerRect.width / 2,
+          y: triggerRect.top + triggerRect.height / 2,
+        }
+      : undefined;
+
+    runRadialRootTransition(run, origin);
   }
 
   return (
@@ -88,12 +97,10 @@ export function NavbarControls({ content, currentLocale }: { content: SiteConten
 
       <Select value={colorTheme} onValueChange={handleThemeChange}>
         <SelectTrigger
+          ref={themeTriggerRef}
           aria-label={content.paletteAriaLabel}
           size="sm"
           className="h-9 gap-2 rounded-xl border-transparent px-2 text-sm text-foreground hover:bg-muted [&_svg:not([class*='size-'])]:size-5 sm:px-3"
-          onPointerDown={(event) => {
-            themePointerOriginRef.current = { x: event.clientX, y: event.clientY };
-          }}
         >
           <PaletteIcon className="text-primary" />
           <span className="hidden md:inline-flex">

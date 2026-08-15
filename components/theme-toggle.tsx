@@ -36,6 +36,11 @@ export function ThemeToggle({ ariaLabel }: { ariaLabel: string }) {
 
   function toggleTheme(event: React.MouseEvent<HTMLButtonElement>) {
     const next: Theme = theme === 'dark' ? 'light' : 'dark';
+    const triggerRect = event.currentTarget.getBoundingClientRect();
+    const origin = {
+      x: triggerRect.left + triggerRect.width / 2,
+      y: triggerRect.top + triggerRect.height / 2,
+    };
 
     const runToggle = () => {
       setTheme(next);
@@ -43,7 +48,7 @@ export function ThemeToggle({ ariaLabel }: { ariaLabel: string }) {
       applyTheme(next);
     };
 
-    runRadialRootTransition(runToggle, { x: event.clientX, y: event.clientY });
+    runRadialRootTransition(runToggle, origin);
   }
 
   const Icon = theme === 'dark' ? MoonIcon : SunIcon;
