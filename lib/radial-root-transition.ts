@@ -8,8 +8,9 @@ type TransitionConfig = {
   easing?: string;
 };
 
-const DEFAULT_DURATION = 560;
-const DEFAULT_EASING = 'cubic-bezier(0.22, 1, 0.36, 1)';
+const DEFAULT_DURATION = 800;
+const DEFAULT_EASING = 'cubic-bezier(0.65, 0, 0.35, 1)';
+const END_RADIUS = '160vmax';
 
 function shouldReduceMotion() {
   return window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false;
@@ -22,15 +23,7 @@ function getOrigin(point?: Partial<Point>): Point {
   };
 }
 
-function getEndRadius(x: number, y: number) {
-  return Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
-}
-
-export function runRadialRootTransition(
-  run: () => void,
-  point?: Partial<Point>,
-  config: TransitionConfig = {}
-) {
+export function runRadialRootTransition(run: () => void, point?: Partial<Point>, config: TransitionConfig = {}) {
   const canAnimate =
     typeof document.startViewTransition === 'function' &&
     typeof document.documentElement.animate === 'function' &&
@@ -42,7 +35,6 @@ export function runRadialRootTransition(
   }
 
   const { x, y } = getOrigin(point);
-  const endRadius = getEndRadius(x, y);
   const duration = config.duration ?? DEFAULT_DURATION;
   const easing = config.easing ?? DEFAULT_EASING;
 
@@ -60,13 +52,14 @@ export function runRadialRootTransition(
       .then(() => {
         document.documentElement.animate(
           {
-            clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${endRadius}px at ${x}px ${y}px)`],
+            clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${END_RADIUS} at ${x}px ${y}px)`],
           },
           {
             duration,
             easing,
+            fill: 'forwards',
             pseudoElement: '::view-transition-new(root)',
-          }
+          },
         );
       })
       .catch(() => {
